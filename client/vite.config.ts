@@ -17,18 +17,18 @@ export default defineConfig({
 						instances: [{ browser: 'chromium', headless: true }]
 					},
 					include: ['src/**/*.svelte.{test,spec}.{js,ts}'],
-					exclude: ['src/lib/server/**', 'src/e2e/**']
+					exclude: ['src/lib/server/**']
+				}
+			},
+			{
+				extends: './vite.config.ts',
+				test: {
+					name: 'server',
+					environment: 'node',
+					include: ['src/**/*.{test,spec}.{js,ts}'],
+					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
 				}
 			}
-			// {
-			// 	extends: './vite.config.ts',
-			// 	test: {
-			// 		name: 'server',
-			// 		environment: 'node',
-			// 		include: ['src/**/*.{test,spec}.{js,ts}'],
-			// 		exclude: ['src/**/*.svelte.{test,spec}.{js,ts}', '']
-			// 	}
-			// }
 		]
 	}
 });
