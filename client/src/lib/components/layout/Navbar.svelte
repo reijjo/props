@@ -4,7 +4,7 @@
 
 <style>
 	nav {
-		background-color: rgba(173, 216, 230, 0.25);
+		background-color: rgb(173, 216, 230);
 		height: var(--nav-height);
 		display: flex;
 		width: 100%;
