@@ -1,8 +1,7 @@
 <script lang="ts">
 	import './app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
+	import { Navbar, Footer } from '$lib';
 
 	let { children } = $props();
 </script>
@@ -13,9 +12,9 @@
 
 <div class="layout">
 	<Navbar />
-	<div class="content">
+	<main class="content">
 		{@render children()}
-	</div>
+	</main>
 	<Footer />
 </div>
 
@@ -24,6 +23,7 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		position: relative;
 	}
 
 	.content {

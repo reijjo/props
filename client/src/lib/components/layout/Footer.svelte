@@ -1,6 +1,10 @@
+<script lang="ts">
+	const currentYear = new Date().getFullYear();
+</script>
+
 <footer>
 	<div class="wrapper footer-content">
-		{new Date().getFullYear()} &copy; Reijjo - All rights reserved.
+		{currentYear} &copy; Reijjo - All rights reserved.
 	</div>
 </footer>
 
@@ -9,7 +13,6 @@
 		background-color: lightblue;
 		width: 100%;
 		min-height: var(--footer-height);
-		height: 100%;
 		display: flex;
 		align-items: center;
 	}

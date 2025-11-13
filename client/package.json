@@ -3,10 +3,14 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"engines": {
+		"node": ">=20.0.0",
+		"bun": ">=1.0.0"
+	},
 	"scripts": {
 		"dev": "bunx --bun vite dev",
 		"build": "vite build",
-		"clean": "rm -rf dist node_modules .bun bun.lockb **/dist",
+		"clean": "rm -rf dist .svelte-kit node_modules .bun bun.lockb",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -14,7 +18,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
 		"test:unit": "vitest --run",
-		"test": "npm run test:unit && npm run test:e2e",
+		"test": "vitest --run && playwright test",
 		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
