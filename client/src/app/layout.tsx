@@ -3,7 +3,7 @@ import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./layout.css";
 
-const geistSans = Outfit({
+const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
 });
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${outfit.variable} ${geistMono.variable}`}>
         <nav>Hi im navbar</nav>
         <div className="layout">
           <div className="content">{children}</div>
