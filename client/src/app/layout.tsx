@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./layout.css";
+import Navbar from "@/components/layout/Navbar";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Player Props",
-  description: "Player stats for sports betting and fantasy teams",
+  description: "Player stats for sports betting and fantasy sports",
 };
 
 export default function RootLayout({
@@ -26,8 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.variable} ${geistMono.variable}`}>
-        <nav>Hi im navbar</nav>
         <div className="layout">
+          <Navbar />
           <div className="content">{children}</div>
           <footer>Hi im footer</footer>
         </div>
