@@ -1,6 +1,14 @@
 :root {
+  --nav-height: 8svh;
+
   --foreground: #ffffff;
   --background: #171717;
+
+  --primary: #1a1a2a;
+
+  --secondary: #00a3da;
+
+  --accent: #fa9fe0;
 }
 
 * {
@@ -17,5 +25,7 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--primary);
+  font-size: 1rem;
+  font-family: var(--font-outfit), sans-serif;
 }

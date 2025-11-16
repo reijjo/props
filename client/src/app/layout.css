@@ -9,10 +9,9 @@
   position: relative;
 }
 
-nav {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
+.wrapper {
+  max-width: 1366px;
   width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
