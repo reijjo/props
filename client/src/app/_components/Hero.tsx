@@ -8,7 +8,7 @@ export default function Hero() {
         <Image
           src="/images/proplanding.jpg"
           fill
-          alt="hero-section"
+          alt="Start finding the best props"
           sizes="100vw"
           style={{ objectFit: "cover", zIndex: 0 }}
           className="hero-img"
