@@ -17,9 +17,9 @@ export default function Hero() {
           </p>
         </div>
         <div className="hero-action">
-          <Button className="btn-cta">
-            <Link href="/nba">NBA Stats</Link>
-          </Button>
+          <Link href="/nba">
+            <Button className="btn-cta">NBA Stats</Button>
+          </Link>
         </div>
       </div>
       <div className="hero-image">
@@ -28,7 +28,7 @@ export default function Hero() {
           fill
           alt="Start finding the best props"
           sizes="100vw"
-          style={{ objectFit: "fill", zIndex: 0 }}
+          style={{ objectFit: "cover", zIndex: 0 }}
           className="hero-img"
           priority
         />

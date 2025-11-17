@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: perspective(640px) rotateY(-45deg);
+  transform: perspective(800px) rotateY(-30deg);
   transform-origin: center;
 
   @media (max-width: 1000px) {
@@ -98,4 +98,8 @@
 .hero-action {
   height: 3rem;
   width: max-content;
+
+  & button {
+    padding-inline: 2rem;
+  }
 }
