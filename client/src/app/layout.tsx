@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Geist_Mono } from "next/font/google";
+import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import "./layout.css";
 import Navbar from "@/components/layout/Navbar";
@@ -9,8 +9,8 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-spaceGrotesk",
   subsets: ["latin"],
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} ${geistMono.variable}`}>
+      <body className={`${outfit.variable} ${spaceGrotesk.variable}`}>
         <div className="layout">
           <Navbar />
           <div className="content">{children}</div>

@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="nav-logo">
-        <p>Ropsit</p>
+        <h4>Ropsit</h4>
       </div>
     </nav>
   );
