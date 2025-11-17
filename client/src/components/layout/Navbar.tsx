@@ -8,14 +8,11 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const path = usePathname();
 
-  console.log(path);
   return (
     <nav>
-      <div className="nav-logo">
-        <Link href="/">
-          <h4>Ropsit</h4>
-        </Link>
-      </div>
+      <Link href="/" className="nav-logo">
+        <h4>Ropsit</h4>
+      </Link>
       <ul className="nav-links">
         <li>
           <Link href="/nba" className={path === "/nba" ? "active" : ""}>
