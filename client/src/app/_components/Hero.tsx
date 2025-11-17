@@ -9,9 +9,9 @@ export default function Hero() {
         <div className="hero-desc">
           <p className="tagline">Only what you actually need. Nothing extra.</p>
           <p className="tagline">
-            We got all the nessary player stats that you need for fantasy sports
-            or sports betting. We are going to add NHL and English Premier
-            League stats soon, but for now check our NBA stats.
+            We got all the necessary player stats that you need for fantasy
+            sports or sports betting. We are going to add NHL and English
+            Premier League stats soon, but for now check our NBA stats.
           </p>
         </div>
         <div className="hero-action">

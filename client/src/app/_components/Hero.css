@@ -3,17 +3,28 @@
   grid-template-columns: 50% 50%;
   height: 100svh;
   overflow: hidden;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
-  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
   transform: perspective(640px) rotateY(-45deg);
   transform-origin: center;
+
+  @media (max-width: 1000px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
 }
 
 .hero-overlay {
@@ -29,6 +40,14 @@
   );
   z-index: 1;
   pointer-events: none;
+
+  @media (max-width: 1000px) {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
 }
 
 .hero-content {
@@ -41,6 +60,10 @@
   gap: 2rem;
   padding-inline: 4rem;
   background: radial-gradient(rgba(255, 255, 255, 0.025) 0%, transparent 80%);
+
+  @media (max-width: 580px) {
+    padding-inline: 2rem;
+  }
 
   & h1 {
     background: linear-gradient(
@@ -65,6 +88,11 @@
 .tagline {
   font-size: 1.25rem;
   line-height: 1.75rem;
+
+  @media (max-width: 580px) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
 }
 
 .hero-action {
