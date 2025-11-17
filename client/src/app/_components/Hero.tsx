@@ -1,5 +1,7 @@
-import Image from "next/image";
 import "./Hero.css";
+import Link from "next/link";
+import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
@@ -15,7 +17,9 @@ export default function Hero() {
           </p>
         </div>
         <div className="hero-action">
-          <button className="btn-cta">NBA stats</button>
+          <Button className="btn-cta">
+            <Link href="/nba">NBA Stats</Link>
+          </Button>
         </div>
       </div>
       <div className="hero-image">
