@@ -3,6 +3,7 @@ import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import "./layout.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -30,7 +31,7 @@ export default function RootLayout({
         <div className="layout">
           <Navbar />
           <div className="content">{children}</div>
-          <footer>Hi im footer</footer>
+          <Footer />
         </div>
       </body>
     </html>
