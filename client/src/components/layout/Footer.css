@@ -1,4 +1,4 @@
 footer {
   padding-block: 1.5rem;
-  border-top: 1px solid rgba(250, 159, 224, 0.25);
+  border-top: 1px solid rgb(from var(--accent) r g b / 0.25);
 }

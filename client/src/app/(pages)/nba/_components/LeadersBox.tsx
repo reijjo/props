@@ -2,23 +2,25 @@ import "./LeadersBox.css";
 
 export default function LeadersBox() {
   return (
-    <section className="leaders-box">
-      <table>
+    <section className="leaders-box wrapper">
+      <table aria-label="NBA points per game leaders for 2025-2026 season">
         <caption>
           <h2>Points per game</h2>
         </caption>
         <thead>
-          <th scope="col">Name</th>
-          <th scope="col">Team</th>
-          <th scope="col">GP</th>
-          <th scope="col">Min</th>
-          <th scope="col">pts</th>
-          <th scope="col">fgm</th>
-          <th scope="col">fga</th>
-          <th scope="col">fg%</th>
-          <th scope="col">3pm</th>
-          <th scope="col">3pa</th>
-          <th scope="col">3p%</th>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Team</th>
+            <th scope="col">GP</th>
+            <th scope="col">Min</th>
+            <th scope="col">pts</th>
+            <th scope="col">fgm</th>
+            <th scope="col">fga</th>
+            <th scope="col">fg%</th>
+            <th scope="col">3pm</th>
+            <th scope="col">3pa</th>
+            <th scope="col">3p%</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
