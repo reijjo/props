@@ -20,19 +20,20 @@ button {
   border-radius: 5rem;
   transition: all 0.125s ease-in-out;
   box-shadow: none;
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .btn-cta {
   background-color: var(--secondary-400);
 
   &:hover {
-    box-shadow: -4px 4px var(--secondary-800);
-    background-color: var(--secondary-300);
-  }
+    box-shadow: 0 2px 4px var(--secondary-800),
+      0 4px 16px rgba(124, 222, 253, 0.25);
 
-  &:active {
-    transform: translate(-4px, 4px);
-    box-shadow: none;
+    background-color: var(--secondary-300);
   }
 }
 
@@ -40,15 +41,50 @@ button {
   background-color: transparent;
   color: var(--foreground);
   border-color: rgba(255, 255, 255, 0.125);
-  backdrop-filter: blur(1rem);
+  /* backdrop-filter: blur(1rem); */
 
   &:hover {
-    box-shadow: -4px 4px rgba(255, 255, 255, 0.125);
     border-color: rgba(255, 255, 255, 0.25);
   }
+}
+
+.btn-outline,
+.btn-pressable {
+  background-color: transparent;
+  color: var(--foreground);
+  border-color: rgba(255, 255, 255, 0.125);
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.btn-pressable {
+  border-radius: 0.25rem;
+  font-size: 0.925rem;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 0 2px rgba(255, 255, 255, 0.25);
 
   &:active {
-    transform: translate(-4px, 4px);
+    transform: translateY(2px);
     box-shadow: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &.active {
+    border: 1px inset rgba(0, 0, 0, 0.75);
+    box-shadow: none;
+
+    &:hover {
+      border: 1px solid rgba(255, 255, 255, 0.125);
+    }
+
+    &:active {
+      transform: translateY(2px);
+      box-shadow: none;
+    }
   }
 }

@@ -1,0 +1,11 @@
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1rem;
+  gap: 1rem;
+
+  & button {
+    width: max-content;
+  }
+}

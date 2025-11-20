@@ -66,13 +66,7 @@
   }
 
   & h1 {
-    background: linear-gradient(
-      to right,
-      white 0%,
-      var(--secondary-100) 20%,
-      var(--secondary-100) 80%,
-      white
-    );
+    background: linear-gradient(to right, white 0%, var(--secondary-200) 20%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
