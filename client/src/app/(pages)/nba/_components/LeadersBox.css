@@ -5,7 +5,7 @@
   border: 1px solid rgb(from var(--secondary) r g b / 0.25);
   border-radius: 0.5rem;
   padding: 1rem 2rem;
-  width: 95%;
+  max-width: 95%;
   background-color: rgb(from var(--primary) r g b / 1);
   box-shadow: 0 0.5rem 1rem rgb(from var(--secondary) r g b / 0.075);
 
@@ -97,7 +97,7 @@
   }
 
   & td {
-    padding: 1rem 0.5rem;
+    padding: 0.75rem 0.5rem;
     font-variant-numeric: tabular-nums;
 
     & a:hover {

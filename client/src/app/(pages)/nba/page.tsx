@@ -6,7 +6,7 @@ export default function Nba() {
   return (
     <main className="nba-page">
       <PageHeader />
-      <LeadersBox />
+      <LeadersBox header="Points per game" />
     </main>
   );
 }
