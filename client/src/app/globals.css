@@ -24,7 +24,7 @@ main {
   background: radial-gradient(rgba(124, 222, 253, 0.125), transparent);
 
   &:not(.landing-page) {
-    padding-top: calc(var(--nav-height) + 2svh);
+    padding-top: calc(var(--nav-height) + 2.5svh);
   }
 }
 
@@ -82,7 +82,7 @@ h1 {
   --secondary-50: #f0faff;
   --secondary-100: #e0f5fe;
   --secondary-200: #b9ecfe;
-  --secondary-300: rgb(124, 222, 253);
+  --secondary-300: #7cdefd;
   --secondary-400: #36cffa;
   --secondary-500: #0cbaeb;
   --secondary-600: #00a3da;
@@ -91,10 +91,10 @@ h1 {
   --secondary-900: #0b536f;
   --secondary-950: #07354a;
 
-  --accent: rgb(250, 159, 224);
+  --accent: #fa9fe0;
   --accent-50: #fdf2fa;
   --accent-100: #fce7f7;
-  --accent-200: rgb(252, 206, 240);
+  --accent-200: #fccef0;
   --accent-300: #fa9fe0;
   --accent-400: #f670cd;
   --accent-500: #ef45b6;

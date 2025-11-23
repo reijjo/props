@@ -18,6 +18,7 @@
   align-items: center;
   transform: perspective(800px) rotateY(-30deg);
   transform-origin: center;
+  position: relative;
 
   @media (max-width: 1000px) {
     position: absolute;

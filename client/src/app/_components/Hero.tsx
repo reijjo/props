@@ -27,7 +27,7 @@ export default function Hero() {
           src="/images/proplanding.jpg"
           fill
           alt="Start finding the best props"
-          sizes="100vw"
+          sizes="50vw"
           style={{ objectFit: "cover", zIndex: 0 }}
           className="hero-img"
           priority
