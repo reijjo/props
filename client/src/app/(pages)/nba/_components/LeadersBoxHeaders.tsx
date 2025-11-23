@@ -1,5 +1,5 @@
 type LeaderBoxHeadersProps = {
-  stats: string[];
+  stats: readonly string[];
 };
 
 export default function LeaderBoxHeaders({ stats }: LeaderBoxHeadersProps) {

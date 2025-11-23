@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 type LeadersBoxRowProps = {
   name: string;
   team: string;
-  values: (string | number | ReactNode)[];
+  values: ReactNode[];
 };
 
 export default function LeadersBoxRow({
