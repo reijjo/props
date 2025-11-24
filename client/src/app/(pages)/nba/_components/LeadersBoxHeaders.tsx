@@ -1,8 +1,10 @@
+import { formatColumnName } from "@/lib/utils/format";
+
 type LeaderBoxHeadersProps = {
-  stats: readonly string[];
+  columns: readonly string[];
 };
 
-export default function LeaderBoxHeaders({ stats }: LeaderBoxHeadersProps) {
+export default function LeaderBoxHeaders({ columns }: LeaderBoxHeadersProps) {
   return (
     <thead>
       <tr>
@@ -10,9 +12,9 @@ export default function LeaderBoxHeaders({ stats }: LeaderBoxHeadersProps) {
         <th scope="col">team</th>
         <th scope="col">gp</th>
         <th scope="col">min</th>
-        {stats.map((stat) => (
+        {columns.map((stat) => (
           <th scope="col" key={stat}>
-            {stat}
+            {formatColumnName(stat)}
           </th>
         ))}
       </tr>
