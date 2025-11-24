@@ -1049,6 +1049,8 @@ dependencies = [
  "axum",
  "dotenvy",
  "reqwest",
+ "serde",
+ "serde_json",
  "tokio",
  "tower-http",
  "tracing",

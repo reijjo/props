@@ -4,16 +4,18 @@ use axum::{
 };
 use tower_http::cors::{Any, CorsLayer};
 
-use crate::routes;
+use crate::{config::Config, routes};
 use crate::middleware::logger::log_middleware;
 
 #[derive(Clone)]
 pub struct AppState {
-	pub http_client: reqwest::Client
+	pub http_client: reqwest::Client,
+	pub config: Config
 }
 
-pub fn create_app() -> Router {
-	let http_client = reqwest::Client::builder()
+pub fn create_app(config: Config) -> Router {
+	let client = reqwest::Client::builder()
+		.user_agent("RepenValintaOy/1.0 (+https://tarpit.pages.dev)")
 		.timeout(std::time::Duration::from_secs(10))
 		.build()
 		.expect("Failed to create HTTP client");
@@ -24,7 +26,8 @@ pub fn create_app() -> Router {
 		.allow_headers(Any);
 
 	let state = AppState {
-		http_client
+		http_client: client,
+		config: config.clone()
 	};
 
 	Router::new()
