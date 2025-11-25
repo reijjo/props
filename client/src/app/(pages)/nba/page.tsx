@@ -13,7 +13,7 @@ export default function Nba() {
         <h2>NBA Leaders</h2>
         <LeadersBox header="Points per game" stat="PTS" />
         <Link href="/nba/leaders">
-          <Button className="btn-outline">View All Leaderstables</Button>
+          <Button className="btn-outline">View All Leaderboards</Button>
         </Link>
       </section>
     </main>
