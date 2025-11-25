@@ -62,6 +62,9 @@ h1 {
 :root {
   --nav-height: 8svh;
 
+  --container-border: 1px solid rgb(from var(--secondary) r g b / 0.25);
+  --container-shadow: 0 0.5rem 1rem rgb(from var(--secondary) r g b / 0.075);
+
   --foreground: #ffffff;
   --background: #171717;
 
