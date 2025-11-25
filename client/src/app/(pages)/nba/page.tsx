@@ -1,19 +1,21 @@
-import "./style.css";
-import PageHeader from "@/components/shared/page-header/PageHeader";
+import "./nba.css";
 import LeadersBox from "./_components/LeadersBox";
+import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function Nba() {
   return (
     <main className="nba-page">
-      <PageHeader />
-      <div className="leader-boxes wrapper">
+      <section className="nba-today wrapper">
+        <h2>Today's NBA Games</h2>
+      </section>
+      <section className="nba-page-leaders wrapper">
+        <h2>NBA Leaders</h2>
         <LeadersBox header="Points per game" stat="PTS" />
-        <LeadersBox header="Rebounds per game" stat="REB" />
-        <LeadersBox header="Assists/Turnovers per game" stat="AST" />
-        <LeadersBox header="3pts made per game" stat="FG3M" />
-        <LeadersBox header="Blocks per game" stat="BLK" />
-        <LeadersBox header="Steals per game" stat="STL" />
-      </div>
+        <Link href="/nba/leaders">
+          <Button className="btn-outline">View All Leaderboards</Button>
+        </Link>
+      </section>
     </main>
   );
 }
