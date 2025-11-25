@@ -1,13 +1,19 @@
 .leaders-box {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 1rem;
   border: 1px solid rgb(from var(--secondary) r g b / 0.25);
   border-radius: 0.5rem;
   padding: 1rem 2rem;
-  max-width: 95%;
+  width: max-content;
+  max-width: 100%;
   background-color: rgb(from var(--primary) r g b / 1);
   box-shadow: 0 0.5rem 1rem rgb(from var(--secondary) r g b / 0.075);
+
+  @media (max-width: 580px) {
+    font-size: 0.825rem;
+  }
 
   & h2 {
     text-align: center;
@@ -50,7 +56,11 @@
     font-family: var(--font-spaceGrotesk);
     text-transform: uppercase;
     text-align: left;
-    padding: 0.5rem;
+    padding: 1rem;
+
+    @media (max-width: 580px) {
+      padding: 0.5rem;
+    }
   }
 
   /* Column hover effect */
@@ -96,11 +106,20 @@
   }
 
   & td {
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 1rem;
     font-variant-numeric: tabular-nums;
+
+    @media (max-width: 580px) {
+      padding: 0.5rem;
+    }
 
     & a:hover {
       color: var(--accent-200);
     }
   }
+}
+
+.team-logo {
+  display: flex;
+  gap: 0.5rem;
 }
