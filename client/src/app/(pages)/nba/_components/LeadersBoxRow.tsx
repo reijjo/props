@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { LeaderData, StatType } from "@/lib/utils/types/nba";
+import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
+import Image from "next/image";
 
 type LeadersBoxRowProps = {
   player: LeaderData[StatType][number];
@@ -28,7 +30,15 @@ export default function LeadersBoxRow({ player, columns }: LeadersBoxRowProps) {
         <Link href={`/nba/player/${player.PLAYER_ID}`}>{player.PLAYER}</Link>
       </td>
       <td>
-        <Link href={`/nba/team/${player.TEAM}`}>{player.TEAM}</Link>
+        <Link href={`/nba/team/${player.TEAM_ID}`} className="team-logo">
+          <Image
+            src={getTeamLogoUrl(player.TEAM_ID)}
+            alt={player.TEAM}
+            height={20}
+            width={20}
+          />
+          {player.TEAM}
+        </Link>
       </td>
       <td>{player.GP}</td>
       <td>{formatValue(player.MIN, "MIN")}</td>

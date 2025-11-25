@@ -6,7 +6,7 @@ import type { LeaderData } from "@/lib/utils/types/nba";
 import {
   LEADER_COLUMNS,
   type StatType,
-} from "@/lib/utils/contants/leaderColumns";
+} from "@/lib/utils/constants/leaderColumns";
 
 type LeadersBoxProps = {
   header: string;

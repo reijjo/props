@@ -6,7 +6,14 @@ export default function Nba() {
   return (
     <main className="nba-page">
       <PageHeader />
-      <LeadersBox header="Points per game" stat="PTS" />
+      <div className="leader-boxes wrapper">
+        <LeadersBox header="Points per game" stat="PTS" />
+        <LeadersBox header="Rebounds per game" stat="REB" />
+        <LeadersBox header="Assists/Turnovers per game" stat="AST" />
+        <LeadersBox header="3pts made per game" stat="FG3M" />
+        <LeadersBox header="Blocks per game" stat="BLK" />
+        <LeadersBox header="Steals per game" stat="STL" />
+      </div>
     </main>
   );
 }

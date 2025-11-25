@@ -2,6 +2,7 @@ export type NbaPlayerBase = {
   PLAYER_ID: number;
   PLAYER: string;
   TEAM: string;
+  TEAM_ID: number;
   GP: number;
   MIN: number;
 };
