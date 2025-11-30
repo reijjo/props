@@ -28,7 +28,6 @@ export type ReboundLeader = NbaPlayerBase & {
 
 export type AssistLeader = NbaPlayerBase & {
   AST: number;
-  TOV: number;
 };
 
 export type ThreePointerLeader = NbaPlayerBase & {
@@ -39,6 +38,7 @@ export type ThreePointerLeader = NbaPlayerBase & {
 
 export type BlocksLeader = NbaPlayerBase & { BLK: number };
 export type StealsLeader = NbaPlayerBase & { STL: number };
+export type TurnoversLeader = NbaPlayerBase & { TOV: number };
 
 export type LeaderData = {
   PTS: PointsLeader[];
@@ -47,6 +47,7 @@ export type LeaderData = {
   FG3M: ThreePointerLeader[];
   BLK: BlocksLeader[];
   STL: StealsLeader[];
+  TOV: TurnoversLeader[];
 };
 
 export type StatType = keyof LeaderData;

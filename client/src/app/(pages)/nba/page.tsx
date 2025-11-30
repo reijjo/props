@@ -2,6 +2,7 @@ import "./nba.css";
 import LeadersBox from "./_components/LeadersBox";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import Loading from "@/app/loading";
 
 export default function Nba() {
   return (
