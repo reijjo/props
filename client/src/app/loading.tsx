@@ -1,5 +1,5 @@
 type LoadingProps = {
-  text: string;
+  text?: string;
 };
 
 export default function Loading({ text = "Loading..." }: LoadingProps) {
