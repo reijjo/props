@@ -24,11 +24,10 @@ export default function Hero() {
       </div>
       <div className="hero-image">
         <Image
-          src="/images/proplanding.jpg"
+          src="/images/lead.png"
           fill
           alt="Start finding the best props"
           sizes="50vw"
-          style={{ objectFit: "cover", zIndex: 0 }}
           className="hero-img"
           priority
         />

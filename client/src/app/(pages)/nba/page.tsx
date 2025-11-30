@@ -1,5 +1,5 @@
 import "./nba.css";
-import LeadersBox from "./_components/LeadersBox";
+import LeadersBox from "./_components/StatBox";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 

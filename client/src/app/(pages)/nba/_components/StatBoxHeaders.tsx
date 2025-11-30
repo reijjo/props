@@ -1,10 +1,10 @@
 import { formatColumnName } from "@/lib/utils/format";
 
-type LeaderBoxHeadersProps = {
+type StatBoxHeadersProps = {
   columns: readonly string[];
 };
 
-export default function LeaderBoxHeaders({ columns }: LeaderBoxHeadersProps) {
+export default function StatBoxHeaders({ columns }: StatBoxHeadersProps) {
   return (
     <thead>
       <tr>

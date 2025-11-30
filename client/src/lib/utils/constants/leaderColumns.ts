@@ -13,10 +13,11 @@ export const LEADER_COLUMNS = {
     "FT_PCT",
   ],
   REB: ["REB", "OREB", "DREB"],
-  AST: ["AST", "TOV"],
+  AST: ["AST"],
   FG3M: ["FG3M", "FG3A", "FG3_PCT"],
   BLK: ["BLK"],
   STL: ["STL"],
+  TOV: ["TOV"],
 } as const;
 
 export type StatType = keyof typeof LEADER_COLUMNS;

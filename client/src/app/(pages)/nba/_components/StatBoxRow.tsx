@@ -3,12 +3,12 @@ import type { LeaderData, StatType } from "@/lib/utils/types/nba";
 import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
 import Image from "next/image";
 
-type LeadersBoxRowProps = {
+type StatBoxRowProps = {
   player: LeaderData[StatType][number];
   columns: readonly string[];
 };
 
-export default function LeadersBoxRow({ player, columns }: LeadersBoxRowProps) {
+export default function StatBoxRow({ player, columns }: StatBoxRowProps) {
   const formatValue = (
     value: number | undefined,
     columnName: string

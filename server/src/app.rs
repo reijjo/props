@@ -3,6 +3,7 @@ use axum::{
 	Router
 };
 use tower_http::cors::{Any, CorsLayer};
+use reqwest::header;
 
 use crate::{config::Config, routes};
 use crate::middleware::logger::log_middleware;
@@ -14,8 +15,12 @@ pub struct AppState {
 }
 
 pub fn create_app(config: Config) -> Router {
+	let mut headers = header::HeaderMap::new();
+	headers.insert(header::REFERER, header::HeaderValue::from_static("https://www.nba.com/"));
+	headers.insert(header::USER_AGENT, header::HeaderValue::from_static("RepenValintaOy/1.0 (+https://tarpit.pages.dev)"));
+
 	let client = reqwest::Client::builder()
-		.user_agent("RepenValintaOy/1.0 (+https://tarpit.pages.dev)")
+		.default_headers(headers)
 		.timeout(std::time::Duration::from_secs(10))
 		.build()
 		.expect("Failed to create HTTP client");

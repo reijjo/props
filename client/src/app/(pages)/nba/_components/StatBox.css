@@ -10,6 +10,7 @@
   max-width: 100%;
   background-color: rgb(from var(--primary) r g b / 1);
   box-shadow: 0 0.5rem 1rem rgb(from var(--secondary) r g b / 0.075);
+  font-size: 0.925rem;
 
   @media (max-width: 580px) {
     font-size: 0.825rem;
@@ -18,6 +19,7 @@
   & h2 {
     text-align: center;
     text-wrap: balance;
+    font-size: 1.25rem;
   }
 }
 
