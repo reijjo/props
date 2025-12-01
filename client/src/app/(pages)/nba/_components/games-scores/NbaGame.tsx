@@ -1,5 +1,5 @@
 import "./NbaGame.css";
-import { NbaTeam, NbaToday } from "@/lib/utils/types/nba";
+import { NbaToday } from "@/lib/utils/types/nba";
 import NbaTeamCard from "./NbaTeamCard";
 import { formatGameTime } from "@/lib/utils/format";
 
