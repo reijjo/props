@@ -57,6 +57,16 @@ h1 {
   }
 }
 
+h2 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+
+  @media (max-width: 580px) {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+}
+
 /* END Headers */
 
 :root {

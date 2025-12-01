@@ -1,6 +1,6 @@
 import "./style.css";
 import PageHeader from "@/components/shared/page-header/PageHeader";
-import LeadersBox from "../_components/StatBox";
+import LeadersBox from "../_components/statbox/StatBox";
 
 export default function NbaLeaders() {
   return (

@@ -95,10 +95,12 @@
 .tagline {
   font-size: 1.125rem;
   line-height: 1.75rem;
+  font-weight: 100;
 
   &:first-child {
     font-size: 1.25rem;
     line-height: 2rem;
+    font-weight: 400;
   }
 
   @media (max-width: 580px) {

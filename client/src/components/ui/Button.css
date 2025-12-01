@@ -88,3 +88,29 @@ button {
     }
   }
 }
+
+.btn-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  transform: translateY(1px);
+  color: rgba(255, 255, 255, 0.5);
+
+  .btn-with-icon:hover & {
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.btn-icon-cta {
+  transform: translateY(1px);
+  color: rgba(0, 0, 0, 0.75);
+  transition: all 0.25s ease-in-out;
+
+  .btn-with-icon:hover & {
+    color: rgba(0, 0, 0, 1);
+    transform: translate(2px, 1px);
+  }
+}

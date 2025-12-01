@@ -2,6 +2,7 @@ import "./Hero.css";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import { MoveRight } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -18,7 +19,10 @@ export default function Hero() {
         </div>
         <div className="hero-action">
           <Link href="/nba">
-            <Button className="btn-cta">NBA Stats</Button>
+            <Button className="btn-cta btn-with-icon">
+              NBA Stats
+              <MoveRight size={18} className="btn-icon-cta" />
+            </Button>
           </Link>
         </div>
       </div>
