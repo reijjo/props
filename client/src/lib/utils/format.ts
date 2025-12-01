@@ -26,10 +26,9 @@ export function formatGameTime(
   // Convert UTC to user's local time
   const date = new Date(gameTimeUTC);
 
-  return date.toLocaleTimeString("en-FI", {
+  return date.toLocaleTimeString(undefined, {
     hour: "numeric",
     minute: "2-digit",
     hour12: false, // Use 24-hour format for Finland/Europe
-    timeZone: "Europe/Helsinki", // Or use undefined to auto-detect user's timezone
   });
 }

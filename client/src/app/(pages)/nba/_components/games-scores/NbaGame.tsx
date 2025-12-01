@@ -8,7 +8,6 @@ type NbaGameProps = {
 };
 
 export default function NbaGame({ game }: NbaGameProps) {
-  console.log("game", game);
   const isGameEnded = game.gameStatusText === "Final";
 
   const gameDate = new Date(game.gameTimeUTC);
@@ -20,7 +19,7 @@ export default function NbaGame({ game }: NbaGameProps) {
   });
 
   return (
-    <article className="nba-today-game" key={game.gameId}>
+    <article className="nba-today-game">
       <NbaTeamCard
         team={game.homeTeam}
         isGameEnded={isGameEnded}
