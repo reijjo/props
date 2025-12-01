@@ -2,83 +2,54 @@ import Link from "next/link";
 import "./NbaGame.css";
 import Image from "next/image";
 import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
-import { ReactNode } from "react";
+import { NbaTeam } from "@/lib/utils/types/nba";
+import NbaTeamCard from "./NbaTeamCard";
 
 type NbaGameProps = {
   gameStatusText: string;
-  teamId: number;
-  teamCity: string;
-  teamName: string;
-  wins: number;
-  losses: number;
-  score: number;
-  score2: number;
+  homeTeam: NbaTeam;
+  awayTeam: NbaTeam;
 };
 
 export default function NbaGame({
-  gameStatusText = "Final3",
-  teamId = 1610612739,
-  teamCity = "Los Angeles",
-  teamName = "Clippers",
-  wins = 5,
-  losses = 10,
-  score = 124,
-  score2 = 128,
+  gameStatusText = "Final",
+  homeTeam = {
+    teamId: 1610612739,
+    teamCity: "Los Angeles",
+    teamName: "Clippers",
+    wins: 15,
+    losses: 10,
+    score: 122,
+  },
+  awayTeam = {
+    teamId: 1610612740,
+    teamCity: "New Orleans",
+    teamName: "Pelicans",
+    wins: 12,
+    losses: 13,
+    score: 128,
+  },
 }: NbaGameProps) {
-  const isHomeWinner = score > score2;
   const isGameEnded = gameStatusText === "Final";
 
   return (
     <article className="nba-today-game">
-      <div className="nba-today-home">
-        <div className="nba-today-logo-record">
-          <Link href={`/nba/teams/${teamId}`}>
-            <Image
-              src={getTeamLogoUrl(teamId)}
-              alt={teamName}
-              height={48}
-              width={48}
-            />
-          </Link>{" "}
-          <p className="nba-today-team">
-            {teamCity} <br />
-            {teamName}
-          </p>
-          <p className="nba-today-home-record">
-            {wins} - {losses}
-          </p>
-        </div>
-        {isGameEnded && (
-          <h2 className={isHomeWinner ? "winner" : ""}>{score}</h2>
-        )}
-      </div>
+      <NbaTeamCard
+        team={homeTeam}
+        isGameEnded={isGameEnded}
+        opponentScore={awayTeam.score}
+      />
 
       <div className="nba-today-gamestatus">
         {isGameEnded ? "Final" : "KLOCKAN TSUGO"}
       </div>
 
-      <div className="nba-today-away">
-        <div className="nba-today-logo-record">
-          <Link href={`/nba/teams/${teamId}`}>
-            <Image
-              src={getTeamLogoUrl(teamId)}
-              alt={teamName}
-              height={48}
-              width={48}
-            />
-          </Link>{" "}
-          <p className="nba-today-team">
-            {teamCity} <br />
-            {teamName}
-          </p>
-          <p className="nba-today-away-record">
-            {wins} - {losses}
-          </p>
-        </div>
-        {isGameEnded && (
-          <h2 className={!isHomeWinner ? "winner" : ""}>{score2}</h2>
-        )}
-      </div>
+      <NbaTeamCard
+        team={awayTeam}
+        isGameEnded={isGameEnded}
+        opponentScore={homeTeam.score}
+        awayTeam
+      />
     </article>
   );
 }

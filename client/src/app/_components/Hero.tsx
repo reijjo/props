@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="hero-action">
           <Link href="/nba">
             <Button className="btn-cta btn-with-icon">
-              <p>NBA Stats</p>
+              NBA Stats
               <MoveRight size={18} className="btn-icon-cta" />
             </Button>
           </Link>

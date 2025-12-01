@@ -51,3 +51,12 @@ export type LeaderData = {
 };
 
 export type StatType = keyof LeaderData;
+
+export type NbaTeam = {
+  teamId: number;
+  teamName: string;
+  teamCity: string;
+  wins: number;
+  losses: number;
+  score: number;
+};
