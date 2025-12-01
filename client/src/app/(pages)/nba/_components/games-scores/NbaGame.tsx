@@ -1,53 +1,47 @@
-import Link from "next/link";
 import "./NbaGame.css";
-import Image from "next/image";
-import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
-import { NbaTeam } from "@/lib/utils/types/nba";
+import { NbaTeam, NbaToday } from "@/lib/utils/types/nba";
 import NbaTeamCard from "./NbaTeamCard";
+import { formatGameTime } from "@/lib/utils/format";
 
 type NbaGameProps = {
-  gameStatusText: string;
-  homeTeam: NbaTeam;
-  awayTeam: NbaTeam;
+  game: NbaToday;
 };
 
-export default function NbaGame({
-  gameStatusText = "Final",
-  homeTeam = {
-    teamId: 1610612739,
-    teamCity: "Los Angeles",
-    teamName: "Clippers",
-    wins: 15,
-    losses: 10,
-    score: 122,
-  },
-  awayTeam = {
-    teamId: 1610612740,
-    teamCity: "New Orleans",
-    teamName: "Pelicans",
-    wins: 12,
-    losses: 13,
-    score: 128,
-  },
-}: NbaGameProps) {
-  const isGameEnded = gameStatusText === "Final";
+export default function NbaGame({ game }: NbaGameProps) {
+  console.log("game", game);
+  const isGameEnded = game.gameStatusText === "Final";
+
+  const gameDate = new Date(game.gameTimeUTC);
+
+  const formattedDate = gameDate.toLocaleDateString("en-US", {
+    weekday: "short", // "Mon"
+    month: "short", // "Dec"
+    day: "numeric", // "1"
+  });
 
   return (
-    <article className="nba-today-game">
+    <article className="nba-today-game" key={game.gameId}>
       <NbaTeamCard
-        team={homeTeam}
+        team={game.homeTeam}
         isGameEnded={isGameEnded}
-        opponentScore={awayTeam.score}
+        opponentScore={game.awayTeam.score}
       />
 
       <div className="nba-today-gamestatus">
-        {isGameEnded ? "Final" : "KLOCKAN TSUGO"}
+        {isGameEnded ? (
+          <h3>{game.gameStatusText}</h3>
+        ) : (
+          <>
+            <p>{formattedDate}</p>
+            <h3>{formatGameTime(game.gameTimeUTC, game.gameStatusText)}</h3>
+          </>
+        )}
       </div>
 
       <NbaTeamCard
-        team={awayTeam}
+        team={game.awayTeam}
         isGameEnded={isGameEnded}
-        opponentScore={homeTeam.score}
+        opponentScore={game.homeTeam.score}
         awayTeam
       />
     </article>

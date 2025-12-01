@@ -13,3 +13,23 @@ export const formatColumnName = (col: string): string => {
     .replace("STL", "STL")
     .replace("PTS", "PTS");
 };
+
+export function formatGameTime(
+  gameTimeUTC: string,
+  gameStatusText: string
+): string {
+  // If game is over or in progress, show the status text
+  if (gameStatusText === "Final" || !gameTimeUTC) {
+    return gameStatusText;
+  }
+
+  // Convert UTC to user's local time
+  const date = new Date(gameTimeUTC);
+
+  return date.toLocaleTimeString("en-FI", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: false, // Use 24-hour format for Finland/Europe
+    timeZone: "Europe/Helsinki", // Or use undefined to auto-detect user's timezone
+  });
+}

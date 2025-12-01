@@ -4,13 +4,14 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { MoveRight } from "lucide-react";
 import NbaGame from "./_components/games-scores/NbaGame";
+import GamesToday from "./_components/games-scores/GamesToday";
 
 export default function Nba() {
   return (
     <main className="nba-page">
       <section className="nba-today wrapper">
         <h3>NBA Games & Scores</h3>
-        <NbaGame />
+        <GamesToday />
       </section>
       <section className="nba-page-leaders wrapper">
         <h3>NBA Leaders</h3>
