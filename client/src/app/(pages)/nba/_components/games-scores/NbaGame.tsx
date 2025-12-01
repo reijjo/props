@@ -10,9 +10,7 @@ type NbaGameProps = {
 export default function NbaGame({ game }: NbaGameProps) {
   const isGameEnded = game.gameStatusText === "Final";
 
-  const gameDate = new Date(game.gameTimeUTC);
-
-  const formattedDate = gameDate.toLocaleDateString("en-US", {
+  const formattedDate = new Date(game.gameTimeUTC).toLocaleDateString("en-US", {
     weekday: "short", // "Mon"
     month: "short", // "Dec"
     day: "numeric", // "1"
@@ -31,7 +29,7 @@ export default function NbaGame({ game }: NbaGameProps) {
           <h3>{game.gameStatusText}</h3>
         ) : (
           <>
-            <p>{formattedDate}</p>
+            <p className="game-date">{formattedDate}</p>
             <h3>{formatGameTime(game.gameTimeUTC, game.gameStatusText)}</h3>
           </>
         )}

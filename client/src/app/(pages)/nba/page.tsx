@@ -9,11 +9,12 @@ export default function Nba() {
   return (
     <main className="nba-page">
       <section className="nba-today wrapper">
-        <h1>NBA Games & Scores</h1>
+        <h1>NBA</h1>
+        <h2>NBA Games & Scores</h2>
         <GamesToday />
       </section>
       <section className="nba-page-leaders wrapper">
-        <h1>NBA Leaders</h1>
+        <h2>NBA Leaders</h2>
         <LeadersBox header="Points per game" stat="PTS" />
         <Link href="/nba/leaders" className="nba-page-link">
           <Button className="btn-outline btn-with-icon">
