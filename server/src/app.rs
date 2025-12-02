@@ -36,8 +36,7 @@ pub fn create_app(config: Config) -> Router {
 		config: config.clone()
 	};
 
-	Router::new()
-		.merge(routes::init_routes())
+	routes::init_routes()
 		.layer(cors)
 		.layer(middleware::from_fn(log_middleware))
 		.with_state(state)

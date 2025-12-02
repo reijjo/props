@@ -17,8 +17,6 @@ pub async fn get_todays_games(
 
 	let url = format!("{}", state.config.nba_games);
 
-	tracing::info!("Url: {}", url);
-
 	let response = match state
 		.http_client
 		.get(&url)
