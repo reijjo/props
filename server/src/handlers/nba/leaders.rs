@@ -1,21 +1,17 @@
 use axum::{
     extract::{Query, State},
-    http::StatusCode, // <--- FIX: This imports the missing type
+    http::StatusCode,
     response::IntoResponse,
-    routing::get,
-    Json, Router,
+    Json,
 };
 use serde::Deserialize;
 use serde_json::{json, Value};
 
 use crate::app::AppState;
 
-pub fn nba_routes() -> Router<AppState> {
-    Router::new().route("/leaders", get(get_nba_leaders))
-}
 
 #[derive(Deserialize)]
-struct NbaLeaderParams {
+pub struct NbaLeaderParams {
     stat: String,
     #[serde(default = "default_limit")]
     pub limit: usize,
@@ -24,7 +20,7 @@ struct NbaLeaderParams {
 fn default_limit() -> usize { 5 }
 
 // We use `impl IntoResponse` so we don't have to write out the huge Result type signature
-async fn get_nba_leaders(
+pub async fn get_nba_leaders(
     Query(params): Query<NbaLeaderParams>,
     State(state): State<AppState>,
 ) -> impl IntoResponse {

@@ -5,8 +5,10 @@ use crate::{app::create_app, config::Config};
 mod app;
 mod utils;
 mod middleware;
+mod handlers;
 mod routes;
 mod config;
+mod models;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

@@ -5,7 +5,8 @@ use dotenvy::dotenv;
 pub struct Config {
 	pub app_env: String,
 	pub port: u16,
-	pub nba_leaders_base: String
+	pub nba_leaders_base: String,
+	pub nba_games: String
 }
 
 impl Config {
@@ -23,10 +24,14 @@ impl Config {
 		let nba_leaders_base = env::var("NBA_LEADERS_API")
 			.expect("NBA_LEADERS_API missing in .env");
 
+		let nba_games = env::var("NBA_TODAY")
+			.expect("NBA_TODAY missing in .env");
+
 		Self {
 			app_env,
 			port,
-			nba_leaders_base
+			nba_leaders_base,
+			nba_games
 		}
 	}
 }

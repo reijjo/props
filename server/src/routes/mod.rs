@@ -1,4 +1,4 @@
-pub mod nba_route;
+pub mod nba;
 
 use axum::{
 	routing::get,
@@ -10,5 +10,5 @@ use crate::app::AppState;
 pub fn init_routes() -> Router<AppState> {
 	Router::new()
 		.route("/", get(|| async { "Hi im a placeholder"}))
-		.nest("/api/nba", nba_route::nba_routes())
+		.nest("/api/nba", nba::nba_routes())
 }
