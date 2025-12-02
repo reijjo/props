@@ -38,7 +38,7 @@ export function formatGameTime(
 export const formattedDate = (game: NbaToday): string => {
   const date = new Date(game.gameTimeUTC);
 
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString(undefined, {
     weekday: "short", // "Mon"
     month: "short", // "Dec"
     day: "numeric", // "1"

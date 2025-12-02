@@ -76,6 +76,10 @@
   max-width: calc(1366px / 2);
   margin-left: auto;
 
+  @media (max-width: 1000px) {
+    max-width: 100%;
+  }
+
   @media (max-width: 580px) {
     padding-inline: 2rem;
   }

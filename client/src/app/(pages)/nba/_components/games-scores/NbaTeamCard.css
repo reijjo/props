@@ -26,7 +26,9 @@
   align-items: center;
 
   & a {
-    animation: pumpit 5s ease infinite;
+    @media (prefers-reduced-motion: no-preference) {
+      animation: pumpit 5s ease infinite;
+    }
   }
 }
 

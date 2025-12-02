@@ -1,3 +1,5 @@
+import { GameStatusType } from "../enums/nba";
+
 export type NbaPlayerBase = {
   PLAYER_ID: number;
   PLAYER: string;
@@ -54,7 +56,7 @@ export type StatType = keyof LeaderData;
 
 export type NbaToday = {
   gameId: string;
-  gameStatus: number; // 1 = "7:00 pm ET" - 2 = "Q4 4:55" - 3 = "Final"
+  gameStatus: GameStatusType;
   gameStatusText: string;
   gameTimeUTC: string;
   homeTeam: NbaTeam;

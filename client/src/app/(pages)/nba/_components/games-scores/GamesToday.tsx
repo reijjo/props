@@ -1,3 +1,4 @@
+import { GameStatus } from "@/lib/utils/enums/nba";
 import "./GamesToday.css";
 import NbaGame from "./NbaGame";
 
@@ -6,7 +7,7 @@ const apiMock = {
     games: [
       {
         gameId: "1",
-        gameStatus: 3,
+        gameStatus: GameStatus.FINAL,
         gameStatusText: "Final",
         gameTimeUTC: "2025-12-02T00:00:00Z",
         homeTeam: {
@@ -28,7 +29,7 @@ const apiMock = {
       },
       {
         gameId: "2",
-        gameStatus: 1,
+        gameStatus: GameStatus.SCHEDULED,
         gameStatusText: "7:00 pm ET",
         gameTimeUTC: "2025-12-02T00:00:00Z",
         homeTeam: {
@@ -50,7 +51,7 @@ const apiMock = {
       },
       {
         gameId: "3",
-        gameStatus: 2,
+        gameStatus: GameStatus.IN_PROGRESS,
         gameStatusText: "Q4 4:55",
         gameTimeUTC: "2025-12-02T00:00:00Z",
         homeTeam: {
