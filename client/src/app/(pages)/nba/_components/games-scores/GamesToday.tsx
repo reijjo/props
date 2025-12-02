@@ -7,7 +7,13 @@ import { TodaysGamesResponse } from "@/lib/utils/types/nba";
 export default async function GamesToday() {
   const gamesToday: TodaysGamesResponse = await getTodaysGames();
 
-  console.log("gamesToday", gamesToday);
+  if (!gamesToday) {
+    return (
+      <section className="nba-today-scoreboard">
+        <p>No games today.</p>
+      </section>
+    );
+  }
 
   return (
     <section className="nba-today-scoreboard">

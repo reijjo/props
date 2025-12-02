@@ -30,10 +30,6 @@ export const getLeaders = async (stat: string) => {
 // /api/nba/today
 // Gets the NBA games today
 export const getTodaysGames = async () => {
-  console.log(
-    "api/nba/today",
-    `${process.env.NEXT_PUBLIC_DEV_API_URL}/api/nba/today`
-  );
   try {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_DEV_API_URL}/api/nba/today`,
@@ -41,8 +37,6 @@ export const getTodaysGames = async () => {
         next: { revalidate: 600 },
       }
     );
-
-    console.log("data", data);
 
     if (!data.ok) {
       console.error(
