@@ -1,4 +1,3 @@
-import { GameStatus } from "@/lib/utils/enums/nba";
 import "./GamesToday.css";
 import NbaGame from "./NbaGame";
 import { getTodaysGames } from "@/lib/api/nbaAPi";
