@@ -41,7 +41,7 @@ pub async fn get_todays_games(
 			tracing::error!("Failed to parse NBA games {}", e);
 			return Err((
 				StatusCode::INTERNAL_SERVER_ERROR,
-				Json(json!({ "error": "Invalid respons from the NBA games"}))
+				Json(json!({ "error": "Invalid response from the NBA games API"}))
 			));
 		}
 	};
