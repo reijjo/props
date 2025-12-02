@@ -73,6 +73,12 @@
   gap: 2rem;
   padding-inline: 4rem;
   background: radial-gradient(rgba(255, 255, 255, 0.025) 0%, transparent 80%);
+  max-width: calc(1366px / 2);
+  margin-left: auto;
+
+  @media (max-width: 1000px) {
+    max-width: 100%;
+  }
 
   @media (max-width: 580px) {
     padding-inline: 2rem;

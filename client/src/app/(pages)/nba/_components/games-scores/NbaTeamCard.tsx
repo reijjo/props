@@ -4,19 +4,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
 import { NbaTeam } from "@/lib/utils/types/nba";
+import { GameStatus } from "@/lib/utils/enums/nba";
 
 type NbaTeamCardProps = {
   team: NbaTeam;
   awayTeam?: boolean;
-  opponentScore?: number;
-  isGameEnded?: boolean;
+  opponentScore: number;
+  gameStatus?: number;
 };
 
 export default function NbaTeamCard({
   team,
   awayTeam,
-  isGameEnded,
-  opponentScore = 0,
+  opponentScore,
+  gameStatus,
 }: NbaTeamCardProps) {
   const isAwayTeam = awayTeam ? "away" : "home";
   const isWinner = team.score > opponentScore;
@@ -40,7 +41,7 @@ export default function NbaTeamCard({
           {team.wins} - {team.losses}
         </p>
       </div>
-      {isGameEnded && (
+      {gameStatus !== GameStatus.SCHEDULED && (
         <h2 className={isWinner ? "winner" : ""}>{team.score}</h2>
       )}
     </div>
