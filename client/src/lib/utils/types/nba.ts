@@ -71,3 +71,8 @@ export type NbaTeam = {
   losses: number;
   score: number;
 };
+
+export type TodaysGamesResponse = {
+  gameDate: string;
+  games: NbaToday[];
+};
