@@ -54,6 +54,7 @@ export type StatType = keyof LeaderData;
 
 export type NbaToday = {
   gameId: string;
+  gameStatus: number; // 1 = "7:00 pm ET" - 2 = "Q4 4:55" - 3 = "Final"
   gameStatusText: string;
   gameTimeUTC: string;
   homeTeam: NbaTeam;

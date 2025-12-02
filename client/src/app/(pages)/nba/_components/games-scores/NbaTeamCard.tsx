@@ -9,13 +9,11 @@ type NbaTeamCardProps = {
   team: NbaTeam;
   awayTeam?: boolean;
   opponentScore?: number;
-  isGameEnded?: boolean;
 };
 
 export default function NbaTeamCard({
   team,
   awayTeam,
-  isGameEnded,
   opponentScore = 0,
 }: NbaTeamCardProps) {
   const isAwayTeam = awayTeam ? "away" : "home";
@@ -40,7 +38,7 @@ export default function NbaTeamCard({
           {team.wins} - {team.losses}
         </p>
       </div>
-      {isGameEnded && (
+      {team.score > 0 && (
         <h2 className={isWinner ? "winner" : ""}>{team.score}</h2>
       )}
     </div>

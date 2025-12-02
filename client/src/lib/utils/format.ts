@@ -1,3 +1,5 @@
+import { NbaToday } from "./types/nba";
+
 export const formatColumnName = (col: string): string => {
   return col
     .replace("_PCT", "%") // FT_PCT → FT%
@@ -32,3 +34,13 @@ export function formatGameTime(
     hour12: false, // Use 24-hour format for Finland/Europe
   });
 }
+
+export const formattedDate = (game: NbaToday): string => {
+  const date = new Date(game.gameTimeUTC);
+
+  return date.toLocaleDateString("en-US", {
+    weekday: "short", // "Mon"
+    month: "short", // "Dec"
+    day: "numeric", // "1"
+  });
+};
