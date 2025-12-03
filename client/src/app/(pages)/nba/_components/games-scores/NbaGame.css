@@ -3,13 +3,17 @@
   box-shadow: var(--container-shadow);
   border-radius: 0.5rem;
   padding: 1rem;
-  display: flex;
-  justify-content: space-between;
   gap: 1.5rem;
   max-width: 100%;
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
 
   @media (max-width: 580px) {
     gap: 1rem;
+  }
+
+  & > :last-child {
+    justify-self: end;
   }
 }

@@ -1,37 +1,3 @@
-.nba-today-team {
-  font-weight: 300;
-  text-align: center;
-  margin-bottom: 0.25rem;
-  font-size: 0.75rem;
-}
-
-.nba-today-home-record,
-.nba-today-away-record {
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 100;
-}
-
-.nba-today-away .nba-today-logo-record {
-  order: 2;
-}
-
-.nba-today-gamestatus {
-  align-self: center;
-}
-
-.nba-today-logo-record {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & a {
-    @media (prefers-reduced-motion: no-preference) {
-      animation: pumpit 5s ease infinite;
-    }
-  }
-}
-
 .nba-today-home,
 .nba-today-away {
   display: flex;
@@ -54,6 +20,50 @@
   @media (max-width: 580px) {
     gap: 1rem;
   }
+}
+
+.nba-today-logo-record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & a {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: pumpit 5s ease infinite;
+    }
+  }
+
+  & img:hover {
+    filter: drop-shadow(0 0 0.25rem var(--accent));
+  }
+}
+
+.home-or-away {
+  text-transform: capitalize;
+  margin-bottom: 0.25rem;
+}
+
+.nba-today-home-record,
+.nba-today-away-record,
+.home-or-away {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+.nba-today-away .nba-today-logo-record {
+  order: 2;
+}
+
+.nba-today-gamestatus {
+  align-self: center;
+}
+
+.nba-today-team {
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
 }
 
 @keyframes pumpit {

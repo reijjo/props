@@ -25,7 +25,11 @@ export default function NbaTeamCard({
   return (
     <div className={`nba-today-${isAwayTeam}`}>
       <div className="nba-today-logo-record">
-        <Link href={`/nba/teams/${team.teamId}`}>
+        <p className="home-or-away">{isAwayTeam}</p>
+        <Link
+          href={`/nba/teams/${team.teamId}`}
+          className="nba-today-team-link"
+        >
           <Image
             src={getTeamLogoUrl(team.teamId)}
             alt={team.teamName}
