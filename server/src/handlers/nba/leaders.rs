@@ -1,14 +1,13 @@
 use axum::{
+    Json,
     extract::{Query, State},
     http::StatusCode,
     response::IntoResponse,
-    Json,
 };
 use serde::Deserialize;
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 
 use crate::app::AppState;
-
 
 #[derive(Deserialize)]
 pub struct NbaLeaderParams {
@@ -17,7 +16,9 @@ pub struct NbaLeaderParams {
     pub limit: usize,
 }
 
-fn default_limit() -> usize { 5 }
+fn default_limit() -> usize {
+    5
+}
 
 // We use `impl IntoResponse` so we don't have to write out the huge Result type signature
 pub async fn get_nba_leaders(
@@ -38,18 +39,13 @@ pub async fn get_nba_leaders(
 
     let url = format!("{}{}", state.config.nba_leaders_base, stat);
 
-    let response = match state
-        .http_client
-        .get(&url)
-        .send()
-        .await
-    {
+    let response = match state.http_client.get(&url).send().await {
         Ok(r) => r,
         Err(e) => {
             tracing::error!("NBA API request failed: {}", e);
             return Err((
                 StatusCode::BAD_GATEWAY,
-                Json(json!({ "error": "Failed to fetch NBA stats from API" }))
+                Json(json!({ "error": "Failed to fetch NBA stats from API" })),
             ));
         }
     };
@@ -60,33 +56,39 @@ pub async fn get_nba_leaders(
             tracing::error!("Failed to parse NBA JSON: {}", e);
             return Err((
                 StatusCode::INTERNAL_SERVER_ERROR,
-                Json(json!({ "error": "Invalid response from the NBA" }))
+                Json(json!({ "error": "Invalid response from the NBA" })),
             ));
         }
     };
 
     let result_set = match &nba_leaders_json["resultSet"] {
         Value::Object(obj) => obj,
-        _ => return Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Json(json!({ "error": "Invalid resultSet from NBA" }))
-        )),
+        _ => {
+            return Err((
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(json!({ "error": "Invalid resultSet from NBA" })),
+            ));
+        }
     };
 
     let headers = match result_set["headers"].as_array() {
         Some(h) => h,
-        None => return Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Json(json!({ "error": "Missing headers" }))
-        )),
+        None => {
+            return Err((
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(json!({ "error": "Missing headers" })),
+            ));
+        }
     };
 
     let rows = match result_set["rowSet"].as_array() {
         Some(r) => r,
-        None => return Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            Json(json!({ "error": "Missing rowSet" }))
-        )),
+        None => {
+            return Err((
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(json!({ "error": "Missing rowSet" })),
+            ));
+        }
     };
 
     // BUILDING RESPONSE
@@ -100,7 +102,6 @@ pub async fn get_nba_leaders(
         }
         players.push(Value::Object(player));
     }
-
 
     Ok((
         StatusCode::OK,

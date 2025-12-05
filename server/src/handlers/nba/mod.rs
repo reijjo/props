@@ -1,2 +1,2 @@
-pub mod leaders;
 pub mod games;
+pub mod leaders;
