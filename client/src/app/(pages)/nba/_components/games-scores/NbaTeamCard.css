@@ -3,13 +3,23 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
   & h2 {
     color: rgba(255, 255, 255, 0.75);
 
-    &.winner {
+    &.winner-away,
+    &.winner-home {
       color: white;
       font-weight: 700;
+    }
+
+    &.winner-away {
+      margin-left: auto;
     }
 
     @media (max-width: 580px) {
@@ -22,10 +32,16 @@
   }
 }
 
+.nba-today-away h2 {
+  margin-left: auto;
+}
+
 .nba-today-logo-record {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 100%;
 
   & a {
     @media (prefers-reduced-motion: no-preference) {

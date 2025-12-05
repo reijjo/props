@@ -22,6 +22,7 @@ main {
   display: flex;
   flex-direction: column;
   background: radial-gradient(rgba(124, 222, 253, 0.125), transparent);
+  min-height: 100svh;
 
   &:not(.landing-page) {
     padding-top: calc(var(--nav-height) + 2.5svh);

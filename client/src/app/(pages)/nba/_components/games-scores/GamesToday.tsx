@@ -8,7 +8,7 @@ type ApiResponse = {
 };
 
 export default async function GamesToday() {
-  const gamesToday: ApiResponse = await getTodaysGames();
+  const gamesToday = await getTodaysGames();
 
   if (!gamesToday) {
     return (
