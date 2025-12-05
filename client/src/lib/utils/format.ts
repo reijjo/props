@@ -1,4 +1,4 @@
-import { NbaToday } from "./types/nba";
+import { NbaMatch } from "./types/nba2";
 
 export const formatColumnName = (col: string): string => {
   return col
@@ -35,8 +35,8 @@ export function formatGameTime(
   });
 }
 
-export const formattedDate = (game: NbaToday): string => {
-  const date = new Date(game.gameTimeUTC);
+export const formattedDate = (gametime: string): string => {
+  const date = new Date(gametime);
 
   return date.toLocaleDateString(undefined, {
     weekday: "short", // "Mon"

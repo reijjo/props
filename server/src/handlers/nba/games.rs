@@ -1,21 +1,24 @@
 use axum::{
 	extract::State,
 	http::StatusCode,
-	response::IntoResponse,
+	response::{ IntoResponse, Response },
 	Json,
 };
 use serde_json::{ json };
 
-use crate::{app::AppState};
-use crate::models::nba::{
-	Game, NbaTodayApiResponse, TodayGamesResponse
-};
+use crate::{app::AppState, models::espn::NbaToday};
+use crate::models::espn::{ NbaTodayApiResponse };
 
-pub async fn get_todays_games(
+#[derive(serde::Serialize)]
+struct ApiResponse {
+	events: Vec<NbaToday>
+}
+
+pub async fn get_espn_scoreboard(
 	State(state): State<AppState>,
-) -> impl IntoResponse {
+) -> Response {
 
-	let url = format!("{}", state.config.nba_games);
+	let url = format!("{}", state.config.nba_scoreboard);
 
 	let response = match state
 		.http_client
@@ -25,39 +28,30 @@ pub async fn get_todays_games(
 	{
 		Ok(res) => res,
 		Err(e) => {
-			tracing::error!("NBA GAMES API request failed: {}", e);
-			return Err((
+			tracing::error!("NBA ESPN scoreboard api request failed: {}", e);
+			return (
 				StatusCode::BAD_GATEWAY,
-				Json(json!({ "error": "Failed to fetch NBA games from the API"}))
-			));
+				Json(json!({ "error": "Failed to fetch NBA games from the API"})))
+					.into_response();
+
 		}
 	};
 
-	let nba_data: NbaTodayApiResponse = match response.json().await {
+	let espn_data: NbaTodayApiResponse = match response.json().await {
 		Ok(data) => data,
 		Err(e) => {
 			tracing::error!("Failed to parse NBA games {}", e);
-			return Err((
+			return (
 				StatusCode::INTERNAL_SERVER_ERROR,
-				Json(json!({ "error": "Invalid response from the NBA games API"}))
-			));
+				Json(json!({ "error": "Invalid response from the NBA games API"})))
+					.into_response();
 		}
 	};
 
-	let games: Vec<Game> = nba_data
-		.scoreboard
-		.games
-		.into_iter()
-		.map(|g| g.into())
-		.collect();
-
-	let response = TodayGamesResponse {
-		game_date: nba_data.scoreboard.game_date,
-		games
+	let res = ApiResponse {
+		events: espn_data.events
 	};
 
-	Ok((
-		StatusCode::OK,
-		Json(response),
-	))
+
+  (StatusCode::OK, Json(res)).into_response()
 }

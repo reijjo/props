@@ -1,5 +1,5 @@
 import "./NbaGame.css";
-import { NbaToday } from "@/lib/utils/types/nba";
+import { NbaToday } from "@/lib/utils/types/nba2";
 import NbaTeamCard from "./NbaTeamCard";
 import NbaTodayStatus from "./NbaTodayStatus";
 
@@ -8,19 +8,30 @@ type NbaGameProps = {
 };
 
 export default function NbaGame({ game }: NbaGameProps) {
+  const competition = game.competitions[0];
+
+  const homeTeam = competition.competitors.find(
+    (team) => team.homeAway === "home"
+  );
+  const awayTeam = competition.competitors.find(
+    (team) => team.homeAway === "away"
+  );
+  const gameStatus = competition.status;
+
+  if (!homeTeam || !awayTeam || !gameStatus) return null;
+
   return (
     <article className="nba-today-game">
       <NbaTeamCard
-        team={game.homeTeam}
-        opponentScore={game.awayTeam.score}
-        gameStatus={game.gameStatus}
+        team={homeTeam}
+        opponentScore={awayTeam.score}
+        gameStatus={gameStatus}
       />
-      <NbaTodayStatus game={game} />
+      <NbaTodayStatus game={game} gameTimeUTC={game.date} />
       <NbaTeamCard
-        team={game.awayTeam}
-        opponentScore={game.homeTeam.score}
-        awayTeam
-        gameStatus={game.gameStatus}
+        team={awayTeam}
+        opponentScore={homeTeam.score}
+        gameStatus={gameStatus}
       />
     </article>
   );
