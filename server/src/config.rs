@@ -7,7 +7,7 @@ pub struct Config {
     pub port: u16,
     pub nba_leaders_base: String,
     pub nba_scoreboard: String,
-		pub nba_teams: String
+    pub nba_teams: String,
 }
 
 impl Config {
@@ -27,15 +27,14 @@ impl Config {
         let nba_scoreboard: String =
             env::var("NBA_ESPN_TODAY").expect("NBA_ESPN_TODAY missing in .env");
 
-				let nba_teams: String =
-            env::var("NBA_ESPN_TEAMS").expect("NBA_ESPN_TEAMS missing in .env");
+        let nba_teams: String = env::var("NBA_ESPN_TEAMS").expect("NBA_ESPN_TEAMS missing in .env");
 
         Self {
             app_env,
             port,
             nba_leaders_base,
             nba_scoreboard,
-						nba_teams
+            nba_teams,
         }
     }
 }

@@ -8,10 +8,15 @@ export default async function NbaTeams() {
   const data = await getTeamsList();
 
   if (!data || !data.teams) {
-    return <p>No teams found</p>;
+    return (
+      <main className="nba-all-teams-page">
+        <div className="nba-all-teams wrapper">
+          <h1>NBA Teams</h1>
+          <p>No teams found</p>
+        </div>
+      </main>
+    );
   }
-
-  console.log(data.teams[0]);
 
   return (
     <main className="nba-all-teams-page">
@@ -24,12 +29,16 @@ export default async function NbaTeams() {
               key={team.id}
               className="team-card"
             >
-              <Image
-                src={team.logos[0].href}
-                alt={team.abbreviation}
-                width={42}
-                height={42}
-              />
+              {team.logos?.[0] ? (
+                <Image
+                  src={team.logos[0].href}
+                  alt={team.abbreviation}
+                  width={42}
+                  height={42}
+                />
+              ) : (
+                <span>{team.abbreviation}</span> // or a placeholder graphic
+              )}
               <p>{team.displayName}</p>
             </Link>
           ))}

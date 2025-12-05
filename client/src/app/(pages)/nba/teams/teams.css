@@ -19,16 +19,19 @@
   border: var(--container-border);
   border-radius: 0.25rem;
   box-shadow: var(--container-shadow);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   gap: 0.5rem;
   padding: 1rem;
   transform: scale(1);
 
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    transform: scale(1.15);
+    transform: scale(1.05);
+    border-color: rgb(from var(--secondary) r g b / 0.5);
   }
 }

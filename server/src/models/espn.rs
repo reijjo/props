@@ -87,33 +87,33 @@ pub struct NbaMatchStatusType {
 // handles/teams.rs
 #[derive(Deserialize, Debug)]
 pub struct TeamsApiResponse {
-	pub sports: Vec<LeagueWrapper>
+    pub sports: Vec<LeagueWrapper>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct LeagueWrapper {
-	pub leagues: Vec<Teams>
+    pub leagues: Vec<Teams>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct Teams {
-	pub teams: Vec<Team>
+    pub teams: Vec<Team>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct Team {
-	pub team: TeamsTeam
+    pub team: TeamsTeam,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct TeamsTeam {
-	pub id: String,
-	pub uid: String,
-	pub slug: String,
-	pub abbreviation: String,
-	#[serde(rename = "displayName")]
-	pub display_name: String,
-	pub logos: Vec<TeamLogo>
+    pub id: String,
+    pub uid: String,
+    pub slug: String,
+    pub abbreviation: String,
+    #[serde(rename = "displayName")]
+    pub display_name: String,
+    pub logos: Vec<TeamLogo>,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
