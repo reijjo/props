@@ -1,10 +1,14 @@
+import { NbaToday } from "@/lib/utils/types/nba2";
 import "./GamesToday.css";
 import NbaGame from "./NbaGame";
 import { getTodaysGames } from "@/lib/api/nbaAPi";
-import { TodaysGamesResponse } from "@/lib/utils/types/nba";
+
+type ApiResponse = {
+  events: NbaToday[];
+};
 
 export default async function GamesToday() {
-  const gamesToday: TodaysGamesResponse = await getTodaysGames();
+  const gamesToday: ApiResponse = await getTodaysGames();
 
   if (!gamesToday) {
     return (
@@ -16,8 +20,8 @@ export default async function GamesToday() {
 
   return (
     <section className="nba-today-scoreboard">
-      {gamesToday.games.map((game) => (
-        <NbaGame key={game.gameId} game={game} />
+      {gamesToday.events.map((game) => (
+        <NbaGame key={game.id} game={game} />
       ))}
     </section>
   );

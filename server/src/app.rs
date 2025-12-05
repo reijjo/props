@@ -16,7 +16,7 @@ pub struct AppState {
 
 pub fn create_app(config: Config) -> Router {
 	let mut headers = header::HeaderMap::new();
-	headers.insert(header::REFERER, header::HeaderValue::from_static("https://www.nba.com/"));
+	// headers.insert(header::REFERER, header::HeaderValue::from_static("https://www.nba.com/"));
 	headers.insert(header::USER_AGENT, header::HeaderValue::from_static("RepenValintaOy/1.0"));
 	headers.insert(header::ACCEPT, header::HeaderValue::from_static("application/json"));
 

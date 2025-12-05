@@ -32,7 +32,7 @@ export const getLeaders = async (stat: string) => {
 export const getTodaysGames = async () => {
   try {
     const data = await fetch(
-      `${process.env.NEXT_PUBLIC_DEV_API_URL}/api/nba/today`,
+      `${process.env.NEXT_PUBLIC_DEV_API_URL}/api/nba/games`,
       {
         next: { revalidate: 600 },
       }
