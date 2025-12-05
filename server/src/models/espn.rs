@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 pub struct NbaTodayApiResponse {
 	pub events: Vec<NbaToday>,
 	#[serde(flatten)]
-    _extra: std::collections::HashMap<String, serde_json::Value>,
+    _extra: std::collections::HashMap<String, serde_json::Value>, 	// <-- captures unknown fields
 }
 
 #[derive(Deserialize, Serialize, Debug)]
@@ -28,13 +28,13 @@ pub struct NbaMatch {
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct NbaMatchTeam {
-		id: String,
-		uid: String,
-		#[serde(rename = "homeAway")]
-    home_away: String,
-		team: NbaMatchTeamDetails,
-		score: String,
-		records: Vec<NbaMatchTeamRecord>,
+	pub id: String,
+	pub uid: String,
+	#[serde(rename = "homeAway")]
+  pub home_away: String,
+	pub team: NbaMatchTeamDetails,
+	pub score: String,
+	pub records: Vec<NbaMatchTeamRecord>,
 }
 
 
@@ -75,7 +75,8 @@ pub struct NbaMatchStatus {
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct NbaMatchStatusType {
-	pub id: String,
+	#[serde(rename = "type")]
+	pub type_: String,
 	pub name: String,
 	pub state: String,
 	pub completed: bool,

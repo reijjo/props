@@ -8,9 +8,17 @@ type NbaGameProps = {
 };
 
 export default function NbaGame({ game }: NbaGameProps) {
-  const homeTeam = game.competitions[0].competitors[0];
-  const awayTeam = game.competitions[0].competitors[1];
-  const gameStatus = game.competitions[0].status;
+  const competition = game.competitions[0];
+
+  const homeTeam = competition.competitors.find(
+    (team) => team.homeAway === "home"
+  );
+  const awayTeam = competition.competitors.find(
+    (team) => team.homeAway === "away"
+  );
+  const gameStatus = competition.status;
+
+  if (!homeTeam || !awayTeam || !gameStatus) return null;
 
   return (
     <article className="nba-today-game">

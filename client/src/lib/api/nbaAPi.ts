@@ -1,5 +1,8 @@
 // GET
 // /api/nba/leaders?stat=WHATSTAT
+
+import { NbaToday } from "../utils/types/nba2";
+
 // Gets leaders for a specific stat
 export const getLeaders = async (stat: string) => {
   try {
@@ -29,7 +32,9 @@ export const getLeaders = async (stat: string) => {
 // GET
 // /api/nba/today
 // Gets the NBA games today
-export const getTodaysGames = async () => {
+export const getTodaysGames = async (): Promise<
+  { events: NbaToday[] } | undefined
+> => {
   try {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_DEV_API_URL}/api/nba/games`,

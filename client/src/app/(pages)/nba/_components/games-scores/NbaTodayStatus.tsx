@@ -25,8 +25,10 @@ export default function NbaTodayStatus({
   game,
   gameTimeUTC,
 }: NbaTodayStatusProps) {
-  const gameStatus = game.competitions[0].status;
-  const gameOdds = game.competitions[0].odds;
+  const competition = game.competitions[0];
+
+  const gameStatus = competition.status;
+  const gameOdds = competition.odds;
 
   return (
     <div className="nba-today-gamestatus">

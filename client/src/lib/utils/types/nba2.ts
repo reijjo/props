@@ -38,7 +38,7 @@ export type NbaMatchTeamRecord = {
 };
 
 export type NbaMatchStatus = {
-  clock: string;
+  clock: number;
   displayClock: string;
   period: number;
   type: NbaMatchStatusType;

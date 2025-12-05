@@ -34,7 +34,12 @@ export default function NbaTeamCard({
           {team.team.location} <br />
           {team.team.name}
         </p>
-        <p className="nba-today-home-record">{team.records[0].summary}</p>
+        <p className="nba-today-home-record">
+          {" "}
+          {team.records && team.records.length > 0
+            ? team.records[0].summary
+            : "N/A"}
+        </p>
       </div>
       {gameStatus.type.state !== "pre" && (
         <h2 className={isWinner ? "winner" : ""}>{team.score}</h2>
