@@ -56,3 +56,18 @@ export type NbaMatchOdds = {
   details: string;
   overUnder: number;
 };
+
+export type NbaTeam = {
+  id: string;
+  uid: string;
+  slug: string;
+  abbreviation: string;
+  displayName: string;
+  logos: NbaTeamLogo[];
+};
+
+export type NbaTeamLogo = {
+  href: string;
+  width: number;
+  height: number;
+};
