@@ -41,9 +41,9 @@ export default function NbaTeamCard({
             : "N/A"}
         </p>
       </div>
-      {gameStatus.type.state !== "pre" && (
-        <h2 className={isWinner ? `winner-${isAwayTeam}` : ""}>{team.score}</h2>
-      )}
+      <h2 className={isWinner ? `winner-${isAwayTeam}` : ""}>
+        {gameStatus.type.state === "pre" ? "-" : team.score}
+      </h2>
     </div>
   );
 }

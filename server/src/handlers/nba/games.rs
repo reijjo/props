@@ -35,7 +35,7 @@ pub async fn get_espn_scoreboard(State(state): State<AppState>) -> Response {
             tracing::error!("Failed to parse NBA games {}", e);
             return (
                 StatusCode::INTERNAL_SERVER_ERROR,
-                Json(json!({ "error": "Invalid response from the NBA games API"})),
+                Json(json!({ "error": "Failed to parse NBA games from the API"})),
             )
                 .into_response();
         }
