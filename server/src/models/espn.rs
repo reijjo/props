@@ -75,8 +75,8 @@ pub struct NbaMatchStatus {
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct NbaMatchStatusType {
-    #[serde(rename = "type")]
-    pub type_: String,
+    // #[serde(rename = "type")]
+    // pub type_: String,
     pub name: String,
     pub state: String,
     pub completed: bool,
