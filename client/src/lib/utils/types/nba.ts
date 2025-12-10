@@ -76,3 +76,17 @@ export type TodaysGamesResponse = {
   gameDate: string;
   games: NbaToday[];
 };
+
+export type NbaTeamsList = {
+  teams: NbaApiTeam[];
+};
+
+export type NbaApiTeam = {
+  id: number;
+  full_name: string;
+  abbreviation: string;
+  nickname: string;
+  city: string;
+  state: string;
+  year_founded: number;
+};

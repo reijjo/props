@@ -3,9 +3,12 @@ import "./teams.css";
 import { getTeamsList } from "@/lib/api/nbaAPi";
 import Link from "next/link";
 import Image from "next/image";
+import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
 
 export default async function NbaTeams() {
   const data = await getTeamsList();
+
+  console.log("DATA*", data);
 
   if (!data || !data.teams) {
     return (
@@ -29,17 +32,14 @@ export default async function NbaTeams() {
               key={team.id}
               className="team-card"
             >
-              {team.logos?.[0] ? (
-                <Image
-                  src={team.logos[0].href}
-                  alt={team.abbreviation}
-                  width={42}
-                  height={42}
-                />
-              ) : (
-                <span>{team.abbreviation}</span> // or a placeholder graphic
-              )}
-              <p>{team.displayName}</p>
+              <Image
+                src={getTeamLogoUrl(Number(team.id))}
+                alt={team.abbreviation}
+                width={42}
+                height={42}
+              />
+
+              <p>{team.full_name}</p>
             </Link>
           ))}
         </div>
