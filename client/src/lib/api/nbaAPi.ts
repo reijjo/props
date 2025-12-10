@@ -1,6 +1,8 @@
 // GET
 // /api/nba/leaders?stat=WHATSTAT
 
+import { ONE_DAY_IN_SECONDS } from "../utils/constants/constants";
+import { NbaTeamsList } from "../utils/types/nba";
 import { NbaMatch, NbaTeam, NbaToday } from "../utils/types/nba2";
 
 // Gets leaders for a specific stat
@@ -59,14 +61,12 @@ export const getTodaysGames = async (): Promise<
   }
 };
 
-export const getTeamsList = async (): Promise<
-  { teams: NbaTeam[] } | undefined
-> => {
+export const getTeamsList = async (): Promise<NbaTeamsList | undefined> => {
   try {
     const data = await fetch(
       `${process.env.NEXT_PUBLIC_DEV_API_URL}/api/nba/teams`,
       {
-        next: { revalidate: 3600 },
+        next: { revalidate: ONE_DAY_IN_SECONDS },
       }
     );
 

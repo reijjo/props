@@ -1,5 +1,5 @@
 use dotenvy::dotenv;
-use std::env;
+use std::{env, path::PathBuf};
 
 #[derive(Clone, Debug)]
 pub struct Config {
@@ -7,7 +7,7 @@ pub struct Config {
     pub port: u16,
     pub nba_leaders_base: String,
     pub nba_scoreboard: String,
-    pub nba_teams: String,
+    pub project_root: String,
 }
 
 impl Config {
@@ -27,14 +27,27 @@ impl Config {
         let nba_scoreboard: String =
             env::var("NBA_ESPN_TODAY").expect("NBA_ESPN_TODAY missing in .env");
 
-        let nba_teams: String = env::var("NBA_ESPN_TEAMS").expect("NBA_ESPN_TEAMS missing in .env");
+        let project_root: PathBuf = std::env::current_exe()
+            .expect("Failed to get exe path")
+            .parent()
+            .expect("Failed to get binary dir")
+            .parent()
+            .expect("Failed to get target dir")
+            .parent()
+            .expect("Failed to get project root")
+            .to_path_buf();
+
+        let project_root = project_root
+            .to_str()
+            .expect("Project root path is not valid UTF-8")
+            .to_string();
 
         Self {
             app_env,
             port,
             nba_leaders_base,
             nba_scoreboard,
-            nba_teams,
+            project_root,
         }
     }
 }

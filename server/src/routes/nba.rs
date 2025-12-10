@@ -7,5 +7,5 @@ pub fn nba_routes() -> Router<AppState> {
     Router::new()
         .route("/leaders", get(leaders::get_nba_leaders))
         .route("/games", get(games::get_espn_scoreboard))
-        .route("/teams", get(teams::get_all_teams))
+        .route("/teams", get(teams::get_teams_list))
 }
