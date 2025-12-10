@@ -8,8 +8,6 @@ import { getTeamLogoUrl } from "@/lib/utils/nbaLogos";
 export default async function NbaTeams() {
   const data = await getTeamsList();
 
-  console.log("DATA*", data);
-
   if (!data || !data.teams) {
     return (
       <main className="nba-all-teams-page">
