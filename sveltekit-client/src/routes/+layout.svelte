@@ -9,7 +9,10 @@
 
 <svelte:head>
 	<title>Player Props</title>
-	<meta name="description" content="Player stats for sports betting and fantasy sports" />
+	<meta
+		name="description"
+		content="Clean, focused NBA player stats for sports betting and fantasy sports. Only what you need, nothing extra."
+	/>
 </svelte:head>
 
 <div class="layout">

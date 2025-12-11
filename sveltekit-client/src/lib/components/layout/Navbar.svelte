@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
+
+	import { page } from '$app/state';
 </script>
 
 <nav>
@@ -8,12 +10,16 @@
 	</a>
 	<ul class="nav-links">
 		<li>
-			<a href="/nba">NBA</a>
+			<a
+				href="/nba"
+				class:active={page.url.pathname.toString() === '/nba'}
+				aria-current={page.url.pathname.toString() === '/nba' ? 'page' : undefined}>NBA</a
+			>
 		</li>
 	</ul>
 	<div class="nav-buttons">
-		<Button class="btn-outline ">Login</Button>
-		<Button class="btn-cta ">Sign Up</Button>
+		<Button class="btn-outline">Login</Button>
+		<Button class="btn-cta">Sign Up</Button>
 	</div>
 </nav>
 
