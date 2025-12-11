@@ -36,6 +36,11 @@ button {
 
 		background-color: var(--secondary-300);
 	}
+
+	&:focus-visible {
+		outline: 2px solid var(--secondary-400);
+		outline-offset: 2px;
+	}
 }
 
 .btn-outline {
@@ -46,6 +51,11 @@ button {
 
 	&:hover {
 		border-color: rgba(255, 255, 255, 0.25);
+	}
+
+	&:focus-visible {
+		outline: 2px solid rgba(255, 255, 255, 0.5);
+		outline-offset: 2px;
 	}
 }
 
@@ -75,6 +85,11 @@ button {
 		pointer-events: none;
 	}
 
+	&:focus-visible {
+		outline: 2px solid rgba(255, 255, 255, 0.5);
+		outline-offset: 2px;
+	}
+
 	&.active {
 		border: 1px inset rgba(0, 0, 0, 0.75);
 		box-shadow: none;
@@ -99,6 +114,7 @@ button {
 .btn-icon {
 	transform: translateY(1px);
 	color: rgba(255, 255, 255, 0.5);
+	transition: all 0.25s ease-in-out;
 
 	.btn-with-icon:hover & {
 		color: rgba(255, 255, 255, 0.75);
