@@ -2,21 +2,14 @@
 	import Button from '$lib/components/ui/Button.svelte';
 
 	import { page } from '$app/state';
+	import NavLinks from './NavLinks.svelte';
 </script>
 
 <nav>
 	<a href="/" class="nav-logo">
 		<h4>Ropsit</h4>
 	</a>
-	<ul class="nav-links">
-		<li>
-			<a
-				href="/nba"
-				class:active={page.url.pathname.toString() === '/nba'}
-				aria-current={page.url.pathname.toString() === '/nba' ? 'page' : undefined}>NBA</a
-			>
-		</li>
-	</ul>
+	<NavLinks />
 	<div class="nav-buttons">
 		<Button class="btn-outline">Login</Button>
 		<Button class="btn-cta">Sign Up</Button>
@@ -55,23 +48,6 @@
 		/* visibility: hidden; */
 		& :global(button) {
 			padding: 0.25rem 1.5rem;
-		}
-	}
-
-	.nav-links {
-		display: flex;
-		gap: 1.5rem;
-
-		& li {
-			list-style: none;
-
-			& a.active {
-				font-weight: 600;
-			}
-
-			& a:hover:not(.active) {
-				color: var(--accent-200);
-			}
 		}
 	}
 </style>
