@@ -105,7 +105,8 @@ nav {
 	}
 }
 
-.nav-links:hover li.has-submenu:hover .nav-sub-menu {
+.nav-links:hover li.has-submenu:hover .nav-sub-menu,
+.nav-links li.has-submenu:focus-within .nav-sub-menu {
 	opacity: 1;
 	max-height: 600px;
 	visibility: visible;
