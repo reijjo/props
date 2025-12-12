@@ -1,0 +1,114 @@
+nav {
+	position: fixed;
+	z-index: 10;
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 95%;
+	max-width: 1366px;
+	height: var(--nav-height);
+
+	background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.125), rgba(0, 0, 0, 0.125));
+	backdrop-filter: blur(1rem);
+	border: 1px solid rgba(255, 255, 255, 0.125);
+	border-radius: 5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-inline: 1.5rem;
+
+	box-shadow:
+		0 8px 16px rgba(0, 163, 218, 0.125),
+		0 8px 36px rgba(0, 163, 218, 0.075);
+}
+
+.nav-links {
+	display: flex;
+	gap: 1.5rem;
+	position: relative;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+
+	& li {
+		list-style: none;
+
+		& a {
+			height: 100%;
+		}
+
+		& a.active {
+			font-weight: 600;
+		}
+
+		& a:hover:not(.active) {
+			color: var(--accent-200);
+		}
+	}
+}
+
+.nav-item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 100%;
+
+	& > a {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		padding-inline: 0.5rem;
+	}
+}
+
+.nav-sub-menu {
+	visibility: hidden;
+	opacity: 0;
+	max-height: 0;
+	border: 1px solid rgba(255, 255, 255, 0.125);
+	border-radius: 0.5rem;
+	position: absolute;
+	top: 3.625rem;
+	left: 0;
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
+	box-shadow:
+		0 8px 16px rgba(0, 163, 218, 0.125),
+		0 8px 36px rgba(0, 163, 218, 0.075);
+
+	transform: scaleY(0);
+	transform-origin: top;
+
+	transition:
+		opacity 0.125s ease,
+		visibility 0.125s ease,
+		max-height 0.25s ease,
+		transform 0.25s ease;
+	overflow: hidden;
+
+	& li {
+		padding-block: 0.5rem;
+
+		&:hover {
+			background: var(--primary);
+		}
+
+		&:not(:last-child) {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+		}
+
+		& a {
+			padding-inline: 1rem;
+		}
+	}
+}
+
+.nav-links:hover li.has-submenu:hover .nav-sub-menu,
+.nav-links li.has-submenu:focus-within .nav-sub-menu {
+	opacity: 1;
+	max-height: 600px;
+	visibility: visible;
+	transform: scaleY(1);
+}

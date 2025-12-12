@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$lib/styles/globals.css';
 	import '$lib/styles/common.css';
-	import Navbar from '$lib/components/layout/Navbar.svelte';
+	import Navbar from '$lib/components/layout/Navbar/Navbar.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 
 	let { children } = $props();
