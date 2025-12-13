@@ -16,12 +16,7 @@
 		<div transition:fade={{ duration: 300 }} class="teams-grid">
 			{#each data.teams as team}
 				<a href="/nba/teams/{team.id}" class="team-card">
-					<img
-						src={getTeamLogoUrl(Number(team.id))}
-						alt={team.abbreviation}
-						width={42}
-						height={42}
-					/>
+					<img src={getTeamLogoUrl(team.id)} alt={team.abbreviation} width={42} height={42} />
 					<p>{team.full_name}</p>
 				</a>
 			{/each}
@@ -34,6 +29,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		padding-top: 2rem;
 
 		& h1 {
 			text-align: center;
