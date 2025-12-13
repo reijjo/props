@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 * {
 	margin: 0;
 	padding: 0;
@@ -45,7 +43,7 @@ h4,
 h5,
 h6 {
 	font-weight: 600;
-	font-family: var(--font-space), sans-serif;
+	font-family: var(--font-roboto), sans-serif;
 	text-transform: uppercase;
 }
 
@@ -82,7 +80,7 @@ h2 {
 	--background: #171717;
 
 	--font-outfit: 'Outfit', sans-serif;
-	--font-space: 'Space Grotesk', sans-serif;
+	--font-roboto: 'Roboto', sans-serif;
 
 	--breakpoint-sm: 580px;
 
