@@ -25,7 +25,7 @@ pub async fn get_scoreboard(State(state): State<AppState>) -> Response {
     let data: Scoreboard = match serde_json::from_str(&output) {
         Ok(scores) => scores,
         Err(e) => {
-            tracing::error!("Invalid scoreboad Json from python: {e}");
+            tracing::error!("Invalid scoreboad JSON from python: {e}");
             return (
                 StatusCode::INTERNAL_SERVER_ERROR,
                 Json(json!({ "error": "Invalid scoreboard data."})),

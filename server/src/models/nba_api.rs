@@ -57,14 +57,14 @@ pub struct NbaMatchTeam {
     pub team_city: String,
     #[serde(rename = "teamTricode")]
     pub team_tricode: String,
-    pub wins: i32,
-    pub losses: i32,
-    pub score: i32,
+    pub wins: i64,
+    pub losses: i64,
+    pub score: i64,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Odds {
-    team: Option<String>,
-    odds: f32,
-    suspended: i8,
+    pub team: Option<String>,
+    pub odds: f32,
+    pub suspended: i8,
 }
