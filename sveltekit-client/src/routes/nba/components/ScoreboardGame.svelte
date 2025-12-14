@@ -1,14 +1,24 @@
 <script lang="ts">
+	import type { NbaGame } from '$lib/types/nba';
 	import NbaTeamCard from './NbaTeamCard.svelte';
 	import NbaTodayStatus from './NbaTodayStatus.svelte';
 
-	let { game } = $props();
+	let { game }: { game: NbaGame } = $props();
 </script>
 
 <article class="nba-today-game">
-	<!-- <NbaTeamCard team={homeTeam} opponentScore={awayTeam.score} {gameStatus} />
-	<NbaTodayStatus {game} gameTimeUTC={game.date} />
-	<NbaTeamCard team={awayTeam} opponentScore={homeTeam.score} {gameStatus} /> -->
+	<NbaTeamCard
+		team={game.homeTeam}
+		opponentScore={game.awayTeam.score}
+		gameStatus={game.gameStatus}
+	/>
+	<NbaTodayStatus {game} />
+	<NbaTeamCard
+		team={game.awayTeam}
+		opponentScore={game.homeTeam.score}
+		gameStatus={game.gameStatus}
+		isAwayTeam
+	/>
 </article>
 
 <style>
@@ -24,10 +34,6 @@
 
 		@media (max-width: 580px) {
 			gap: 0.5rem;
-		}
-
-		& > :last-child {
-			justify-self: end;
 		}
 	}
 </style>

@@ -34,5 +34,5 @@ pub async fn get_scoreboard(State(state): State<AppState>) -> Response {
         }
     };
 
-    (StatusCode::OK, Json(data)).into_response()
+    (StatusCode::OK, Json(data.games)).into_response()
 }

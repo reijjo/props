@@ -1,12 +1,13 @@
 <script lang="ts">
+	import type { NbaGame } from '$lib/types/nba';
 	import ScoreboardGame from './ScoreboardGame.svelte';
 
-	const data: String[] = [];
+	let { data }: { data: NbaGame[] } = $props();
 </script>
 
 <section class="nba-today-scoreboard">
 	{#if data.length > 0}
-		{#each data as game}
+		{#each data as game (game.gameId)}
 			<ScoreboardGame {game} />
 		{/each}
 	{:else}

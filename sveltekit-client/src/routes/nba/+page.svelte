@@ -1,15 +1,19 @@
 <script lang="ts">
+	import type { PageProps } from './$types';
+
 	import Button from '$lib/components/ui/Button.svelte';
 	import GamesToday from './components/GamesToday.svelte';
 
 	import { MoveRight } from '@lucide/svelte';
+
+	let { data }: PageProps = $props();
 </script>
 
 <main class="nba-page">
 	<section class="nba-today wrapper">
 		<h1>NBA</h1>
 		<h2>NBA Games & Scores</h2>
-		<GamesToday />
+		<GamesToday data={data.games} />
 	</section>
 	<section class="nba-page-leaders wrapper">
 		<h2>NBA Leaders</h2>
@@ -38,6 +42,10 @@
 		& h2 {
 			font-size: 2rem;
 			letter-spacing: 0;
+
+			@media (max-width: 580px) {
+				text-align: center;
+			}
 		}
 	}
 

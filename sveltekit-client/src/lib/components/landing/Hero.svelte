@@ -35,6 +35,16 @@
 		height: 100svh;
 		overflow: hidden;
 
+		& h1 {
+			font-size: 4rem;
+			line-height: 4.5rem;
+
+			@media (max-width: var(--breakpoint-sm)) {
+				font-size: 3rem;
+				line-height: 2.5rem;
+			}
+		}
+
 		@media (max-width: 1000px) {
 			grid-template-columns: 1fr;
 		}
