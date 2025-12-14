@@ -23,7 +23,7 @@ export type NbaMatchTeam = {
 };
 
 export type Odds = {
-	team?: string;
+	team?: string | null;
 	odds: number;
 	suspended: number;
 };

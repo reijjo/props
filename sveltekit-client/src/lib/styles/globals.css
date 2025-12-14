@@ -48,12 +48,12 @@ h6 {
 }
 
 h1 {
-	font-size: 4rem;
-	line-height: 4.5rem;
+	font-size: 2.5rem;
+	line-height: 3rem;
 	letter-spacing: -2px;
 
 	@media (max-width: var(--breakpoint-sm)) {
-		font-size: 2.5rem;
+		font-size: 2rem;
 		line-height: 3rem;
 	}
 }
@@ -63,8 +63,8 @@ h2 {
 	line-height: 2.5rem;
 
 	@media (max-width: var(--breakpoint-sm)) {
-		font-size: 2rem;
-		line-height: 2.5rem;
+		font-size: 1.5rem;
+		line-height: 2rem;
 	}
 }
 

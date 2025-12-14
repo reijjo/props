@@ -42,6 +42,10 @@
 		& h2 {
 			font-size: 2rem;
 			letter-spacing: 0;
+
+			@media (max-width: 580px) {
+				text-align: center;
+			}
 		}
 	}
 

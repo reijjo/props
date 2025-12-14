@@ -2,13 +2,13 @@
 	import '$lib/styles/nba/ScoreboardGame.css';
 	import { getTeamLogoUrl } from '$lib/utils/nba';
 	import type { NbaMatchTeam } from '$lib/types/nba';
-	import { NBA_GAME_STATUS } from '$lib/constants/nba';
+	import { NBA_GAME_STATUS, type NbaGameStatus } from '$lib/constants/nba';
 
 	type Props = {
 		team: NbaMatchTeam;
 		opponentScore: number;
 		isAwayTeam?: boolean;
-		gameStatus: number;
+		gameStatus: NbaGameStatus;
 	};
 
 	let { team, opponentScore, gameStatus, isAwayTeam = false }: Props = $props();
