@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
+	import GamesToday from './components/GamesToday.svelte';
+
 	import { MoveRight } from '@lucide/svelte';
 </script>
 
@@ -7,7 +9,7 @@
 	<section class="nba-today wrapper">
 		<h1>NBA</h1>
 		<h2>NBA Games & Scores</h2>
-		<!-- <GamesToday /> -->
+		<GamesToday />
 	</section>
 	<section class="nba-page-leaders wrapper">
 		<h2>NBA Leaders</h2>
