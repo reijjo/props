@@ -1,14 +1,24 @@
 <script lang="ts">
+	import type { NbaGame } from '$lib/types/nba';
 	import NbaTeamCard from './NbaTeamCard.svelte';
 	import NbaTodayStatus from './NbaTodayStatus.svelte';
 
-	let { game } = $props();
+	let { game }: { game: NbaGame } = $props();
 </script>
 
 <article class="nba-today-game">
-	<NbaTeamCard team={game.homeTeam} opponentScore={game.awayTeam.score} />
+	<NbaTeamCard
+		team={game.homeTeam}
+		opponentScore={game.awayTeam.score}
+		gameStatus={game.gameStatus}
+	/>
 	<NbaTodayStatus {game} />
-	<NbaTeamCard team={game.awayTeam} opponentScore={game.homeTeam.score} isAwayTeam />
+	<NbaTeamCard
+		team={game.awayTeam}
+		opponentScore={game.homeTeam.score}
+		gameStatus={game.gameStatus}
+		isAwayTeam
+	/>
 </article>
 
 <style>

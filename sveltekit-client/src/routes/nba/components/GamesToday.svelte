@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { NbaGame } from '$lib/types/nba';
 	import ScoreboardGame from './ScoreboardGame.svelte';
 
-	let { data } = $props();
+	let { data }: { data: NbaGame[] } = $props();
 </script>
 
 <section class="nba-today-scoreboard">

@@ -1,6 +1,6 @@
 export type NbaGame = {
 	gameId: string;
-	gameStatus: string;
+	gameStatus: number;
 	gameStatusText: string;
 	period: number;
 	gameClock: string;

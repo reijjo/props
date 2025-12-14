@@ -1,14 +1,16 @@
 <script lang="ts">
 	import '$lib/styles/nba/ScoreboardGame.css';
 	import { getTeamLogoUrl } from '$lib/utils/nba';
+	import type { NbaMatchTeam } from '$lib/types/nba';
 
 	type Props = {
 		team: NbaMatchTeam;
-		opponentScore: number | string;
+		opponentScore: number;
 		isAwayTeam?: boolean;
+		gameStatus: number;
 	};
 
-	let { team, opponentScore, isAwayTeam = false }: Props = $props();
+	let { team, opponentScore, gameStatus, isAwayTeam = false }: Props = $props();
 
 	let isWinner = $derived(team.score > Number(opponentScore));
 </script>
@@ -29,6 +31,6 @@
 		</p>
 	</div>
 	<h2 class={isWinner ? `winner-${isAwayTeam ? 'away' : 'home'}` : ''}>
-		{team.score}
+		{gameStatus ? '-' : team.score}
 	</h2>
 </div>

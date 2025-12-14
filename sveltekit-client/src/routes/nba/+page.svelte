@@ -1,8 +1,11 @@
 <script lang="ts">
+	import type { PageProps } from './$types.ts';
+
 	import Button from '$lib/components/ui/Button.svelte';
 	import GamesToday from './components/GamesToday.svelte';
 
 	import { MoveRight } from '@lucide/svelte';
+
 	let { data }: PageProps = $props();
 </script>
 

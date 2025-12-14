@@ -1,12 +1,17 @@
 <script lang="ts">
-	let { game } = $props();
+	import { NBA_GAME_STATUS } from '$lib/constants/nba';
+	import type { NbaGame } from '$lib/types/nba';
+	import { formatGameTime } from '$lib/utils/format';
+
+	let { game }: { game: NbaGame } = $props();
 </script>
 
 <div class="nba-today-gamestatus">
-	{#if game.gameStatus === 3}
-		<h3>{game.gameStatusText}</h3>
-	{:else}
+	{#if game.gameStatus === NBA_GAME_STATUS.NOT_STARTED}
+		<p>Starts at:</p>
 		<h3>{formatGameTime(game.gameTimeUTC, game.gameStatusText)}</h3>
+	{:else}
+		<h3>{game.gameStatusText}</h3>
 	{/if}
 	<!-- <GameOdds gameOdds={gameOdds} /> -->
 </div>
@@ -22,6 +27,11 @@
 		text-align: center;
 		position: relative;
 		height: 100%;
+
+		& p {
+			font-size: 0.75rem;
+			font-weight: 100;
+		}
 
 		& h3 {
 			@media (max-width: 580px) {

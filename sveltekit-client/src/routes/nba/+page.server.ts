@@ -13,7 +13,5 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
 	const data: NbaGame[] = await res.json();
 
-	console.log('DATA', data);
-
 	return { games: data };
 };
