@@ -1,26 +1,34 @@
 <script lang="ts">
-	let { isAwayTeam, team, gameStatus, isWinner } = $props();
+	import '$lib/styles/nba/ScoreboardGame.css';
+	import { getTeamLogoUrl } from '$lib/utils/nba';
+
+	type Props = {
+		team: NbaMatchTeam;
+		opponentScore: number | string;
+		isAwayTeam?: boolean;
+	};
+
+	let { team, opponentScore, isAwayTeam = false }: Props = $props();
+
+	let isWinner = $derived(team.score > Number(opponentScore));
 </script>
 
-<div class={`nba-today-${isAwayTeam}`}>
+<div class={`nba-today-${isAwayTeam ? 'away' : 'home'}`}>
 	<div class="nba-today-logo-record">
-		<p class="home-or-away">{isAwayTeam}</p>
-		<a href={`/nba/teams/${team.id}`} class="nba-today-team-link">
-			<img src={team.team.logo} alt={team.team.abbreviation} height={40} width={40} />
+		<p class="home-or-away">{isAwayTeam ? 'away' : 'home'}</p>
+		<a href={`/nba/teams/${team.teamId}`} class="nba-today-team-link">
+			<img src={getTeamLogoUrl(team.teamId)} alt={team.teamTricode} height={40} width={40} />
 		</a>{' '}
 		<p class="nba-today-team">
-			{team.team.location} <br />
-			{team.team.name}
+			{team.teamCity} <br />
+			{team.teamName}
 		</p>
 		<p class="nba-today-home-record">
 			{' '}
-			{team.records && team.records.length > 0 ? team.records[0].summary : 'N/A'}
+			{team.wins}-{team.losses}
 		</p>
 	</div>
-	<h2 class={isWinner ? `winner-${isAwayTeam}` : ''}>
-		{gameStatus.type.state === 'pre' ? '-' : team.score}
+	<h2 class={isWinner ? `winner-${isAwayTeam ? 'away' : 'home'}` : ''}>
+		{team.score}
 	</h2>
 </div>
-
-<style>
-</style>

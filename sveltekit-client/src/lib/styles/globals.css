@@ -59,8 +59,8 @@ h1 {
 }
 
 h2 {
-	font-size: 3rem;
-	line-height: 3.5rem;
+	font-size: 2rem;
+	line-height: 2.5rem;
 
 	@media (max-width: var(--breakpoint-sm)) {
 		font-size: 2rem;

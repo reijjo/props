@@ -6,9 +6,9 @@
 </script>
 
 <article class="nba-today-game">
-	<!-- <NbaTeamCard team={homeTeam} opponentScore={awayTeam.score} {gameStatus} />
-	<NbaTodayStatus {game} gameTimeUTC={game.date} />
-	<NbaTeamCard team={awayTeam} opponentScore={homeTeam.score} {gameStatus} /> -->
+	<NbaTeamCard team={game.homeTeam} opponentScore={game.awayTeam.score} />
+	<NbaTodayStatus {game} />
+	<NbaTeamCard team={game.awayTeam} opponentScore={game.homeTeam.score} isAwayTeam />
 </article>
 
 <style>
@@ -24,10 +24,6 @@
 
 		@media (max-width: 580px) {
 			gap: 0.5rem;
-		}
-
-		& > :last-child {
-			justify-self: end;
 		}
 	}
 </style>

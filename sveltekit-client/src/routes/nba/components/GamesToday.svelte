@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ScoreboardGame from './ScoreboardGame.svelte';
 
-	const data: String[] = [];
+	let { data } = $props();
 </script>
 
 <section class="nba-today-scoreboard">
