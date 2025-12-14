@@ -7,7 +7,7 @@
 
 <section class="nba-today-scoreboard">
 	{#if data.length > 0}
-		{#each data as game}
+		{#each data as game (game.gameId)}
 			<ScoreboardGame {game} />
 		{/each}
 	{:else}

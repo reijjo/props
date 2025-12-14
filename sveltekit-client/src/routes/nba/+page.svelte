@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PageProps } from './$types.ts';
+	import type { PageProps } from './$types';
 
 	import Button from '$lib/components/ui/Button.svelte';
 	import GamesToday from './components/GamesToday.svelte';

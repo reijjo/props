@@ -2,6 +2,7 @@
 	import '$lib/styles/nba/ScoreboardGame.css';
 	import { getTeamLogoUrl } from '$lib/utils/nba';
 	import type { NbaMatchTeam } from '$lib/types/nba';
+	import { NBA_GAME_STATUS } from '$lib/constants/nba';
 
 	type Props = {
 		team: NbaMatchTeam;
@@ -12,7 +13,7 @@
 
 	let { team, opponentScore, gameStatus, isAwayTeam = false }: Props = $props();
 
-	let isWinner = $derived(team.score > Number(opponentScore));
+	let isWinner = $derived(team.score > opponentScore);
 </script>
 
 <div class={`nba-today-${isAwayTeam ? 'away' : 'home'}`}>
@@ -31,6 +32,6 @@
 		</p>
 	</div>
 	<h2 class={isWinner ? `winner-${isAwayTeam ? 'away' : 'home'}` : ''}>
-		{gameStatus ? '-' : team.score}
+		{gameStatus === NBA_GAME_STATUS.NOT_STARTED ? '-' : team.score}
 	</h2>
 </div>

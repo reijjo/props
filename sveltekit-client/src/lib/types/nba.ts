@@ -1,6 +1,8 @@
+import type { NbaGameStatus } from '$lib/constants/nba';
+
 export type NbaGame = {
 	gameId: string;
-	gameStatus: number;
+	gameStatus: NbaGameStatus;
 	gameStatusText: string;
 	period: number;
 	gameClock: string;
