@@ -6,44 +6,33 @@ use axum::{
 };
 use serde_json::json;
 
-use crate::models::espn::NbaTodayApiResponse;
-use crate::{app::AppState, models::espn::NbaToday};
+use crate::app::AppState;
+use crate::{models::nba_api::Scoreboard, utils::python::run_python_script};
 
-#[derive(serde::Serialize)]
-struct ApiResponse {
-    events: Vec<NbaToday>,
-}
-
-pub async fn get_espn_scoreboard(State(state): State<AppState>) -> Response {
-    let url = format!("{}", state.config.nba_scoreboard);
-
-    let response = match state.http_client.get(&url).send().await {
-        Ok(res) => res,
+pub async fn get_scoreboard(State(state): State<AppState>) -> Response {
+    let output = match run_python_script(&state.config.project_root, "scoreboard.py", &[]).await {
+        Ok(out) => out,
         Err(e) => {
-            tracing::error!("NBA ESPN scoreboard api request failed: {}", e);
-            return (
-                StatusCode::BAD_GATEWAY,
-                Json(json!({ "error": "Failed to fetch NBA games from the API"})),
-            )
-                .into_response();
-        }
-    };
-
-    let espn_data: NbaTodayApiResponse = match response.json().await {
-        Ok(data) => data,
-        Err(e) => {
-            tracing::error!("Failed to parse NBA games {}", e);
+            tracing::error!("Python scoreboard error: {e}");
             return (
                 StatusCode::INTERNAL_SERVER_ERROR,
-                Json(json!({ "error": "Failed to parse NBA games from the API"})),
+                Json(json!({ "error": "Failed to get todays scoreboard"})),
             )
                 .into_response();
         }
     };
 
-    let res = ApiResponse {
-        events: espn_data.events,
+    let data: Scoreboard = match serde_json::from_str(&output) {
+        Ok(scores) => scores,
+        Err(e) => {
+            tracing::error!("Invalid scoreboad Json from python: {e}");
+            return (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(json!({ "error": "Invalid scoreboard data."})),
+            )
+                .into_response();
+        }
     };
 
-    (StatusCode::OK, Json(res)).into_response()
+    (StatusCode::OK, Json(data)).into_response()
 }

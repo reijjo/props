@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getTeamLogoUrl } from '$lib/utils/nba.js';
+	import { getTeamLogoUrl } from '$lib/utils/nba';
 	import type { PageProps } from './$types.ts';
 	import { fade } from 'svelte/transition';
 
