@@ -13,7 +13,6 @@
 	{:else}
 		<h3>{game.gameStatusText}</h3>
 	{/if}
-	<!-- <GameOdds gameOdds={gameOdds} /> -->
 </div>
 
 <style>
@@ -34,9 +33,7 @@
 		}
 
 		& h3 {
-			@media (max-width: 580px) {
-				font-size: 1rem;
-			}
+			font-size: 1rem;
 		}
 	}
 </style>

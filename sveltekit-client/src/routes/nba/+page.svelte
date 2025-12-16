@@ -5,6 +5,7 @@
 	import GamesToday from './components/GamesToday.svelte';
 
 	import { MoveRight } from '@lucide/svelte';
+	import Statbox from '$lib/components/nba/statbox/Statbox.svelte';
 
 	let { data }: PageProps = $props();
 </script>
@@ -17,7 +18,7 @@
 	</section>
 	<section class="nba-page-leaders wrapper">
 		<h2>NBA Leaders</h2>
-		<!-- <LeadersBox header="Points per game" stat="PTS" /> -->
+		<Statbox header="Points per game" stat="PTS" players={data.leaders} />
 		<a href="/nba/leaders" class="nba-page-link">
 			<Button class="btn-outline btn-with-icon">
 				View All Leaderboards

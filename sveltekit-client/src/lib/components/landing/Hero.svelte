@@ -41,7 +41,7 @@
 
 			@media (max-width: var(--breakpoint-sm)) {
 				font-size: 3rem;
-				line-height: 2.5rem;
+				line-height: 3.25rem;
 			}
 		}
 

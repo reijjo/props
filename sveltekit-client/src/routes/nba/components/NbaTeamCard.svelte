@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '$lib/styles/nba/ScoreboardGame.css';
+	import './ScoreboardGame.css';
 	import { getTeamLogoUrl } from '$lib/utils/nba';
 	import type { NbaMatchTeam } from '$lib/types/nba';
 	import { NBA_GAME_STATUS, type NbaGameStatus } from '$lib/constants/nba';
