@@ -34,9 +34,7 @@
 		}
 
 		& h3 {
-			@media (max-width: 580px) {
-				font-size: 1rem;
-			}
+			font-size: 1rem;
 		}
 	}
 </style>
