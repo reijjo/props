@@ -8,6 +8,7 @@ use serde::Deserialize;
 use serde_json::{Value, json};
 
 use crate::app::AppState;
+use crate::cache::keys::{LEADERS_TTL, nba_leaders_key};
 
 #[derive(Deserialize)]
 pub struct NbaLeaderParams {
@@ -26,6 +27,13 @@ pub async fn get_nba_leaders(
     State(state): State<AppState>,
 ) -> impl IntoResponse {
     let stat = params.stat.to_uppercase();
+
+    let cache_key = nba_leaders_key(&stat, params.limit);
+
+    if let Some(cached) = state.json_cache.get(&cache_key, LEADERS_TTL).await {
+        tracing::info!("Cache HIT: {}", cache_key);
+        return Ok((StatusCode::OK, Json(cached)));
+    }
 
     let valid_stats = ["PTS", "AST", "REB", "FG3M", "BLK", "STL", "TOV"];
     if !valid_stats.contains(&stat.as_str()) {
@@ -103,14 +111,15 @@ pub async fn get_nba_leaders(
         players.push(Value::Object(player));
     }
 
-    Ok((
-        StatusCode::OK,
-        Json(json!({
-            "stat": stat,
-            "season": "2025-26",
-            "headers": headers,
-            "count": players.len(),
-            "data": players
-        })),
-    ))
+    let response_json = json!({
+        "stat": stat,
+        "season": "2025-26",
+        "headers": headers,
+        "count": players.len(),
+        "data": players
+    });
+
+    state.json_cache.set(cache_key, response_json.clone()).await;
+
+    Ok((StatusCode::OK, Json(response_json)))
 }

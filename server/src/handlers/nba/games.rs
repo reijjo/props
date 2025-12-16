@@ -6,10 +6,20 @@ use axum::{
 };
 use serde_json::json;
 
-use crate::app::AppState;
+use crate::{
+    app::AppState,
+    cache::keys::{SCOREBOARD_TTL, nba_scoreboard_key},
+};
 use crate::{models::nba_api::Scoreboard, utils::python::run_python_script};
 
 pub async fn get_scoreboard(State(state): State<AppState>) -> Response {
+    let cache_key = nba_scoreboard_key();
+
+    if let Some(cached) = state.json_cache.get(&cache_key, SCOREBOARD_TTL).await {
+        tracing::info!("Cache HIT: {}", cache_key);
+        return (StatusCode::OK, Json(cached)).into_response();
+    }
+
     let output = match run_python_script(&state.config.project_root, "scoreboard.py", &[]).await {
         Ok(out) => out,
         Err(e) => {
@@ -34,5 +44,8 @@ pub async fn get_scoreboard(State(state): State<AppState>) -> Response {
         }
     };
 
-    (StatusCode::OK, Json(data.games)).into_response()
+    let response_json = json!(data.games);
+    state.json_cache.set(cache_key, response_json.clone()).await;
+
+    (StatusCode::OK, Json(response_json)).into_response()
 }
