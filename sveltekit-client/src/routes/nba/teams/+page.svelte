@@ -14,7 +14,7 @@
 	<div class="nba-all-teams wrapper">
 		<h1>NBA Teams</h1>
 		<div transition:fade={{ duration: 300 }} class="teams-grid">
-			{#each data.teams as team (team.teamId)}
+			{#each data.teams as team (team.id)}
 				<a href="/nba/teams/{team.id}" class="team-card">
 					<img src={getTeamLogoUrl(team.id)} alt={team.abbreviation} width={42} height={42} />
 					<p>{team.full_name}</p>

@@ -22,6 +22,16 @@ export type NbaMatchTeam = {
 	score: number;
 };
 
+export type NbaTeamCard = {
+	id: number;
+	full_name: string;
+	abbreviation: string;
+	nickname: string;
+	city: string;
+	state: string;
+	year_founded: number;
+};
+
 export type Odds = {
 	team?: string | null;
 	odds: number;

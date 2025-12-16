@@ -3,8 +3,11 @@ use axum::{
     middleware::{self},
 };
 use reqwest::header;
+use serde_json::Value;
+use std::sync::Arc;
 use tower_http::cors::{Any, CorsLayer};
 
+use crate::cache::AppCache;
 use crate::middleware::logger::log_middleware;
 use crate::{config::Config, routes};
 
@@ -12,6 +15,7 @@ use crate::{config::Config, routes};
 pub struct AppState {
     pub http_client: reqwest::Client,
     pub config: Config,
+    pub json_cache: Arc<AppCache<Value>>,
 }
 
 pub fn create_app(config: Config) -> Router {
@@ -40,6 +44,7 @@ pub fn create_app(config: Config) -> Router {
     let state = AppState {
         http_client: client,
         config: config.clone(),
+        json_cache: Arc::new(AppCache::new()),
     };
 
     routes::init_routes()
