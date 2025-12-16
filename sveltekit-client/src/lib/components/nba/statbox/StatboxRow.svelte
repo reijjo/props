@@ -7,11 +7,12 @@
 		$props();
 
 	const formatValue = (value: number | undefined, columnName: string): string => {
-		if (value === undefined || value === null) return '-';
+		if (value == null) return '-'; // Handles both undefined and null
 
 		// Percentage columns (FG_PCT, FT_PCT, FG3_PCT) → .467 style
 		if (columnName.includes('_PCT')) {
-			return value.toFixed(3).slice(1); // "0.467" → ".467"
+			const formatted = value.toFixed(3);
+			return value < 1 ? formatted.slice(1) : formatted; // Handle 100% case
 		}
 
 		// All other stats (PTS, REB, MIN, FGM, etc.) → always show .0 if whole
@@ -25,13 +26,18 @@
 	</td>
 	<td>
 		<a href={`/nba/team/${player.TEAM_ID}`} class="team-logo">
-			<img src={getTeamLogoUrl(player.TEAM_ID)} alt={player.TEAM} height={20} width={20} />
+			<img
+				src={getTeamLogoUrl(player.TEAM_ID)}
+				alt={`${player.TEAM} logo`}
+				height={20}
+				width={20}
+			/>
 			{player.TEAM}
 		</a>
 	</td>
 	<td>{player.GP}</td>
 	<td>{formatValue(player.MIN, 'MIN')}</td>
 	{#each columns as col}
-		<td>{formatValue((player as any)[col], col)}</td>
+		<td>{formatValue(player[col as keyof typeof player] as number, col)}</td>
 	{/each}
 </tr>

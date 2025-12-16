@@ -6,8 +6,10 @@ import type { LeaderData, NbaGame } from '$lib/types/nba';
 export const load: PageServerLoad = async ({ fetch }) => {
 	const baseUrl = env.DEV_API_URL;
 
-	const scoreboardRes = await fetch(`${baseUrl}/api/nba/today`);
-	const pointLeadersRes = await fetch(`${baseUrl}/api/nba/leaders?stat=PTS`);
+	const [scoreboardRes, pointLeadersRes] = await Promise.all([
+		fetch(`${baseUrl}/api/nba/today`),
+		fetch(`${baseUrl}/api/nba/leaders?stat=PTS`)
+	]);
 
 	if (!scoreboardRes.ok) {
 		throw error(scoreboardRes.status, 'Failed to fetch NBA scoreboard.');
@@ -20,5 +22,5 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	const scoreboard: NbaGame[] = await scoreboardRes.json();
 	const pointLeaders = await pointLeadersRes.json();
 
-	return { games: scoreboard, leaders: pointLeaders.data };
+	return { games: scoreboard, leaders: pointLeaders.data as LeaderData[] };
 };

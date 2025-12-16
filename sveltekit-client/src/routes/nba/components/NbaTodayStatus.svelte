@@ -13,7 +13,6 @@
 	{:else}
 		<h3>{game.gameStatusText}</h3>
 	{/if}
-	<!-- <GameOdds gameOdds={gameOdds} /> -->
 </div>
 
 <style>

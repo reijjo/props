@@ -81,4 +81,4 @@ export type LeaderData = {
 	ALL: [];
 };
 
-export type StatType = keyof LeaderData;
+export type LeaderStatType = keyof LeaderData;

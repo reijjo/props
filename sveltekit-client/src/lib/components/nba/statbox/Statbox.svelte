@@ -8,7 +8,7 @@
 	let {
 		header,
 		stat,
-		players = []
+		players
 	}: { header: string; stat: StatType; players: LeaderData[typeof stat] } = $props();
 
 	const columns = $derived(STATBOX_COLUMNS[stat]);
@@ -20,9 +20,17 @@
 		<table aria-label={`NBA ${header} leaders for 2025-2026 season`}>
 			<StatboxHeaders {columns} />
 			<tbody>
-				{#each players as player (player.PLAYER_ID)}
-					<StatboxRow {player} {columns} />
-				{/each}
+				{#if players.length > 0}
+					{#each players as player (player.PLAYER_ID)}
+						<StatboxRow {player} {columns} />
+					{/each}
+				{:else}
+					<tr>
+						<td colspan={columns.length + 4} style="text-align: center; padding: 2rem;">
+							No leader data available.
+						</td>
+					</tr>
+				{/if}
 			</tbody>
 		</table>
 	</div>
