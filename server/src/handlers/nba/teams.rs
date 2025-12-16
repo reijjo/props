@@ -6,11 +6,15 @@ use axum::{
 };
 use serde_json::json;
 
-use crate::{app::AppState, cache::keys::{TEAMS_TTL, nba_teams_key}, models::nba_api::NbaTeamsList, utils::python::run_python_script};
+use crate::{
+    app::AppState,
+    cache::keys::{TEAMS_TTL, nba_teams_key},
+    models::nba_api::NbaTeamsList,
+    utils::python::run_python_script,
+};
 
 pub async fn get_teams_list(State(state): State<AppState>) -> Response {
-
-	 let cache_key = nba_teams_key();
+    let cache_key = nba_teams_key();
 
     if let Some(cached) = state.json_cache.get(&cache_key, TEAMS_TTL).await {
         tracing::info!("Cache HIT: {}", cache_key);
@@ -41,9 +45,8 @@ pub async fn get_teams_list(State(state): State<AppState>) -> Response {
         }
     };
 
-		 let response_json = json!(data);
+    let response_json = json!(data);
     state.json_cache.set(cache_key, response_json.clone()).await;
-
 
     (StatusCode::OK, Json(response_json)).into_response()
 }

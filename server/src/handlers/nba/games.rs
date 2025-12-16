@@ -44,7 +44,7 @@ pub async fn get_scoreboard(State(state): State<AppState>) -> Response {
         }
     };
 
-		 let response_json = json!(data.games);
+    let response_json = json!(data.games);
     state.json_cache.set(cache_key, response_json.clone()).await;
 
     (StatusCode::OK, Json(response_json)).into_response()

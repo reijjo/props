@@ -26,7 +26,7 @@ impl<T: Clone> AppCache<T> {
 
     // Get data from cache if it exists and hasn't expired
     // key = identifier
-    // ttl = Time To Live (how log before it expires)
+    // ttl = Time To Live (how long before it expires)
     pub async fn get(&self, key: &str, ttl: Duration) -> Option<T> {
         let cache = self.store.read().await; // Read the lock
 

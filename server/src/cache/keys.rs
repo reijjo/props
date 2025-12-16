@@ -13,6 +13,6 @@ pub fn nba_teams_key() -> String {
     "nba_teams_all".to_string()
 }
 
-pub const LEADERS_TTL: Duration = Duration::from_secs(60 * 60 * 12); // 12 hours
+pub const LEADERS_TTL: Duration = Duration::from_secs(60 * 60 * 2); // 2 hours
 pub const SCOREBOARD_TTL: Duration = Duration::from_secs(60 * 10); // 10 minutes
 pub const TEAMS_TTL: Duration = Duration::from_secs(60 * 60 * 24); // 24 hours
