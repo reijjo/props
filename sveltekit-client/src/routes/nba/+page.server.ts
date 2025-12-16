@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { env } from '$env/dynamic/private';
 import { error } from '@sveltejs/kit';
-import type { LeaderData, NbaGame } from '$lib/types/nba';
+import type { LeaderData, NbaGame, PointsLeader } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const baseUrl = env.DEV_API_URL;
@@ -22,5 +22,5 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	const scoreboard: NbaGame[] = await scoreboardRes.json();
 	const pointLeaders = await pointLeadersRes.json();
 
-	return { games: scoreboard, leaders: pointLeaders.data as LeaderData[] };
+	return { games: scoreboard, leaders: pointLeaders.data as PointsLeader[] };
 };
