@@ -20,5 +20,5 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	const scoreboard: NbaGame[] = await scoreboardRes.json();
 	const pointLeaders = await pointLeadersRes.json();
 
-	return { games: scoreboard, leaders: pointLeaders };
+	return { games: scoreboard, leaders: pointLeaders.data };
 };
