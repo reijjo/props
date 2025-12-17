@@ -19,7 +19,7 @@
 	<section class="nba-page-leaders wrapper">
 		<h2>NBA Leaders</h2>
 		<Statbox header="Points per game" stat="PTS" players={data.leaders} />
-		<a href="/nba/leaders" class="nba-page-link">
+		<a href="/nba/leaderboards" class="nba-page-link">
 			<Button class="btn-outline btn-with-icon">
 				View All Leaderboards
 				<MoveRight size={14} class="btn-icon" />
