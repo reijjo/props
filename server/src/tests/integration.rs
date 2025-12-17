@@ -8,9 +8,7 @@ use crate::config::Config;
 #[tokio::test]
 async fn health_check() {
     let config = Config::from_env();
-
     let app = create_app(config);
-
     let server = TestServer::new(app).unwrap();
 
     let response = server.get("/api/nba/teams").await;
@@ -25,9 +23,7 @@ async fn health_check() {
 #[tokio::test]
 async fn not_found_returns_404() {
     let config = Config::from_env();
-
     let app = create_app(config);
-
     let server = TestServer::new(app).unwrap();
 
     let response = server.get("/non-existent").await;

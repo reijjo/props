@@ -111,7 +111,7 @@ jobs:
     name: Rust Backend Tests
     runs-on: ubuntu-latest
     env:
-      NBA_LEADERS_API: ${{ secrets.NBA_LEADERS_API }}
+      NBA_LEADERS_API: "https://stats.nba.com/stats/leagueleaders?LeagueID=00&PerMode=PerGame&Scope=S&Season=2025-26&SeasonType=Regular%20Season&StatCategory="
     defaults:
       run:
         working-directory: ./server
@@ -123,7 +123,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.14.2"
+          python-version: "3.14"
       - name: Install Python dependencies
         run: |
           cd python
@@ -133,8 +133,6 @@ jobs:
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
-        with:
-          components: llvm-tools-preview
 
       - name: Cache cargo registry & build
         uses: actions/cache@v4
