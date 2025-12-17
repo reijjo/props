@@ -13,10 +13,6 @@ async fn health_check() {
 
     let response = server.get("/api/nba/teams").await;
 
-    // Print for debugging
-    println!("Status: {}", response.status_code());
-    println!("Body: {:?}", response.text());
-
     assert_eq!(response.status_code(), StatusCode::OK);
 }
 
