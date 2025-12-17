@@ -19,9 +19,15 @@
 </svelte:head>
 
 {#if $navigating}
-	<div class="global-loading" transition:fade={{ duration: 200 }}>
+	<div
+		class="global-loading"
+		transition:fade={{ duration: 200 }}
+		role="alert"
+		aria-live="assertive"
+		aria-busy="true"
+	>
 		<div class="spinner"></div>
-		<p>Loading...</p>
+		<p aria-label="Loading content, please wait">Loading...</p>
 	</div>
 {/if}
 
