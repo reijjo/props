@@ -1,5 +1,5 @@
 use dotenvy::dotenv;
-use std::{env, path::PathBuf};
+use std::env;
 
 #[derive(Clone, Debug)]
 pub struct Config {
@@ -23,20 +23,27 @@ impl Config {
         let nba_leaders_base =
             env::var("NBA_LEADERS_API").expect("NBA_LEADERS_API missing in .env");
 
-        let project_root: PathBuf = std::env::current_exe()
-            .expect("Failed to get exe path")
-            .parent()
-            .expect("Failed to get binary dir")
-            .parent()
-            .expect("Failed to get target dir")
-            .parent()
-            .expect("Failed to get project root")
-            .to_path_buf();
-
-        let project_root = project_root
-            .to_str()
-            .expect("Project root path is not valid UTF-8")
-            .to_string();
+        let project_root = if cfg!(test) {
+            // In tests — use current_dir (project root)
+            env::current_dir()
+                .expect("Failed to get current dir in test")
+                .to_str()
+                .unwrap()
+                .to_string()
+        } else {
+            // In production/dev — use current_exe path
+            std::env::current_exe()
+                .expect("Failed to get exe path")
+                .parent()
+                .expect("Failed to get binary dir")
+                .parent()
+                .expect("Failed to get target dir")
+                .parent()
+                .expect("Failed to get project root")
+                .to_str()
+                .expect("Project root not UTF-8")
+                .to_string()
+        };
 
         Self {
             app_env,

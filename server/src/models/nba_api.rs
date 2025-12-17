@@ -20,7 +20,6 @@ pub struct NbaTeam {
 
 //////////////////////////////
 // SCOREBOARD
-
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Scoreboard {
     pub games: Vec<NbaGame>,

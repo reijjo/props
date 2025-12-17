@@ -1,6 +1,0 @@
-.nba-team-page {
-  min-height: calc(100svh - 4rem);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}

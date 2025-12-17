@@ -10,11 +10,14 @@ Deploying this a bit later
 
 ## Locally
 
-### 1. Steps coming soon
+### 1. Install `Bun` (adding link later) and `Rust` (adding link later) so everything works fine
 
 ### Frontend
 
-Coming soon...
+#### Do this stuff in the **./client** folder:
+
+- First `cd client` -> `bun install`
+- Start the frontend `bun dev`
 
 ### Backend
 
@@ -32,3 +35,13 @@ pip install -r requirements.txt
 ```
 
 - Uses <https://github.com/swar/nba_api/> for the NBA data
+
+## Testing
+
+### Backend
+
+Make sure that you are in the **./server** folder
+
+- `cargo test` runs all the tests
+- `cargo llvm-cov --html --open` shows the full test coverage report
+- `cargo llvm cov` text summary
