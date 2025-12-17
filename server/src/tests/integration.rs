@@ -7,9 +7,7 @@ use crate::config::Config;
 
 #[tokio::test]
 async fn health_check() {
-    // Force project root to current directory (where Cargo.toml is)
-    let mut config = Config::from_env();
-    config.project_root = std::env::current_dir().unwrap().to_str().unwrap().to_string();
+    let config = Config::from_env();
 
     let app = create_app(config);
 
@@ -26,8 +24,7 @@ async fn health_check() {
 
 #[tokio::test]
 async fn not_found_returns_404() {
-    let mut config = Config::from_env();
-    config.project_root = std::env::current_dir().unwrap().to_str().unwrap().to_string();
+    let config = Config::from_env();
 
     let app = create_app(config);
 

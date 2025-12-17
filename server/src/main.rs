@@ -32,6 +32,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 #[cfg(test)]
 mod tests {
-
-    include!("tests/integration.rs");
+    #[path = "integration.rs"]
+    mod integration;
 }
