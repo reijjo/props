@@ -24,7 +24,7 @@ Deploying this a bit later
 #### Do this stuff in the **./server** folder:
 
 - Run the server with 'hot reload' -> `cargo watch -x fmt -x run`
-- `fmt` is kind of a linter that cleans your code on every load
+- `fmt` is a code formatter that cleans your code on every load
 
 ### Python
 
