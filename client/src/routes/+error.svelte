@@ -38,6 +38,7 @@
 		font-size: 6rem;
 		margin: 0;
 		color: var(--secondary-100);
+		padding-bottom: 1rem;
 	}
 	a {
 		color: var(--secondary-300);

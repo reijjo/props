@@ -9,8 +9,9 @@
 	</a>
 	<NavLinks />
 	<div class="nav-buttons">
-		<Button class="btn-outline">Login</Button>
-		<Button class="btn-cta">Sign Up</Button>
+		<!-- Work in progress -->
+		<Button class="btn-outline" disabled>Login</Button>
+		<Button class="btn-cta" disabled>Sign Up</Button>
 	</div>
 </nav>
 
