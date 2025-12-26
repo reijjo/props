@@ -8,7 +8,11 @@ def main():
         sys.exit(1)
         return
 
-    team_id = int(sys.argv[1])
+    try:
+        team_id = int(sys.argv[1])
+    except ValueError:
+        print(json.dumps({"error": "Invalid team_id format. Must be an integer."}))
+        return
     season = "2025-26"
     try:
         dashboard = teamplayerdashboard.TeamPlayerDashboard(
