@@ -13,8 +13,8 @@ pub fn nba_teams_key() -> String {
     "nba_teams_all".to_string()
 }
 
-pub fn nba_team_details_key() -> String {
-    "nba_team_details".to_string()
+pub fn nba_team_details_key(id: i64) -> String {
+    format!("nba_team_details_{}", id)
 }
 
 pub const TEAM_DETAILS_TLL: Duration = Duration::from_secs(60 * 60); // 1 hour
