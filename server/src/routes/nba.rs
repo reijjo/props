@@ -8,4 +8,5 @@ pub fn nba_routes() -> Router<AppState> {
         .route("/leaders", get(leaders::get_nba_leaders))
         .route("/today", get(games::get_scoreboard))
         .route("/teams", get(teams::get_teams_list))
+        .route("/teams/{id}", get(teams::get_team_details))
 }
