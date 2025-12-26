@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import json
 import sys
 from nba_api.stats.endpoints import teamplayerdashboard
@@ -6,6 +5,7 @@ from nba_api.stats.endpoints import teamplayerdashboard
 def main():
     if len(sys.argv) < 2:
         print(json.dumps({"error": "No team_id provided"}))
+        sys.exit(1)
         return
 
     team_id = int(sys.argv[1])

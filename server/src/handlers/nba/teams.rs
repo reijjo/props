@@ -58,7 +58,7 @@ pub async fn get_teams_list(State(state): State<AppState>) -> Response {
 pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
     tracing::info!("Fetching team details for team ID: {}", id);
 
-    let cache_key = nba_team_details_key();
+    let cache_key = nba_team_details_key(id);
 
     if let Some(cached) = state.json_cache.get(&cache_key, TEAM_DETAILS_TLL).await {
         tracing::info!("Cache HIT: {}", cache_key);
@@ -86,10 +86,10 @@ pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>
     let data: serde_json::Value = match serde_json::from_str(&output) {
         Ok(team_info) => team_info,
         Err(e) => {
-            tracing::error!("Invalid scoreboad JSON from python: {e}");
+            tracing::error!("Invalid team details JSON from python: {e}");
             return (
                 StatusCode::INTERNAL_SERVER_ERROR,
-                Json(json!({ "error": "Invalid details data."})),
+                Json(json!({ "error": "Invalid team details data."})),
             )
                 .into_response();
         }
