@@ -65,7 +65,37 @@ pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>
         return (StatusCode::OK, Json(cached)).into_response();
     }
 
-    let response_json = json!({"teamDetails": "Not found"});
+    let output = match run_python_script(
+        &state.config.project_root,
+        "team_details.py",
+        &[&id.to_string()],
+    )
+    .await
+    {
+        Ok(out) => out,
+        Err(e) => {
+            tracing::error!("Python error: {e}");
+            return (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(json!({"error": "Failed to get team details"})),
+            )
+                .into_response();
+        }
+    };
+
+    let data: serde_json::Value = match serde_json::from_str(&output) {
+        Ok(team_info) => team_info,
+        Err(e) => {
+            tracing::error!("Invalid scoreboad JSON from python: {e}");
+            return (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(json!({ "error": "Invalid details data."})),
+            )
+                .into_response();
+        }
+    };
+
+    let response_json = json!({"data": data});
     state.json_cache.set(cache_key, response_json.clone()).await;
 
     (StatusCode::OK, Json(response_json)).into_response()
