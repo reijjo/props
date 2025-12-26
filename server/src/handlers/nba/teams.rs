@@ -1,6 +1,6 @@
 use axum::{
     Json,
-    extract::State,
+    extract::{Path, State},
     http::StatusCode,
     response::{IntoResponse, Response},
 };
@@ -8,11 +8,13 @@ use serde_json::json;
 
 use crate::{
     app::AppState,
-    cache::keys::{TEAMS_TTL, nba_teams_key},
+    cache::keys::{TEAM_DETAILS_TLL, TEAMS_TTL, nba_team_details_key, nba_teams_key},
     models::nba_api::NbaTeamsList,
     utils::python::run_python_script,
 };
 
+// GET /nba/teams
+// Gets the list of NBA teams
 pub async fn get_teams_list(State(state): State<AppState>) -> Response {
     let cache_key = nba_teams_key();
 
@@ -46,6 +48,24 @@ pub async fn get_teams_list(State(state): State<AppState>) -> Response {
     };
 
     let response_json = json!(data);
+    state.json_cache.set(cache_key, response_json.clone()).await;
+
+    (StatusCode::OK, Json(response_json)).into_response()
+}
+
+// GET /nba/teams/:id
+// Gets the details of a specific team
+pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
+    tracing::info!("Fetching team details for team ID: {}", id);
+
+    let cache_key = nba_team_details_key();
+
+    if let Some(cached) = state.json_cache.get(&cache_key, TEAM_DETAILS_TLL).await {
+        tracing::info!("Cache HIT: {}", cache_key);
+        return (StatusCode::OK, Json(cached)).into_response();
+    }
+
+    let response_json = json!({"teamDetails": "Not found"});
     state.json_cache.set(cache_key, response_json.clone()).await;
 
     (StatusCode::OK, Json(response_json)).into_response()
