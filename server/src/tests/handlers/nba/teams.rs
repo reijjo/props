@@ -24,6 +24,12 @@ async fn get_teams_list_returns_ok() {
 
 #[tokio::test]
 async fn get_team_details_returns_ok() {
+    if std::env::var("CI").is_ok() {
+        // GitHub Actions sets CI=true
+        eprintln!("Skipping team details test in CI (NBA API rate limit)");
+        return;
+    }
+
     let mut config = Config::from_env();
     config.project_root = std::env::current_dir()
         .unwrap()
