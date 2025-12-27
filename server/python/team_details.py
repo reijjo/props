@@ -37,11 +37,11 @@ def main():
         player_headers = result_sets[1]["headers"]
 
         # Build clean objects
-        clean_team_stats = dict(zip(team_headers, team_stats))
+        clean_team_stats = dict(zip(team_headers, team_stats, strict=True))
 
         clean_players = []
         for player_row in players:
-            clean_players.append(dict(zip(player_headers, player_row)))
+            clean_players.append(dict(zip(player_headers, player_row, strict=True)))
 
         # Final clean response
         result = {
