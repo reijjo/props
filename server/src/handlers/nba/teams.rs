@@ -9,7 +9,7 @@ use serde_json::json;
 use crate::{
     app::AppState,
     cache::keys::{TEAM_DETAILS_TLL, TEAMS_TTL, nba_team_details_key, nba_teams_key},
-    models::nba_api::NbaTeamsList,
+    models::nba_api::{NbaTeamsList, NbaTeamsPage},
     utils::python::run_python_script,
 };
 
@@ -83,7 +83,7 @@ pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>
         }
     };
 
-    let data: serde_json::Value = match serde_json::from_str(&output) {
+    let data: NbaTeamsPage = match serde_json::from_str(&output) {
         Ok(team_info) => team_info,
         Err(e) => {
             tracing::error!("Invalid team details JSON from python: {e}");
@@ -95,7 +95,7 @@ pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>
         }
     };
 
-    let response_json = json!({"data": data});
+    let response_json = json!(data);
     state.json_cache.set(cache_key, response_json.clone()).await;
 
     (StatusCode::OK, Json(response_json)).into_response()

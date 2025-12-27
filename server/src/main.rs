@@ -34,4 +34,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 mod tests {
     #[path = "integration.rs"]
     mod integration;
+
+    #[path = "handlers/nba/teams.rs"]
+    mod teams;
 }

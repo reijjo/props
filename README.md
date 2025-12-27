@@ -64,4 +64,4 @@ Make sure that you are in the **./server** folder
 
 - `cargo test` runs all the tests
 - `cargo llvm-cov --html --open` shows the full test coverage report
-- `cargo llvm cov` text summary
+- `cargo llvm-cov` text summary
