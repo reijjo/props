@@ -8,7 +8,7 @@ use serde_json::json;
 
 use crate::{
     app::AppState,
-    cache::keys::{TEAM_DETAILS_TLL, TEAMS_TTL, nba_team_details_key, nba_teams_key},
+    cache::keys::{TEAM_DETAILS_TTL, TEAMS_TTL, nba_team_details_key, nba_teams_key},
     models::nba_api::{NbaTeamsList, NbaTeamsPage},
     utils::python::run_python_script,
 };
@@ -53,6 +53,7 @@ pub async fn get_teams_list(State(state): State<AppState>) -> Response {
     (StatusCode::OK, Json(response_json)).into_response()
 }
 
+/////////////////////////////
 // GET /nba/teams/:id
 // Gets the details of a specific team
 pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
@@ -60,7 +61,7 @@ pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>
 
     let cache_key = nba_team_details_key(id);
 
-    if let Some(cached) = state.json_cache.get(&cache_key, TEAM_DETAILS_TLL).await {
+    if let Some(cached) = state.json_cache.get(&cache_key, TEAM_DETAILS_TTL).await {
         tracing::info!("Cache HIT: {}", cache_key);
         return (StatusCode::OK, Json(cached)).into_response();
     }

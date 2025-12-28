@@ -17,7 +17,7 @@ pub fn nba_team_details_key(id: i64) -> String {
     format!("nba_team_details_{}", id)
 }
 
-pub const TEAM_DETAILS_TLL: Duration = Duration::from_secs(60 * 60); // 1 hour
+pub const TEAM_DETAILS_TTL: Duration = Duration::from_secs(60 * 60); // 1 hour
 pub const LEADERS_TTL: Duration = Duration::from_secs(60 * 60 * 2); // 2 hours
 pub const SCOREBOARD_TTL: Duration = Duration::from_secs(60 * 10); // 10 minutes
 pub const TEAMS_TTL: Duration = Duration::from_secs(60 * 60 * 24); // 24 hours
