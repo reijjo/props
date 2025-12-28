@@ -97,7 +97,9 @@ export type LeaderStatType = keyof LeaderData;
 // NBA teams page
 export type NbaTeamsPage = {
 	players: NbaTeamPlayerStats[];
+	players_short: NbaTeamPlayerStatsShort[];
 	team_stats: NbaTeamStats;
+	team_stats_short: NbaTeamStatsShort;
 };
 
 export type NbaTeamStatsCommon = {
@@ -143,16 +145,5 @@ export type NbaTeamPlayerStatsShort = Pick<
 
 export type NbaTeamStatsShort = Pick<
 	NbaTeamStats,
-	| 'TEAM_ID'
-	| 'TEAM_NAME'
-	| 'W'
-	| 'L'
-	| 'W_PCT'
-	| 'GP'
-	| 'MIN'
-	| 'PTS'
-	| 'REB'
-	| 'AST'
-	| 'FG3A'
-	| 'FG3M'
+	'TEAM_ID' | 'TEAM_NAME' | 'GP' | 'MIN' | 'PTS' | 'REB' | 'AST' | 'FG3A' | 'FG3M'
 >;

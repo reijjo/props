@@ -8,12 +8,7 @@ def main():
         print(json.dumps({"error": "No team_id provided"}))
         return
 
-    try:
-        team_id = int(sys.argv[1])
-    except ValueError:
-        print(json.dumps({"error": "Invalid team_id"}))
-        return
-
+    team_id = int(sys.argv[1])
     season = "2025-26"
 
     try:
@@ -21,32 +16,36 @@ def main():
             team_id=team_id,
             season=season,
             per_mode_detailed="PerGame"
-        )
+        ).get_dict()
 
-        raw = dashboard.get_dict()
+        result_sets = dashboard["resultSets"]
 
-        # Extract what you actually want
-        result_sets = raw["resultSets"]
-
-        # Overall team stats (first resultSet)
-        team_stats = result_sets[0]["rowSet"][0] if result_sets[0]["rowSet"] else {}
+        # Team stats (full)
+        team_row = result_sets[0]["rowSet"][0]
         team_headers = result_sets[0]["headers"]
+        team_stats = dict(zip(team_headers, team_row))
 
-        # Players stats (second resultSet - usually "OverallPlayers")
-        players = result_sets[1]["rowSet"]
+        # Players (full)
+        player_rows = result_sets[1]["rowSet"]
         player_headers = result_sets[1]["headers"]
+        players = [dict(zip(player_headers, row)) for row in player_rows]
 
-        # Build clean objects
-        clean_team_stats = dict(zip(team_headers, team_stats, strict=True))
+        # Short players
+        short_keys = ['PLAYER_ID', 'PLAYER_NAME', 'GP', 'MIN', 'PTS', 'REB', 'AST', 'FG3A', 'FG3M']
+        players_short = [
+            {k: p[k] for k in short_keys if k in p}
+            for p in players
+        ]
 
-        clean_players = []
-        for player_row in players:
-            clean_players.append(dict(zip(player_headers, player_row, strict=True)))
+        # Short team
+        team_short_keys = ['TEAM_ID', 'TEAM_NAME', 'GP', 'MIN', 'PTS', 'REB', 'AST', 'FG3A', 'FG3M']
+        team_stats_short = {k: team_stats[k] for k in team_short_keys if k in team_stats}
 
-        # Final clean response
         result = {
-            "team_stats": clean_team_stats,
-            "players": clean_players
+            "players": players,
+            "players_short": players_short,
+            "team_stats": team_stats,
+            "team_stats_short": team_stats_short
         }
 
         print(json.dumps(result))

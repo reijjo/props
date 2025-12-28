@@ -53,6 +53,7 @@ pub async fn get_teams_list(State(state): State<AppState>) -> Response {
     (StatusCode::OK, Json(response_json)).into_response()
 }
 
+/////////////////////////////
 // GET /nba/teams/:id
 // Gets the details of a specific team
 pub async fn get_team_details(Path(id): Path<i64>, State(state): State<AppState>) -> Response {

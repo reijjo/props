@@ -21,7 +21,9 @@ pub struct NbaTeam {
 #[derive(Deserialize, Serialize, Debug)]
 pub struct NbaTeamsPage {
     pub players: Vec<NbaTeamPlayerStats>,
+    pub players_short: Vec<NbaTeamPlayerStatsShort>,
     pub team_stats: NbaTeamStats,
+    pub team_stats_short: NbaTeamStatsShort,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
@@ -70,6 +72,28 @@ pub struct NbaTeamPlayerStats {
     pub ft_pct: f32,
     #[serde(rename = "PLUS_MINUS")]
     pub plus_minus: f32,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct NbaTeamPlayerStatsShort {
+    #[serde(rename = "PLAYER_ID")]
+    pub player_id: i64,
+    #[serde(rename = "PLAYER_NAME")]
+    pub player_name: String,
+    #[serde(rename = "GP")]
+    pub gp: i32,
+    #[serde(rename = "MIN")]
+    pub min: f32,
+    #[serde(rename = "PTS")]
+    pub pts: f32,
+    #[serde(rename = "REB")]
+    pub reb: f32,
+    #[serde(rename = "AST")]
+    pub ast: f32,
+    #[serde(rename = "FG3M")]
+    pub fg3m: f32,
+    #[serde(rename = "FG3A")]
+    pub fg3a: f32,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
@@ -124,6 +148,28 @@ pub struct NbaTeamStats {
     pub ft_pct: f32,
     #[serde(rename = "PLUS_MINUS")]
     pub plus_minus: f32,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct NbaTeamStatsShort {
+    #[serde(rename = "TEAM_ID")]
+    pub team_id: i64,
+    #[serde(rename = "TEAM_NAME")]
+    pub team_name: String,
+    #[serde(rename = "GP")]
+    pub gp: i32,
+    #[serde(rename = "MIN")]
+    pub min: f32,
+    #[serde(rename = "PTS")]
+    pub pts: f32,
+    #[serde(rename = "REB")]
+    pub reb: f32,
+    #[serde(rename = "AST")]
+    pub ast: f32,
+    #[serde(rename = "FG3M")]
+    pub fg3m: f32,
+    #[serde(rename = "FG3A")]
+    pub fg3a: f32,
 }
 
 //////////////////////////////

@@ -13,5 +13,10 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 
 	const data: NbaTeamsPage = await res.json();
 
-	return { players: data.players, team: data.team_stats };
+	return {
+		players: data.players,
+		team: data.team_stats,
+		playersShort: data.players_short,
+		teamShort: data.team_stats_short
+	};
 };
