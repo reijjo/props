@@ -8,7 +8,11 @@ def main():
         print(json.dumps({"error": "No team_id provided"}))
         return
 
-    team_id = int(sys.argv[1])
+    try:
+       team_id = int(sys.argv[1])
+    except ValueError:
+        print(json.dumps({"error": f"Invalid team_id: {sys.argv[1]}"}))
+        return
     season = "2025-26"
 
     try:
@@ -23,12 +27,12 @@ def main():
         # Team stats (full)
         team_row = result_sets[0]["rowSet"][0]
         team_headers = result_sets[0]["headers"]
-        team_stats = dict(zip(team_headers, team_row))
+        team_stats = dict(zip(team_headers, team_row, strict=True))
 
         # Players (full)
         player_rows = result_sets[1]["rowSet"]
         player_headers = result_sets[1]["headers"]
-        players = [dict(zip(player_headers, row)) for row in player_rows]
+        players = [dict(zip(player_headers, row, strict=True)) for row in player_rows]
 
         # Short players
         short_keys = ['PLAYER_ID', 'PLAYER_NAME', 'GP', 'MIN', 'PTS', 'REB', 'AST', 'FG3A', 'FG3M']
