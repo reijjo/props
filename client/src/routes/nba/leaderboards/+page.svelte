@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Statbox from '$lib/components/nba/statbox/Statbox.svelte';
+	import Leaderbox from '$lib/components/nba/leaderbox/Leaderbox.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import type { PageProps } from './$types';
 
@@ -12,13 +12,13 @@
 		<Button class="btn-pressable active" disabled>2025-2026</Button>
 	</div>
 	<div class="leader-boxes wrapper">
-		<Statbox header="Points per game" stat="PTS" players={data.pts} />
-		<Statbox header="Rebounds per game" stat="REB" players={data.reb} />
-		<Statbox header="Assists per game" stat="AST" players={data.ast} />
-		<Statbox header="3pts made per game" stat="FG3M" players={data.fg3m} />
-		<Statbox header="Blocks per game" stat="BLK" players={data.blk} />
-		<Statbox header="Steals per game" stat="STL" players={data.stl} />
-		<Statbox header="Turnovers per game" stat="TOV" players={data.tov} />
+		<Leaderbox header="Points per game" stat="PTS" players={data.pts} />
+		<Leaderbox header="Rebounds per game" stat="REB" players={data.reb} />
+		<Leaderbox header="Assists per game" stat="AST" players={data.ast} />
+		<Leaderbox header="3pts made per game" stat="FG3M" players={data.fg3m} />
+		<Leaderbox header="Blocks per game" stat="BLK" players={data.blk} />
+		<Leaderbox header="Steals per game" stat="STL" players={data.stl} />
+		<Leaderbox header="Turnovers per game" stat="TOV" players={data.tov} />
 	</div>
 </main>
 

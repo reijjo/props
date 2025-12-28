@@ -6,7 +6,7 @@ export const NBA_GAME_STATUS = {
 
 export type NbaGameStatus = (typeof NBA_GAME_STATUS)[keyof typeof NBA_GAME_STATUS];
 
-export const STATBOX_COLUMNS = {
+export const LEADERBOX_COLUMNS = {
 	PTS: ['PTS', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT'],
 	REB: ['REB', 'OREB', 'DREB'],
 	AST: ['AST'],
@@ -17,4 +17,4 @@ export const STATBOX_COLUMNS = {
 	ALL: []
 } as const;
 
-export type StatType = keyof typeof STATBOX_COLUMNS;
+export type StatType = keyof typeof LEADERBOX_COLUMNS;
