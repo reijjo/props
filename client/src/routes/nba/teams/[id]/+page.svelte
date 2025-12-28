@@ -46,8 +46,8 @@
 							/>
 						</td>
 						{#each columns as col}
-							<td>{formatValue(teamShort[col], col)}</td>{/each}
-						<td></td>
+							<td>{formatValue(teamShort[col], col)}</td>
+						{/each}
 					</tr>
 				</tbody>
 			</table>

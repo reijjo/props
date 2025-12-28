@@ -23,12 +23,12 @@ export const formatColumnName = (col: string): string => {
 };
 
 export const formatValue = (value: number | undefined, columnName: string): string => {
-	if (value == null) return '-'; // Handles both undefined and null
+	if (value == null || !isFinite(value)) return '-'; // Handle null, undefined, NaN, Infinity
 
 	// Percentage columns (FG_PCT, FT_PCT, FG3_PCT) → .467 style
 	if (columnName.includes('_PCT')) {
 		const formatted = value.toFixed(3);
-		return value < 1 ? formatted.slice(1) : formatted; // Handle 100% case
+		return value > 0 && value < 1 ? formatted.slice(1) : formatted; // Exclude negatives from slice
 	}
 
 	// All other stats (PTS, REB, MIN, FGM, etc.) → always show .0 if whole
