@@ -1,9 +1,9 @@
 <script lang="ts">
-	import './Statbox.css';
-	import { STATBOX_COLUMNS, type StatType } from '$lib/constants/nba';
+	import './Leaderbox.css';
+	import { LEADERBOX_COLUMNS, type StatType } from '$lib/constants/nba';
 	import type { LeaderData } from '$lib/types/nba';
-	import StatboxHeaders from './StatboxHeaders.svelte';
-	import StatboxRow from './StatboxRow.svelte';
+	import LeaderboxHeaders from './LeaderboxHeaders.svelte';
+	import LeaderboxRow from './LeaderboxRow.svelte';
 
 	let {
 		header,
@@ -11,18 +11,18 @@
 		players
 	}: { header: string; stat: StatType; players: LeaderData[typeof stat] } = $props();
 
-	const columns = $derived(STATBOX_COLUMNS[stat]);
+	const columns = $derived(LEADERBOX_COLUMNS[stat]);
 </script>
 
 <section class="leaders-box wrapper">
 	<h3>{header}</h3>
 	<div class="table-wrapper">
 		<table aria-label={`NBA ${header} leaders for 2025-2026 season`}>
-			<StatboxHeaders {columns} />
+			<LeaderboxHeaders {columns} />
 			<tbody>
 				{#if players.length > 0}
 					{#each players as player (player.PLAYER_ID)}
-						<StatboxRow {player} {columns} />
+						<LeaderboxRow {player} {columns} />
 					{/each}
 				{:else}
 					<tr>
