@@ -3,12 +3,18 @@
 	import { getTeamLogoUrl } from '$lib/utils/nba';
 
 	let { team }: { team: NbaTeamStats } = $props();
+	let imageError = $state(false);
 
 	const formatPct = (value: number) => value.toFixed(3).replace(/^0\./, '.');
 </script>
 
 <section class="nba-teampage-header">
-	<img src={getTeamLogoUrl(team.TEAM_ID)} alt={team.TEAM_NAME} />
+	<img
+		src={getTeamLogoUrl(team.TEAM_ID)}
+		alt={team.TEAM_NAME}
+		onerror={() => (imageError = true)}
+		style:display={imageError ? 'none' : 'block'}
+	/>
 	<div class="nba-team-header-wrapper">
 		<h1>{team.TEAM_NAME}</h1>
 		<div class="nba-team-record">

@@ -6,8 +6,6 @@
 
 	let team = $derived(data.team);
 	let players = $derived(data.players);
-
-	console.log(team);
 </script>
 
 <svelte:head>
