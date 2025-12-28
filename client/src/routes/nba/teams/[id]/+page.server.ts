@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { env } from '$env/dynamic/private';
+import type { NbaTeamsPage } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const baseUrl = env.DEV_API_URL;
@@ -10,7 +11,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		throw error(res.status, 'Failed to fetch NBA team');
 	}
 
-	const data = await res.json();
+	const data: NbaTeamsPage = await res.json();
 
-	return { team: data.team };
+	return { players: data.players, team: data.team_stats };
 };

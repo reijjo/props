@@ -92,3 +92,67 @@ export type LeaderData = {
 };
 
 export type LeaderStatType = keyof LeaderData;
+
+//////////////////////
+// NBA teams page
+export type NbaTeamsPage = {
+	players: NbaTeamPlayerStats[];
+	team_stats: NbaTeamStats;
+};
+
+export type NbaTeamStatsCommon = {
+	GP: number;
+	MIN: number;
+	FGM: number;
+	FGA: number;
+	FG_PCT: number;
+	FG3M: number;
+	FG3A: number;
+	FG3_PCT: number;
+	FTM: number;
+	FTA: number;
+	FT_PCT: number;
+	PTS: number;
+	OREB: number;
+	DREB: number;
+	REB: number;
+	AST: number;
+	STL: number;
+	BLK: number;
+	TOV: number;
+	PLUS_MINUS: number;
+};
+
+export type NbaTeamPlayerStats = NbaTeamStatsCommon & {
+	PLAYER_ID: number;
+	PLAYER_NAME: string;
+};
+
+export type NbaTeamStats = NbaTeamStatsCommon & {
+	TEAM_ID: number;
+	TEAM_NAME: string;
+	W: number;
+	L: number;
+	W_PCT: number;
+};
+
+export type NbaTeamPlayerStatsShort = Pick<
+	NbaTeamPlayerStats,
+	'PLAYER_ID' | 'PLAYER_NAME' | 'GP' | 'MIN' | 'PTS' | 'REB' | 'AST' | 'FG3A' | 'FG3M'
+>;
+
+export type NbaTeamStatsShort = Pick<
+	NbaTeamStats,
+	| 'TEAM_ID'
+	| 'TEAM_NAME'
+	| 'W'
+	| 'L'
+	| 'W_PCT'
+	| 'GP'
+	| 'MIN'
+	| 'PTS'
+	| 'REB'
+	| 'AST'
+	| 'FG3A'
+	| 'FG3M'
+>;

@@ -52,7 +52,7 @@ h1 {
 	line-height: 3rem;
 	letter-spacing: -2px;
 
-	@media (max-width: var(--breakpoint-sm)) {
+	@media (max-width: 580px) {
 		font-size: 2rem;
 		line-height: 3rem;
 	}
