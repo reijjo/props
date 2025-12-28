@@ -18,3 +18,31 @@ export const LEADERBOX_COLUMNS = {
 } as const;
 
 export type StatType = keyof typeof LEADERBOX_COLUMNS;
+
+export const STATBOX_COLUMNS = {
+	SHORT: ['GP', 'MIN', 'PTS', 'REB', 'AST', 'FG3M', 'FG3A'] as const,
+	FULL: [
+		'GP',
+		'MIN',
+		'PTS',
+		'REB',
+		'AST',
+		'STL',
+		'BLK',
+		'TOV',
+		'OREB',
+		'DREB',
+		'FGM',
+		'FGA',
+		'FG_PCT',
+		'FG3M',
+		'FG3A',
+		'FG3_PCT',
+		'FTM',
+		'FTA',
+		'FT_PCT',
+		'PLUS_MINUS'
+	] as const
+} as const;
+
+export type StatboxView = keyof typeof STATBOX_COLUMNS;
