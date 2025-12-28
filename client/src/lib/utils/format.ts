@@ -21,3 +21,16 @@ export const formatColumnName = (col: string): string => {
 		.replace('FG_', 'FG') // FG_PCT → FG%
 		.replace('FT_', 'FT'); // FT_PCT → FT%
 };
+
+export const formatValue = (value: number | undefined, columnName: string): string => {
+	if (value == null) return '-'; // Handles both undefined and null
+
+	// Percentage columns (FG_PCT, FT_PCT, FG3_PCT) → .467 style
+	if (columnName.includes('_PCT')) {
+		const formatted = value.toFixed(3);
+		return value < 1 ? formatted.slice(1) : formatted; // Handle 100% case
+	}
+
+	// All other stats (PTS, REB, MIN, FGM, etc.) → always show .0 if whole
+	return value.toFixed(1);
+};

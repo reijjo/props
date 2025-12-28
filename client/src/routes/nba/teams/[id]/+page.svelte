@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { STATBOX_COLUMNS, type StatboxView } from '$lib/constants/nba';
+	import { formatColumnName, formatValue } from '$lib/utils/format';
+	import { getTeamLogoUrl } from '$lib/utils/nba';
 	import type { PageProps } from './$types';
 	import Header from './components/Header.svelte';
 
@@ -11,6 +14,8 @@
 
 	console.log('team', team);
 	console.log('team2', teamShort);
+	let view: StatboxView = 'SHORT';
+	let columns = STATBOX_COLUMNS[view];
 </script>
 
 <svelte:head>
@@ -25,10 +30,26 @@
 				<thead>
 					<tr>
 						<th scope="col">name</th>
-						<th scope="col">name</th>
-						<th scope="col">name</th>
+						{#each columns as header (header)}
+							<th scope="col">{formatColumnName(header)}</th>
+						{/each}
 					</tr>
 				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<img
+								src={getTeamLogoUrl(teamShort.TEAM_ID)}
+								alt={teamShort.TEAM_NAME}
+								height={20}
+								width={20}
+							/>
+						</td>
+						{#each columns as col}
+							<td>{formatValue(teamShort[col], col)}</td>{/each}
+						<td></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
