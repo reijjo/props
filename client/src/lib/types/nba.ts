@@ -100,27 +100,6 @@ export type NbaTeamsPage = {
 	team_stats: NbaTeamStats;
 };
 
-export type NbaTeamPlayerStatsShort = Pick<
-	NbaTeamPlayerStats,
-	'PLAYER_ID' | 'PLAYER_NAME' | 'GP' | 'MIN' | 'PTS' | 'REB' | 'AST' | 'FG3A' | 'FG3M'
->;
-
-export type NbaTeamStatsShort = Pick<
-	NbaTeamStats,
-	| 'TEAM_ID'
-	| 'TEAM_NAME'
-	| 'W'
-	| 'L'
-	| 'W_PCT'
-	| 'GP'
-	| 'MIN'
-	| 'PTS'
-	| 'REB'
-	| 'AST'
-	| 'FG3A'
-	| 'FG3M'
->;
-
 export type NbaTeamStatsCommon = {
 	GP: number;
 	MIN: number;
@@ -156,3 +135,24 @@ export type NbaTeamStats = NbaTeamStatsCommon & {
 	L: number;
 	W_PCT: number;
 };
+
+export type NbaTeamPlayerStatsShort = Pick<
+	NbaTeamPlayerStats,
+	'PLAYER_ID' | 'PLAYER_NAME' | 'GP' | 'MIN' | 'PTS' | 'REB' | 'AST' | 'FG3A' | 'FG3M'
+>;
+
+export type NbaTeamStatsShort = Pick<
+	NbaTeamStats,
+	| 'TEAM_ID'
+	| 'TEAM_NAME'
+	| 'W'
+	| 'L'
+	| 'W_PCT'
+	| 'GP'
+	| 'MIN'
+	| 'PTS'
+	| 'REB'
+	| 'AST'
+	| 'FG3A'
+	| 'FG3M'
+>;
