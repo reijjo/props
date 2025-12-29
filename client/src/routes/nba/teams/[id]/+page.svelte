@@ -26,31 +26,6 @@
 		<Header {team} />
 		<div class="statbox-table-wrapper">
 			<Statbox {teamShort} {columns} />
-			<!-- <table aria-label={`NBA ${team.TEAM_NAME} stats for 2025-2026 season`}>
-				<thead>
-					<tr>
-						<th scope="col">name</th>
-						{#each columns as header (header)}
-							<th scope="col">{formatColumnName(header)}</th>
-						{/each}
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<img
-								src={getTeamLogoUrl(teamShort.TEAM_ID)}
-								alt={teamShort.TEAM_NAME}
-								height={20}
-								width={20}
-							/>
-						</td>
-						{#each columns as col}
-							<td>{formatValue(teamShort[col], col)}</td>
-						{/each}
-					</tr>
-				</tbody>
-			</table> -->
 		</div>
 	</div>
 </main>
