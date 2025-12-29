@@ -1,7 +1,6 @@
 <script lang="ts">
+	import Statbox from '$lib/components/nba/statbox/Statbox.svelte';
 	import { STATBOX_COLUMNS, type StatboxView } from '$lib/constants/nba';
-	import { formatColumnName, formatValue } from '$lib/utils/format';
-	import { getTeamLogoUrl } from '$lib/utils/nba';
 	import type { PageProps } from './$types';
 	import Header from './components/Header.svelte';
 
@@ -26,7 +25,8 @@
 	<div class="nba-teampage wrapper">
 		<Header {team} />
 		<div class="statbox-table-wrapper">
-			<table aria-label={`NBA ${team.TEAM_NAME} stats for 2025-2026 season`}>
+			<Statbox {teamShort} {columns} />
+			<!-- <table aria-label={`NBA ${team.TEAM_NAME} stats for 2025-2026 season`}>
 				<thead>
 					<tr>
 						<th scope="col">name</th>
@@ -50,7 +50,7 @@
 						{/each}
 					</tr>
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 	</div>
 </main>

@@ -22,7 +22,11 @@ export const formatColumnName = (col: string): string => {
 		.replace('FT_', 'FT'); // FT_PCT → FT%
 };
 
-export const formatValue = (value: number | undefined, columnName: string): string => {
+export const formatValue = (value: string | number | undefined, columnName: string): string => {
+	if (typeof value === 'string') {
+		return value;
+	}
+
 	if (value == null || !isFinite(value)) return '-'; // Handle null, undefined, NaN, Infinity
 
 	// Percentage columns (FG_PCT, FT_PCT, FG3_PCT) → .467 style
