@@ -22,7 +22,7 @@
 <main>
 	<div class="nba-teampage wrapper">
 		<Header {team} />
-		<Statbox {teamShort} {playersShort} {columns} teamStatColumn />
+		<Statbox {teamShort} {playersShort} {columns} />
 	</div>
 </main>
 
