@@ -11,8 +11,6 @@
 	let players = $derived(data.players);
 	let playersShort = $derived(data.playersShort);
 
-	console.log('team', team);
-	console.log('team2', teamShort);
 	let view: StatboxView = 'SHORT';
 	let columns = STATBOX_COLUMNS[view];
 </script>
@@ -24,9 +22,7 @@
 <main>
 	<div class="nba-teampage wrapper">
 		<Header {team} />
-		<div class="statbox-table-wrapper">
-			<Statbox {teamShort} {columns} />
-		</div>
+		<Statbox {teamShort} {playersShort} {columns} teamStatColumn />
 	</div>
 </main>
 
