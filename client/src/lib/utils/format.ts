@@ -29,6 +29,8 @@ export const formatValue = (value: string | number | undefined, columnName: stri
 
 	if (value == null || !isFinite(value)) return '-'; // Handle null, undefined, NaN, Infinity
 
+	if (columnName === 'GP') return value.toFixed(0);
+
 	// Percentage columns (FG_PCT, FT_PCT, FG3_PCT) → .467 style
 	if (columnName.includes('_PCT')) {
 		const formatted = value.toFixed(3);
