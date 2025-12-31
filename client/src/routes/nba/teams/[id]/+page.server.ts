@@ -13,10 +13,13 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 
 	const data: NbaTeamsPage = await res.json();
 
+	const sortedPlayers = [...data.players].sort((a, b) => b.MIN - a.MIN);
+	const sortedPlayersShort = [...data.players_short].sort((a, b) => b.MIN - a.MIN);
+
 	return {
-		players: data.players,
+		players: sortedPlayers,
 		team: data.team_stats,
-		playersShort: data.players_short,
+		playersShort: sortedPlayersShort,
 		teamShort: data.team_stats_short
 	};
 };
