@@ -77,7 +77,16 @@
 	& thead:has(th:nth-child(11):hover) ~ tbody tr td:nth-child(11),
 	& thead:has(th:nth-child(12):hover) ~ tbody tr td:nth-child(12),
 	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(13),
-	& thead:has(th:nth-child(14):hover) ~ tbody tr td:nth-child(14) {
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(14),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(15),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(16),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(17),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(18),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(19),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(20),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(21),
+	& thead:has(th:nth-child(13):hover) ~ tbody tr td:nth-child(22),
+	& thead:has(th:nth-child(14):hover) ~ tbody tr td:nth-child(23) {
 		background-color: rgb(from var(--secondary) r g b / 0.025);
 	}
 
