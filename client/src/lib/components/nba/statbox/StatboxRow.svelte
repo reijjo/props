@@ -12,6 +12,19 @@
 		playersShort: NbaTeamPlayerStatsShort[];
 		columns: readonly string[];
 	} = $props();
+
+	const getMaxValue = (col: string) => {
+		return Math.max(...playersShort.map((p) => p[col as keyof NbaTeamPlayerStatsShort] as number));
+	};
+
+	let maxValues = $derived(Object.fromEntries(columns.map((col) => [col, getMaxValue(col)])));
+
+	const isMaxValue = (player: NbaTeamPlayerStatsShort, col: string) => {
+		if (col === 'GP') return false;
+
+		const value = player[col as keyof NbaTeamPlayerStatsShort];
+		return value === maxValues[col];
+	};
 </script>
 
 <tbody>
@@ -34,10 +47,12 @@
 	{#each playersShort as player (player.PLAYER_ID)}
 		<tr>
 			<td>
-				<a href={`/nba/player/${player.PLAYER_ID}`}>{player.PLAYER_NAME}</a>
+				<a href={`/nba/players/${player.PLAYER_ID}`}>{player.PLAYER_NAME}</a>
 			</td>
 			{#each columns as col}
-				<td>{formatValue(player[col as keyof NbaTeamPlayerStatsShort], col)}</td>
+				<td class:leader={isMaxValue(player, col)}
+					>{formatValue(player[col as keyof NbaTeamPlayerStatsShort], col)}</td
+				>
 			{/each}
 		</tr>
 	{/each}
@@ -53,5 +68,9 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.leader {
+		color: var(--secondary-300);
 	}
 </style>
