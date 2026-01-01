@@ -47,7 +47,7 @@
 	{#each playersShort as player (player.PLAYER_ID)}
 		<tr>
 			<td>
-				<a href={`/nba/player/${player.PLAYER_ID}`}>{player.PLAYER_NAME}</a>
+				<a href={`/nba/players/${player.PLAYER_ID}`}>{player.PLAYER_NAME}</a>
 			</td>
 			{#each columns as col}
 				<td class:leader={isMaxValue(player, col)}

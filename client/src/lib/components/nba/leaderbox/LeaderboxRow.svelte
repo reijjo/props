@@ -10,10 +10,10 @@
 
 <tr>
 	<td>
-		<a href={`/nba/player/${player.PLAYER_ID}`}>{player.PLAYER}</a>
+		<a href={`/nba/players/${player.PLAYER_ID}`}>{player.PLAYER}</a>
 	</td>
 	<td>
-		<a href={`/nba/team/${player.TEAM_ID}`} class="team-logo">
+		<a href={`/nba/teams/${player.TEAM_ID}`} class="team-logo">
 			<img
 				src={getTeamLogoUrl(player.TEAM_ID)}
 				alt={`${player.TEAM} logo`}

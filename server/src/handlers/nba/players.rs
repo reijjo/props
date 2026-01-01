@@ -8,7 +8,7 @@ use serde_json::json;
 
 use crate::{
     app::AppState,
-    cache::keys::{TEAM_DETAILS_TTL, nba_player_details_key},
+    cache::keys::{PLAYER_DETAILS_TTL, nba_player_details_key},
 };
 
 ////////////////////////////////
@@ -19,7 +19,7 @@ pub async fn get_player_by_id(Path(id): Path<i64>, State(state): State<AppState>
 
     let cache_key = nba_player_details_key(id);
 
-    if let Some(cached) = state.json_cache.get(&cache_key, TEAM_DETAILS_TTL).await {
+    if let Some(cached) = state.json_cache.get(&cache_key, PLAYER_DETAILS_TTL).await {
         tracing::info!("Cache HIT: {}", cache_key);
         return (StatusCode::OK, Json(cached)).into_response();
     }
