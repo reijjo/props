@@ -1,7 +1,7 @@
 use axum::{Router, routing::get};
 
 use crate::app::AppState;
-use crate::handlers::nba::{games, leaders, teams};
+use crate::handlers::nba::{games, leaders, players, teams};
 
 pub fn nba_routes() -> Router<AppState> {
     Router::new()
@@ -9,4 +9,5 @@ pub fn nba_routes() -> Router<AppState> {
         .route("/today", get(games::get_scoreboard))
         .route("/teams", get(teams::get_teams_list))
         .route("/teams/{id}", get(teams::get_team_details))
+        .route("/players/{id}", get(players::get_player_by_id))
 }
