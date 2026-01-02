@@ -5,12 +5,12 @@
 	let { info }: { info: NbaPlayerInfo } = $props();
 	let imageError = $state(false);
 
-	let foot = $derived(parseInt(info.HEIGHT.split('-')[0]));
-	let inches = $derived(parseInt(info.HEIGHT.split('-')[1]));
+	let foot = $derived(parseInt(info.HEIGHT.split('-')[0], 10));
+	let inches = $derived(parseInt(info.HEIGHT.split('-')[1], 10));
 
 	let heightCm = $derived(Math.round(foot * 30.48 + inches * 2.54));
 
-	let weightLbs = $derived(parseInt(info.WEIGHT));
+	let weightLbs = $derived(parseInt(info.WEIGHT, 10));
 	let weightKg = $derived(Math.round(weightLbs * 0.453592));
 </script>
 
@@ -30,9 +30,9 @@
 			<div>
 				{info.POSITION}
 			</div>
-			<div>{heightCm} cm</div>
+			<div>{heightCm ? `${heightCm} cm` : '-'}</div>
 			<div>
-				{weightKg} kg
+				{weightKg ? `${weightKg} kg` : '-'}
 			</div>
 		</div>
 	</div>

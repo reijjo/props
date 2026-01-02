@@ -17,7 +17,13 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	]);
 
 	if (!playerLatest.ok || !playerAvg.ok || !playerInfo.ok) {
-		throw error(playerLatest.status, 'Failed to fetch NBA player');
+		if (!playerLatest.ok) {
+			throw error(playerLatest.status, 'Failed to fetch player latest stats');
+		}
+		if (!playerAvg.ok) {
+			throw error(playerAvg.status, 'Failed to fetch player averages');
+		}
+		throw error(playerInfo.status, 'Failed to fetch player info');
 	}
 
 	const latestData: NbaPlayerLatestBoth = await playerLatest.json();

@@ -35,6 +35,8 @@
 	}
 
 	.mobile-button {
+		display: grid;
+		place-items: center;
 		@media (min-width: 581px) {
 			display: none;
 		}
