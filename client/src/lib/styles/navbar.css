@@ -76,8 +76,8 @@ nav {
 	flex-direction: column;
 	background: var(--primary-950);
 	box-shadow:
-		0 8px 16px rgba(0, 163, 218, 0.125),
-		0 8px 36px rgba(0, 163, 218, 0.075);
+		0 8px 16px rgba(0, 163, 218, 0.25),
+		0 8px 36px rgba(0, 163, 218, 0.125);
 
 	transform: scaleY(0);
 	transform-origin: top;
