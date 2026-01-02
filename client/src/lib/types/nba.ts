@@ -147,3 +147,52 @@ export type NbaTeamStatsShort = Pick<
 	NbaTeamStats,
 	'TEAM_ID' | 'TEAM_NAME' | 'GP' | 'MIN' | 'PTS' | 'REB' | 'AST' | 'FG3A' | 'FG3M'
 >;
+
+////////////////////////////
+// NBA players page
+export type NbaPlayerInfo = {
+	birthdate: string;
+	country: string;
+	firstname: string;
+	height: string;
+	jersey: string;
+	lastname: string;
+	personid: number;
+	playercode: string;
+	position: string;
+	teamcity: string;
+	teamid: number;
+	teamname: string;
+	weight: string;
+};
+
+export type NbaPlayerAvgStats = {
+	ast: number;
+	blk: number;
+	dreb: number;
+	fg3a: number;
+	fg3m: number;
+	fg3_pct: number;
+	fga: number;
+	fgm: number;
+	fg_pct: number;
+	fta: number;
+	ftm: number;
+	ft_pct: number;
+	gp: number;
+	l: number;
+	min: number;
+	oreb: number;
+	pf: number;
+	plus_minus: number;
+	reb: number;
+	stl: number;
+	tov: number;
+	w: number;
+};
+
+export type NbaPlayerAvg = {
+	season_avg: NbaPlayerAvgStats;
+	last_10_avg: NbaPlayerAvgStats;
+	last_5_avg: NbaPlayerAvgStats;
+};

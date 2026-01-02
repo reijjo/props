@@ -266,6 +266,92 @@ pub struct NbaPlayerLatestShort {
     pub wl: String,
 }
 
+// Player common info
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NbaPlayerInfo {
+    #[serde(rename = "BIRTHDATE")]
+    pub birthdate: String,
+    #[serde(rename = "COUNTRY")]
+    pub country: String,
+    #[serde(rename = "FIRST_NAME")]
+    pub firstname: String,
+    #[serde(rename = "HEIGHT")]
+    pub height: String,
+    #[serde(rename = "JERSEY")]
+    pub jersey: String,
+    #[serde(rename = "LAST_NAME")]
+    pub lastname: String,
+    #[serde(rename = "PERSON_ID")]
+    pub personid: i64,
+    #[serde(rename = "PLAYERCODE")]
+    pub playercode: String,
+    #[serde(rename = "POSITION")]
+    pub position: String,
+    #[serde(rename = "TEAM_CITY")]
+    pub teamcity: String,
+    #[serde(rename = "TEAM_ID")]
+    pub teamid: i64,
+    #[serde(rename = "TEAM_NAME")]
+    pub teamname: String,
+    #[serde(rename = "WEIGHT")]
+    pub weight: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NbaPlayerAvg {
+    pub season_avg: NbaPlayerAvgStats,
+    pub last_10_avg: NbaPlayerAvgStats,
+    pub last_5_avg: NbaPlayerAvgStats,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NbaPlayerAvgStats {
+    #[serde(rename = "AST")]
+    pub ast: f32,
+    #[serde(rename = "BLK")]
+    pub blk: f32,
+    #[serde(rename = "DREB")]
+    pub dreb: f32,
+    #[serde(rename = "FG3A")]
+    pub fg3a: f32,
+    #[serde(rename = "FG3M")]
+    pub fg3m: f32,
+    #[serde(rename = "FG3_PCT")]
+    pub fg3_pct: f32,
+    #[serde(rename = "FGA")]
+    pub fga: f32,
+    #[serde(rename = "FGM")]
+    pub fgm: f32,
+    #[serde(rename = "FG_PCT")]
+    pub fg_pct: f32,
+    #[serde(rename = "FTA")]
+    pub fta: f32,
+    #[serde(rename = "FTM")]
+    pub ftm: f32,
+    #[serde(rename = "FT_PCT")]
+    pub ft_pct: f32,
+    #[serde(rename = "GP")]
+    pub gp: i32,
+    #[serde(rename = "L")]
+    pub l: i32,
+    #[serde(rename = "MIN")]
+    pub min: f32,
+    #[serde(rename = "OREB")]
+    pub oreb: f32,
+    #[serde(rename = "PF")]
+    pub pf: f32,
+    #[serde(rename = "PLUS_MINUS")]
+    pub plus_minus: f32,
+    #[serde(rename = "REB")]
+    pub reb: f32,
+    #[serde(rename = "STL")]
+    pub stl: f32,
+    #[serde(rename = "TOV")]
+    pub tov: f32,
+    #[serde(rename = "W")]
+    pub w: i32,
+}
+
 //////////////////////////////
 // SCOREBOARD
 #[derive(Deserialize, Serialize, Debug)]
