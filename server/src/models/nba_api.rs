@@ -173,6 +173,100 @@ pub struct NbaTeamStatsShort {
 }
 
 //////////////////////////////
+// PLAYERS
+#[derive(Deserialize, Serialize, Debug)]
+pub struct NbaPlayerLatestGames {
+    pub player_latest: Vec<NbaPlayerLatest>,
+    pub player_latest_short: Vec<NbaPlayerLatestShort>,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct NbaPlayerLatest {
+    #[serde(rename = "AST")]
+    pub ast: i32,
+    #[serde(rename = "BLK")]
+    pub blk: i32,
+    #[serde(rename = "DREB")]
+    pub dreb: i32,
+    #[serde(rename = "FG3A")]
+    pub fg3a: i32,
+    #[serde(rename = "FG3M")]
+    pub fg3m: i32,
+    #[serde(rename = "FG3_PCT")]
+    pub fg3_pct: f32,
+    #[serde(rename = "FGA")]
+    pub fga: i32,
+    #[serde(rename = "FGM")]
+    pub fgm: i32,
+    #[serde(rename = "FG_PCT")]
+    pub fg_pct: f32,
+    #[serde(rename = "FTA")]
+    pub fta: i32,
+    #[serde(rename = "FTM")]
+    pub ftm: i32,
+    #[serde(rename = "FT_PCT")]
+    pub ft_pct: f32,
+    #[serde(rename = "GAME_DATE")]
+    pub game_date: String,
+    #[serde(rename = "Game_ID")]
+    pub game_id: String,
+    #[serde(rename = "MATCHUP")]
+    pub matchup: String,
+    #[serde(rename = "MIN")]
+    pub min: i32,
+    #[serde(rename = "OREB")]
+    pub oreb: i32,
+    #[serde(rename = "PF")]
+    pub pf: i32,
+    #[serde(rename = "PLUS_MINUS")]
+    pub plus_minus: i32,
+    #[serde(rename = "PTS")]
+    pub pts: i32,
+    #[serde(rename = "Player_ID")]
+    pub player_id: i64,
+    #[serde(rename = "REB")]
+    pub reb: i32,
+    #[serde(rename = "SEASON_ID")]
+    pub season_id: String,
+    #[serde(rename = "STL")]
+    pub stl: i32,
+    #[serde(rename = "TOV")]
+    pub tov: i32,
+    #[serde(rename = "VIDEO_AVAILABLE")]
+    pub video_available: i32,
+    #[serde(rename = "WL")]
+    pub wl: String,
+}
+
+#[derive(Deserialize, Serialize, Debug)]
+pub struct NbaPlayerLatestShort {
+    #[serde(rename = "AST")]
+    pub ast: i32,
+    #[serde(rename = "FG3A")]
+    pub fg3a: i32,
+    #[serde(rename = "FG3M")]
+    pub fg3m: i32,
+    #[serde(rename = "GAME_DATE")]
+    pub game_date: String,
+    #[serde(rename = "Game_ID")]
+    pub game_id: String,
+    #[serde(rename = "MATCHUP")]
+    pub matchup: String,
+    #[serde(rename = "MIN")]
+    pub min: i32,
+    #[serde(rename = "PTS")]
+    pub pts: i32,
+    #[serde(rename = "Player_ID")]
+    pub player_id: i64,
+    #[serde(rename = "REB")]
+    pub reb: i32,
+    #[serde(rename = "SEASON_ID")]
+    pub season_id: String,
+    #[serde(rename = "WL")]
+    pub wl: String,
+}
+
+//////////////////////////////
 // SCOREBOARD
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Scoreboard {
