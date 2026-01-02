@@ -10,4 +10,6 @@ pub fn nba_routes() -> Router<AppState> {
         .route("/teams", get(teams::get_teams_list))
         .route("/teams/{id}", get(teams::get_team_details))
         .route("/players/{id}", get(players::get_player_by_id))
+        .route("/players/{id}/avg", get(players::get_player_avg_stats))
+        .route("/players/{id}/info", get(players::get_player_info))
 }

@@ -147,3 +147,97 @@ export type NbaTeamStatsShort = Pick<
 	NbaTeamStats,
 	'TEAM_ID' | 'TEAM_NAME' | 'GP' | 'MIN' | 'PTS' | 'REB' | 'AST' | 'FG3A' | 'FG3M'
 >;
+
+////////////////////////////
+// NBA players page
+export type NbaPlayerInfo = {
+	BIRTHDATE: string;
+	COUNTRY: string;
+	FIRST_NAME: string;
+	HEIGHT: string;
+	JERSEY: string;
+	LAST_NAME: string;
+	PERSON_ID: number;
+	PLAYERCODE: string;
+	POSITION: string;
+	TEAM_CITY: string;
+	TEAM_ID: number;
+	TEAM_NAME: string;
+	WEIGHT: string;
+};
+
+export type NbaPlayerAvgStats = {
+	AST: number;
+	BLK: number;
+	DREB: number;
+	FG3A: number;
+	FG3M: number;
+	FG3_PCT: number;
+	FGA: number;
+	FGM: number;
+	FG_PCT: number;
+	FTA: number;
+	FTM: number;
+	FT_PCT: number;
+	GP: number;
+	L: number;
+	MIN: number;
+	OREB: number;
+	PF: number;
+	PLUS_MINUS: number;
+	REB: number;
+	STL: number;
+	TOV: number;
+	W: number;
+};
+
+export type NbaPlayerAvg = {
+	season_avg: NbaPlayerAvgStats;
+	last_10_avg: NbaPlayerAvgStats;
+	last_5_avg: NbaPlayerAvgStats;
+};
+
+export type NbaPlayerLatest = {
+	AST: number;
+	BLK: number;
+	DREB: number;
+	FG3A: number;
+	FG3M: number;
+	FG3_PCT: number;
+	FGA: number;
+	FGM: number;
+	FG_PCT: number;
+	FTA: number;
+	FTM: number;
+	FT_PCT: number;
+	GAME_DATE: string;
+	Game_ID: string;
+	MATCHUP: string;
+	MIN: number;
+	OREB: number;
+	PF: number;
+	PLUS_MINUS: number;
+	PTS: number;
+	Player_ID: number;
+	REB: number;
+	SEASON_ID: string;
+	STL: number;
+	TOV: number;
+	VIDEO_AVAILABLE: number;
+	WL: string;
+};
+
+export type NbaPlayerLatestShort = {
+	AST: number;
+	FG3A: number;
+	FG3M: number;
+	GAME_DATE: string;
+	Game_ID: string;
+	MATCHUP: string;
+	MIN: number;
+	PTS: number;
+	Player_ID: number;
+	REB: number;
+	SEASON_ID: string;
+	WL: string;
+};
