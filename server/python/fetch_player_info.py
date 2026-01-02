@@ -22,9 +22,15 @@ def main():
         common_player_info = result_sets[0]  # "CommonPlayerInfo"
 
         headers = common_player_info["headers"]
-        row = common_player_info["rowSet"][0]
+        row_set = common_player_info["rowSet"]
 
-        info = dict(zip(headers, row))
+        if not row_set:
+            print(json.dumps({"error": "Player not found"}))
+            return
+
+        row = row_set[0]
+
+        info = dict(zip(headers, row, strict=True))
 
         print(json.dumps(info))
 

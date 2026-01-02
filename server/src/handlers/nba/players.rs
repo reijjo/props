@@ -8,7 +8,10 @@ use serde_json::json;
 
 use crate::{
     app::AppState,
-    cache::keys::{PLAYER_DETAILS_TTL, nba_player_details_key},
+    cache::keys::{
+        PLAYER_AVG_TTL, PLAYER_DETAILS_TTL, PLAYER_INFO_TTL, nba_player_avg_key,
+        nba_player_details_key, nba_player_info_key,
+    },
     models::nba_api::{NbaPlayerAvg, NbaPlayerInfo, NbaPlayerLatestGames},
     utils::python::run_python_script,
 };
@@ -67,9 +70,9 @@ pub async fn get_player_by_id(Path(id): Path<i64>, State(state): State<AppState>
 pub async fn get_player_avg_stats(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
     tracing::info!("Fetching player stats by ID: {}", id);
 
-    let cache_key = nba_player_details_key(id);
+    let cache_key = nba_player_avg_key(id);
 
-    if let Some(cached) = state.json_cache.get(&cache_key, PLAYER_DETAILS_TTL).await {
+    if let Some(cached) = state.json_cache.get(&cache_key, PLAYER_AVG_TTL).await {
         tracing::info!("Cache HIT: {}", cache_key);
         return (StatusCode::OK, Json(cached)).into_response();
     }
@@ -113,9 +116,9 @@ pub async fn get_player_avg_stats(Path(id): Path<i64>, State(state): State<AppSt
 pub async fn get_player_info(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
     tracing::info!("Fetching player stats by ID: {}", id);
 
-    let cache_key = nba_player_details_key(id);
+    let cache_key = nba_player_info_key(id);
 
-    if let Some(cached) = state.json_cache.get(&cache_key, PLAYER_DETAILS_TTL).await {
+    if let Some(cached) = state.json_cache.get(&cache_key, PLAYER_INFO_TTL).await {
         tracing::info!("Cache HIT: {}", cache_key);
         return (StatusCode::OK, Json(cached)).into_response();
     }

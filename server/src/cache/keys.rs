@@ -21,6 +21,16 @@ pub fn nba_player_details_key(id: i64) -> String {
     format!("nba_player_details_{}", id)
 }
 
+pub fn nba_player_info_key(id: i64) -> String {
+    format!("nba_player_info_{}", id)
+}
+
+pub fn nba_player_avg_key(id: i64) -> String {
+    format!("nba_player_avg_{}", id)
+}
+
+pub const PLAYER_INFO_TTL: Duration = Duration::from_secs(60 * 60 * 2); // 2 hour
+pub const PLAYER_AVG_TTL: Duration = Duration::from_secs(60 * 60 * 2); // 2 hour
 pub const PLAYER_DETAILS_TTL: Duration = Duration::from_secs(60 * 60 * 2); // 2 hour
 pub const TEAM_DETAILS_TTL: Duration = Duration::from_secs(60 * 60); // 1 hour
 pub const LEADERS_TTL: Duration = Duration::from_secs(60 * 60 * 2); // 2 hours

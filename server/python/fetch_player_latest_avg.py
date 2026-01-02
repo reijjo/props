@@ -17,7 +17,7 @@ def main():
 
     try:
         # Helper function to extract OverallPlayerDashboard
-        def get_overall_stats(dashboard_data):
+        def get_overall_stats(dashboard_data) -> dict:
             result_sets = dashboard_data["resultSets"]
             for rs in result_sets:
                 if rs["name"] == "OverallPlayerDashboard" and rs["rowSet"]:

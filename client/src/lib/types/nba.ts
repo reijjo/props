@@ -151,48 +151,93 @@ export type NbaTeamStatsShort = Pick<
 ////////////////////////////
 // NBA players page
 export type NbaPlayerInfo = {
-	birthdate: string;
-	country: string;
-	firstname: string;
-	height: string;
-	jersey: string;
-	lastname: string;
-	personid: number;
-	playercode: string;
-	position: string;
-	teamcity: string;
-	teamid: number;
-	teamname: string;
-	weight: string;
+	BIRTHDATE: string;
+	COUNTRY: string;
+	FIRST_NAME: string;
+	HEIGHT: string;
+	JERSEY: string;
+	LAST_NAME: string;
+	PERSON_ID: number;
+	PLAYERCODE: string;
+	POSITION: string;
+	TEAM_CITY: string;
+	TEAM_ID: number;
+	TEAM_NAME: string;
+	WEIGHT: string;
 };
 
 export type NbaPlayerAvgStats = {
-	ast: number;
-	blk: number;
-	dreb: number;
-	fg3a: number;
-	fg3m: number;
-	fg3_pct: number;
-	fga: number;
-	fgm: number;
-	fg_pct: number;
-	fta: number;
-	ftm: number;
-	ft_pct: number;
-	gp: number;
-	l: number;
-	min: number;
-	oreb: number;
-	pf: number;
-	plus_minus: number;
-	reb: number;
-	stl: number;
-	tov: number;
-	w: number;
+	AST: number;
+	BLK: number;
+	DREB: number;
+	FG3A: number;
+	FG3M: number;
+	FG3_PCT: number;
+	FGA: number;
+	FGM: number;
+	FG_PCT: number;
+	FTA: number;
+	FTM: number;
+	FT_PCT: number;
+	GP: number;
+	L: number;
+	MIN: number;
+	OREB: number;
+	PF: number;
+	PLUS_MINUS: number;
+	REB: number;
+	STL: number;
+	TOV: number;
+	W: number;
 };
 
 export type NbaPlayerAvg = {
 	season_avg: NbaPlayerAvgStats;
 	last_10_avg: NbaPlayerAvgStats;
 	last_5_avg: NbaPlayerAvgStats;
+};
+
+export type NbaPlayerLatest = {
+	AST: number;
+	BLK: number;
+	DREB: number;
+	FG3A: number;
+	FG3M: number;
+	FG3_PCT: number;
+	FGA: number;
+	FGM: number;
+	FG_PCT: number;
+	FTA: number;
+	FTM: number;
+	FT_PCT: number;
+	GAME_DATE: string;
+	Game_ID: string;
+	MATCHUP: string;
+	MIN: number;
+	OREB: number;
+	PF: number;
+	PLUS_MINUS: number;
+	PTS: number;
+	Player_ID: number;
+	REB: number;
+	SEASON_ID: string;
+	STL: number;
+	TOV: number;
+	VIDEO_AVAILABLE: number;
+	WL: string;
+};
+
+export type NbaPlayerLatestShort = {
+	AST: number;
+	FG3A: number;
+	FG3M: number;
+	GAME_DATE: string;
+	Game_ID: string;
+	MATCHUP: string;
+	MIN: number;
+	PTS: number;
+	Player_ID: number;
+	REB: number;
+	SEASON_ID: string;
+	WL: string;
 };
