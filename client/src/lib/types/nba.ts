@@ -241,3 +241,8 @@ export type NbaPlayerLatestShort = {
 	SEASON_ID: string;
 	WL: string;
 };
+
+export type NbaPlayerLatestBoth = {
+	player_latest: NbaPlayerLatest;
+	player_latest_short: NbaPlayerLatestShort;
+};

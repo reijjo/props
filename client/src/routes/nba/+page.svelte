@@ -18,7 +18,9 @@
 	</section>
 	<section class="nba-page-leaders wrapper">
 		<h2>NBA Leaders</h2>
-		<Leaderbox header="Points per game" stat="PTS" players={data.leaders} />
+		<div class="nba-page-box-wrapper">
+			<Leaderbox header="Points per game" stat="PTS" players={data.leaders} />
+		</div>
 		<a href="/nba/leaderboards" class="nba-page-link">
 			<Button class="btn-outline btn-with-icon">
 				View All Leaderboards
@@ -59,6 +61,12 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+	}
+
+	.nba-page-box-wrapper {
+		& > :global(section) {
+			width: 100%;
+		}
 	}
 
 	.nba-page-link {
