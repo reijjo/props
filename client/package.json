@@ -2,7 +2,7 @@
 	"name": "sveltekit-client",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "bunx --bun vite dev",
+		"dev": " bunx --bun vite dev",
 		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -50,10 +50,11 @@
 		"prettier": "^3.7.4",
 		"prettier-plugin-svelte": "^3.4.1",
 		"publint": "^0.3.16",
-		"svelte": "^5.46.0",
+		"svelte": "^5.46.1",
 		"svelte-check": "^4.3.5",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.0",
+		"vite-plugin-devtools-json": "^1.0.0",
 		"vitest": "^4.0.16",
 		"vitest-browser-svelte": "^2.0.1"
 	},

@@ -24,6 +24,8 @@ def main():
                     headers = rs["headers"]
                     row = rs["rowSet"][0]
                     return dict(zip(headers, row, strict=True))
+                else:
+                  return {}
             return {}
 
         # 1. Full season average

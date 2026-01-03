@@ -4,7 +4,7 @@ import { env } from '$env/dynamic/private';
 import type { NbaTeamsPage } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
-	const baseUrl = env.DEV_API_URL;
+	const baseUrl = env.API_URL;
 	const res = await fetch(`${baseUrl}/api/nba/teams/${params.id}`);
 
 	if (!res.ok) {

@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 import type { NbaGame, PointsLeader } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-	const baseUrl = env.DEV_API_URL;
+	const baseUrl = env.API_URL;
 
 	const [scoreboardRes, pointLeadersRes] = await Promise.all([
 		fetch(`${baseUrl}/api/nba/today`),

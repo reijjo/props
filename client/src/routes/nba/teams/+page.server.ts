@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 import type { NbaTeamCard } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-	const baseUrl = env.DEV_API_URL;
+	const baseUrl = env.API_URL;
 	const res = await fetch(`${baseUrl}/api/nba/teams`);
 
 	if (!res.ok) {
