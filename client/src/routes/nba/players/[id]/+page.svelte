@@ -15,8 +15,10 @@
 	let latest = $derived(data.latest);
 
 	let playerName = $derived(`${info.FIRST_NAME} ${info.LAST_NAME}`);
-	let avgView: PlayerAvgView = 'SHORT';
-	let avgColumns = PLAYER_AVG_COLUMNS[avgView];
+
+	let avgView: PlayerAvgView = $state('SHORT');
+	let avgColumns = $derived(PLAYER_AVG_COLUMNS[avgView]);
+
 	let latestColumns = PLAYER_LATEST_COLUMNS;
 </script>
 

@@ -56,7 +56,7 @@ export const PLAYER_AVG_COLUMNS = {
 		'FGA',
 		'FG_PCT',
 		'FTA',
-		'FT',
+		'FTM',
 		'FT_PCT',
 		'PTS',
 		'OREB',
@@ -71,7 +71,7 @@ export const PLAYER_AVG_COLUMNS = {
 		'PF',
 		'PLUS_MINUS'
 	] as const
-};
+} as const;
 
 export type PlayerAvgView = keyof typeof PLAYER_AVG_COLUMNS;
 
@@ -85,6 +85,6 @@ export const PLAYER_LATEST_COLUMNS = [
 	'AST',
 	'FG3M',
 	'FG3A'
-];
+] as const;
 
-export type PlayerLatestView = keyof typeof PLAYER_LATEST_COLUMNS;
+export type PlayerLatestView = (typeof PLAYER_LATEST_COLUMNS)[number];

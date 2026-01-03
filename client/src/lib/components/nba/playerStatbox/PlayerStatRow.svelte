@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { NbaPlayerAvgStats, NbaPlayerLatestBoth } from '$lib/types/nba';
+	import type { NbaPlayerAvgStats } from '$lib/types/nba';
 	import { formatValue } from '$lib/utils/format';
 
 	let {

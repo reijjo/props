@@ -31,7 +31,7 @@
 				<PlayerStatRow avg={avg.season_avg} columns={avgColumns} />
 			</table>
 			<h3>Last 5 games average</h3>
-			<table aria-label={`${playerName} lsat 5 games average for 2025-2026 season`}>
+			<table aria-label={`${playerName} last 5 games average for 2025-2026 season`}>
 				<PlayerStatHeaders columns={avgColumns} />
 				<PlayerStatRow avg={avg.last_5_avg} columns={avgColumns} />
 			</table>
