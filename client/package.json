@@ -2,9 +2,11 @@
 	"name": "sveltekit-client",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": " bunx --bun vite dev",
+		"dev": "bunx --bun vite dev",
 		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
+		"clean": "rm -rf .svelte-kit build dist node_modules/.vite",
+		"clean:full": "rm -rf .svelte-kit build dist node_modules && bun install",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -54,7 +56,6 @@
 		"svelte-check": "^4.3.5",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.0",
-		"vite-plugin-devtools-json": "^1.0.0",
 		"vitest": "^4.0.16",
 		"vitest-browser-svelte": "^2.0.1"
 	},
