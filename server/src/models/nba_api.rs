@@ -306,51 +306,51 @@ pub struct NbaPlayerAvg {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NbaPlayerAvgStats {
-    #[serde(rename = "PTS")]
+    #[serde(default, rename = "PTS")]
     pub pts: f32,
-    #[serde(rename = "AST")]
+    #[serde(default, rename = "AST")]
     pub ast: f32,
-    #[serde(rename = "BLK")]
+    #[serde(default, rename = "BLK")]
     pub blk: f32,
-    #[serde(rename = "DREB")]
+    #[serde(default, rename = "DREB")]
     pub dreb: f32,
-    #[serde(rename = "FG3A")]
+    #[serde(default, rename = "FG3A")]
     pub fg3a: f32,
-    #[serde(rename = "FG3M")]
+    #[serde(default, rename = "FG3M")]
     pub fg3m: f32,
-    #[serde(rename = "FG3_PCT")]
+    #[serde(default, rename = "FG3_PCT")]
     pub fg3_pct: f32,
-    #[serde(rename = "FGA")]
+    #[serde(default, rename = "FGA")]
     pub fga: f32,
-    #[serde(rename = "FGM")]
+    #[serde(default, rename = "FGM")]
     pub fgm: f32,
-    #[serde(rename = "FG_PCT")]
+    #[serde(default, rename = "FG_PCT")]
     pub fg_pct: f32,
-    #[serde(rename = "FTA")]
+    #[serde(default, rename = "FTA")]
     pub fta: f32,
-    #[serde(rename = "FTM")]
+    #[serde(default, rename = "FTM")]
     pub ftm: f32,
-    #[serde(rename = "FT_PCT")]
+    #[serde(default, rename = "FT_PCT")]
     pub ft_pct: f32,
-    #[serde(rename = "GP")]
+    #[serde(default, rename = "GP")]
     pub gp: i32,
-    #[serde(rename = "L")]
+    #[serde(default, rename = "L")]
     pub l: i32,
-    #[serde(rename = "MIN")]
+    #[serde(default, rename = "MIN")]
     pub min: f32,
-    #[serde(rename = "OREB")]
+    #[serde(default, rename = "OREB")]
     pub oreb: f32,
-    #[serde(rename = "PF")]
+    #[serde(default, rename = "PF")]
     pub pf: f32,
-    #[serde(rename = "PLUS_MINUS")]
+    #[serde(default, rename = "PLUS_MINUS")]
     pub plus_minus: f32,
-    #[serde(rename = "REB")]
+    #[serde(default, rename = "REB")]
     pub reb: f32,
-    #[serde(rename = "STL")]
+    #[serde(default, rename = "STL")]
     pub stl: f32,
-    #[serde(rename = "TOV")]
+    #[serde(default, rename = "TOV")]
     pub tov: f32,
-    #[serde(rename = "W")]
+    #[serde(default, rename = "W")]
     pub w: i32,
 }
 

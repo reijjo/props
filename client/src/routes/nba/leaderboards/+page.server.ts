@@ -12,7 +12,7 @@ import type {
 } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-	const baseUrl = env.DEV_API_URL;
+	const baseUrl = env.API_URL;
 
 	const [ptsRes, rebRes, astRes, fg3mRes, blkRes, stlRes, tovRes] = await Promise.all([
 		fetch(`${baseUrl}/api/nba/leaders?stat=PTS`),
