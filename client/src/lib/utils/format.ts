@@ -19,7 +19,9 @@ export const formatColumnName = (col: string): string => {
 		.replace('_PCT', '%') // FT_PCT → FT%
 		.replace('FG3', '3P') // FG3M → 3PM
 		.replace('FG_', 'FG') // FG_PCT → FG%
-		.replace('FT_', 'FT'); // FT_PCT → FT%
+		.replace('FT_', 'FT') // FT_PCT → FT%
+		.replace('PLUS_MINUS', '+/-')
+		.replace('GAME_DATE', 'DATE');
 };
 
 export const formatValue = (value: string | number | undefined, columnName: string): string => {
