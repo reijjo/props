@@ -20,6 +20,10 @@
 .table-wrapper {
 	overflow-x: auto; /* Horizontal scroll when needed */
 	-webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+
+	& h3:not(:first-child) {
+		padding-top: 1rem;
+	}
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -92,8 +96,6 @@
 
 	& th:first-child,
 	& td:first-child {
-		position: sticky;
-		left: 0;
 		background-color: var(--primary);
 		z-index: 1;
 	}

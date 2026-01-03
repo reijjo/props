@@ -167,6 +167,7 @@ export type NbaPlayerInfo = {
 };
 
 export type NbaPlayerAvgStats = {
+	PTS: number;
 	AST: number;
 	BLK: number;
 	DREB: number;
@@ -243,6 +244,6 @@ export type NbaPlayerLatestShort = {
 };
 
 export type NbaPlayerLatestBoth = {
-	player_latest: NbaPlayerLatest;
-	player_latest_short: NbaPlayerLatestShort;
+	player_latest: NbaPlayerLatest[];
+	player_latest_short: NbaPlayerLatestShort[];
 };

@@ -306,6 +306,8 @@ pub struct NbaPlayerAvg {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NbaPlayerAvgStats {
+    #[serde(rename = "PTS")]
+    pub pts: f32,
     #[serde(rename = "AST")]
     pub ast: f32,
     #[serde(rename = "BLK")]
