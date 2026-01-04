@@ -13,5 +13,9 @@ export const load: PageServerLoad = async ({ fetch }) => {
 
 	const data = await res.json();
 
-	return { teams: data.teams as NbaTeamCard[] };
+	const sortedTeams: NbaTeamCard[] = [...data.teams].sort((a, b) =>
+		a.full_name.localeCompare(b.full_name)
+	);
+
+	return { teams: sortedTeams };
 };

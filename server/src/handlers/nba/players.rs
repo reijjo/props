@@ -113,6 +113,7 @@ pub async fn get_player_avg_stats(Path(id): Path<i64>, State(state): State<AppSt
     (StatusCode::OK, Json(response_json)).into_response()
 }
 
+// Gets player info
 pub async fn get_player_info(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
     tracing::info!("Fetching player stats by ID: {}", id);
 
