@@ -1,5 +1,6 @@
 import json
 import sys
+import time
 from nba_api.stats.endpoints import playerdashboardbygamesplits
 
 def main():
@@ -26,6 +27,8 @@ def main():
                     return dict(zip(headers, row, strict=True))
             return {}
 
+        print(f"DEBUG: Requesting player {player_id}, season {season}", file=sys.stderr)
+
         # 1. Full season average
         season_dashboard = playerdashboardbygamesplits.PlayerDashboardByGameSplits(
             player_id=player_id,
@@ -35,6 +38,7 @@ def main():
             # No last_n_games = full season
         )
         season_avg = get_overall_stats(season_dashboard.get_dict())
+        time.sleep(0.6)
 
         # 2. Last 10 games average
         last_10_dashboard = playerdashboardbygamesplits.PlayerDashboardByGameSplits(
@@ -45,6 +49,8 @@ def main():
             last_n_games=10
         )
         last_10_avg = get_overall_stats(last_10_dashboard.get_dict())
+        time.sleep(0.6)
+
 
         # 3. Last 5 games average
         last_5_dashboard = playerdashboardbygamesplits.PlayerDashboardByGameSplits(
