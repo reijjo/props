@@ -38,6 +38,7 @@ pip install -r requirements.txt
 ```
 
 - Uses <https://github.com/swar/nba_api/> for the NBA data
+- <https://github.com/mxufc29/nbainjuries> for the injury report
 
 ## Testing
 
