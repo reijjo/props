@@ -10,6 +10,10 @@ Deploying this a bit later
 
 ## Locally
 
+**System Requirements:**
+
+- Java Runtime Environment (JRE) 8 or higher (required for PDF parsing via tabula-py)
+
 ### Install `Bun` (adding link later) and `Rust` (adding link later) so everything works fine
 
 ### Frontend
@@ -38,6 +42,7 @@ pip install -r requirements.txt
 ```
 
 - Uses <https://github.com/swar/nba_api/> for the NBA data
+- <https://github.com/mxufc29/nbainjuries> for the injury report
 
 ## Testing
 
