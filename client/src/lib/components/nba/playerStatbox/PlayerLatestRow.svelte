@@ -10,7 +10,7 @@
 	} = $props();
 
 	// TODO: Format only % values if they're available
-	// if (player.FG3_PCT | player.FG_PCT | player.FT_PCT)
+	// if (player.FG3_PCT || player.FG_PCT || player.FT_PCT) ...
 </script>
 
 <tbody>
