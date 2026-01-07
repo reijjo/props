@@ -42,7 +42,9 @@
 	};
 
 	const popId = (i: NbaInjury) =>
-		`inj-${encodeURIComponent(`${i.team}|${i.playerName}|${i.gameDate}|${i.matchup}`)}`;
+		`inj-${encodeURIComponent(
+			`${i.team ?? 'unknown'}|${i.playerName ?? 'unknown'}|${i.gameDate ?? ''}|${i.matchup ?? ''}`
+		)}`;
 </script>
 
 <div class="injuries-container">
@@ -52,7 +54,6 @@
 				<h3 class="team">{team}</h3>
 				<div class="injury-wrapper">
 					{#each injuries as injury (popId(injury))}
-						{@const pid = popId(injury)}
 						<div class="one-injury">
 							<div class={`injured-player-name ${formatInjColor(injury.currentStatus)} `}>
 								<p class="inj-player-name">
@@ -61,12 +62,12 @@
 								<p>- {injury.currentStatus}</p>
 								<button
 									class="info-btn"
-									popovertarget={pid}
+									popovertarget={popId(injury)}
 									aria-label="Show injury details for {injury.playerName}"
 								>
 									<Info size={16} />
 								</button>
-								<div class="injury-info" popover id={pid}>
+								<div class="injury-info" popover id={popId(injury)}>
 									<p class="injury-reason">{formatInjuryReason(injury.reason) ?? '—'}</p>
 								</div>
 							</div>

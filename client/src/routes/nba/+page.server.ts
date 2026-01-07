@@ -21,7 +21,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 	}
 
 	if (!injuryRes.ok) {
-		throw error(pointLeadersRes.status, 'Failed to fetch NBA injury report.');
+		throw error(injuryRes.status, 'Failed to fetch NBA injury report.');
 	}
 
 	const scoreboard: NbaGame[] = await scoreboardRes.json();
