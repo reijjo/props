@@ -430,3 +430,29 @@ pub struct NbaInjury {
     #[serde(rename = "Team")]
     pub team: String,
 }
+
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct NbaInjuryDto {
+    pub current_status: Option<String>,
+    pub game_date: String,
+    pub game_time: String,
+    pub matchup: String,
+    pub player_name: Option<String>,
+    pub reason: Option<String>,
+    pub team: String,
+}
+
+impl From<NbaInjury> for NbaInjuryDto {
+    fn from(x: NbaInjury) -> Self {
+        Self {
+            current_status: x.current_status,
+            game_date: x.game_date,
+            game_time: x.game_time,
+            matchup: x.matchup,
+            player_name: x.player_name,
+            reason: x.reason,
+            team: x.team,
+        }
+    }
+}

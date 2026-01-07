@@ -6,6 +6,7 @@
 
 	import { MoveRight } from '@lucide/svelte';
 	import Leaderbox from '$lib/components/nba/leaderbox/Leaderbox.svelte';
+	import NbaInjuries from './components/NbaInjuries.svelte';
 
 	let { data }: PageProps = $props();
 </script>
@@ -15,6 +16,10 @@
 		<h1>NBA</h1>
 		<h2>NBA Games & Scores</h2>
 		<GamesToday data={data.games} />
+	</section>
+	<section class="nba-page-injuries wrapper">
+		<h2>nba Injuries</h2>
+		<NbaInjuries data={data.injuries} />
 	</section>
 	<section class="nba-page-leaders wrapper">
 		<h2>NBA Leaders</h2>
@@ -71,5 +76,11 @@
 
 	.nba-page-link {
 		width: max-content;
+	}
+
+	.nba-page-injuries {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 </style>

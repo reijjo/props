@@ -247,3 +247,13 @@ export type NbaPlayerLatestBoth = {
 	player_latest: NbaPlayerLatest[];
 	player_latest_short: NbaPlayerLatestShort[];
 };
+
+export type NbaInjury = {
+	currentStatus?: string;
+	gameDate: string;
+	gameTime: string;
+	matchup: string;
+	playerName?: string;
+	reason?: string;
+	team: string;
+};
