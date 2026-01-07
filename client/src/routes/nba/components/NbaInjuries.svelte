@@ -13,12 +13,21 @@
 	const entries = $derived(Object.entries(grouped));
 
 	const formatInjuryReason = (reason: string | undefined) => {
-		if (reason?.includes(' - ')) {
-			const injReason = reason.split(' - ')[1];
-			const [part1, part2] = injReason.split(';');
-			return `${part1} - ${part2}`;
-		}
+		if (!reason) return '—';
 
+		if (reason?.includes(' - ')) {
+			const parts = reason.split(' - ');
+			if (parts.length < 2) return reason;
+
+			const injReason = parts[1];
+			const [part1, part2] = injReason.split(';');
+
+			// Only format if we have both parts
+			if (part2) {
+				return `${part1} - ${part2}`;
+			}
+			return part1;
+		}
 		return reason;
 	};
 
@@ -34,8 +43,6 @@
 
 	const popId = (i: NbaInjury) =>
 		`inj-${encodeURIComponent(`${i.team}|${i.playerName}|${i.gameDate}|${i.matchup}`)}`;
-
-	console.log('data', data);
 </script>
 
 <div class="injuries-container">
@@ -52,7 +59,11 @@
 									{injury.playerName}
 								</p>
 								<p>- {injury.currentStatus}</p>
-								<button class="info-btn" popovertarget={pid}>
+								<button
+									class="info-btn"
+									popovertarget={pid}
+									aria-label="Show injury details for {injury.playerName}"
+								>
 									<Info size={16} />
 								</button>
 								<div class="injury-info" popover id={pid}>
