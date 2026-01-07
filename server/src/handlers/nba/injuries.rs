@@ -9,7 +9,7 @@ use serde_json::json;
 use crate::{
     app::AppState,
     cache::keys::{INJURY_TTL, nba_injury_key},
-    models::nba_api::NbaInjury,
+    models::nba_api::{NbaInjury, NbaInjuryDto},
     utils::python::run_python_script,
 };
 
@@ -47,7 +47,9 @@ pub async fn get_injuries(State(state): State<AppState>) -> Response {
         }
     };
 
-    let response_json = json!(data);
+    let dto: Vec<NbaInjuryDto> = data.into_iter().map(Into::into).collect();
+
+    let response_json = json!(dto);
     state.json_cache.set(cache_key, response_json.clone()).await;
 
     (StatusCode::OK, Json(response_json)).into_response()
