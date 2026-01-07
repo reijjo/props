@@ -403,3 +403,30 @@ pub struct Odds {
     pub odds: f32,
     pub suspended: i8,
 }
+
+////////////////////////////////
+/// INJURIES
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NbaInjury {
+    #[serde(rename = "Current Status")]
+    pub current_status: Option<String>,
+
+    #[serde(rename = "Game Date")]
+    pub game_date: String,
+
+    #[serde(rename = "Game Time")]
+    pub game_time: String,
+
+    #[serde(rename = "Matchup")]
+    pub matchup: String,
+
+    #[serde(rename = "Player Name")]
+    pub player_name: Option<String>,
+
+    #[serde(rename = "Reason")]
+    pub reason: Option<String>,
+
+    #[serde(rename = "Team")]
+    pub team: String,
+}
