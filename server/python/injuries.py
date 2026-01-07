@@ -2,6 +2,8 @@ import nbainjuries.injury as inj
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from nbainjuries._exceptions import URLRetrievalError
+import json
+import sys
 
 ET = ZoneInfo("America/New_York")
 
@@ -34,4 +36,21 @@ def latest_report(max_steps: int = 96):  # 24h back in 15-min steps
             ts -= timedelta(minutes=15)
     raise RuntimeError("No report found in last 24h")
 
-print(latest_report())
+if __name__ == "__main__":
+    try:
+        # Redirect any unwanted prints from the library to stderr
+        # so they don't pollute the JSON output
+        import io
+        import contextlib
+
+        # Capture stdout during the library call
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            injuries = latest_report()
+
+        # The validation message goes to the captured buffer, not our output
+        # Now only print the JSON to stdout
+        print(injuries)
+    except Exception as e:
+        print(json.dumps({"error": str(e)}), file=sys.stderr)
+        sys.exit(1)

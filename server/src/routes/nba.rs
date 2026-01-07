@@ -1,7 +1,7 @@
 use axum::{Router, routing::get};
 
 use crate::app::AppState;
-use crate::handlers::nba::{games, leaders, players, teams};
+use crate::handlers::nba::{games, injuries, leaders, players, teams};
 
 pub fn nba_routes() -> Router<AppState> {
     Router::new()
@@ -12,4 +12,5 @@ pub fn nba_routes() -> Router<AppState> {
         .route("/players/{id}", get(players::get_player_by_id))
         .route("/players/{id}/avg", get(players::get_player_avg_stats))
         .route("/players/{id}/info", get(players::get_player_info))
+        .route("/injuries", get(injuries::get_injuries))
 }
