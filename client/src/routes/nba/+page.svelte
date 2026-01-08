@@ -6,7 +6,7 @@
 
 	import { MoveRight } from '@lucide/svelte';
 	import Leaderbox from '$lib/components/nba/leaderbox/Leaderbox.svelte';
-	import NbaInjuries from './components/NbaInjuries.svelte';
+	import NbaInjuries from './components/injury/NbaInjuries.svelte';
 
 	let { data }: PageProps = $props();
 </script>
