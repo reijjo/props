@@ -33,7 +33,7 @@
 		<Info size={16} />
 	</button>
 	<div class="injury-info" popover id={popId(injury)}>
-		<p class="injury-reason">{formatInjuryReason(injury.reason) ?? '—'}</p>
+		<p class="injury-reason">{formatInjuryReason(injury.reason)}</p>
 	</div>
 </div>
 
@@ -53,6 +53,10 @@
 		border-radius: 0.5rem;
 		box-shadow: var(--container-shadow);
 		padding: 0.5rem 1rem;
+	}
+
+	.injury-reason {
+		font-size: 0.825rem;
 	}
 
 	[popover] {

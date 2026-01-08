@@ -43,10 +43,6 @@
 		font-weight: 600;
 	}
 
-	.injury-reason {
-		font-size: 0.875rem;
-	}
-
 	.questionable {
 		color: hsl(60, 100%, 90%);
 	}
