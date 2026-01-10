@@ -3,6 +3,7 @@
 	import { STATBOX_COLUMNS, type StatboxView } from '$lib/constants/nba';
 	import type { PageProps } from './$types';
 	import Header from './components/Header.svelte';
+	import TeamInjuries from './components/TeamInjuries.svelte';
 
 	let { data }: PageProps = $props();
 
@@ -10,6 +11,7 @@
 	let teamShort = $derived(data.teamShort);
 	let players = $derived(data.players);
 	let playersShort = $derived(data.playersShort);
+	let injuries = $derived(data.injuries);
 
 	let view: StatboxView = 'SHORT';
 	let columns = STATBOX_COLUMNS[view];
@@ -23,6 +25,7 @@
 	<div class="nba-teampage wrapper">
 		<Header {team} />
 		<Statbox {teamShort} {playersShort} {columns} />
+		<TeamInjuries {injuries} />
 	</div>
 </main>
 

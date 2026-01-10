@@ -21,10 +21,12 @@
 
 	const isMaxValue = (player: NbaTeamPlayerStatsShort, col: string) => {
 		if (col === 'GP') return false;
-
 		const value = player[col as keyof NbaTeamPlayerStatsShort];
 		return value === maxValues[col];
 	};
+
+	let showAll = $state(false);
+	const visiblePlayers = $derived(showAll ? playersShort : playersShort.slice(0, 6));
 </script>
 
 <tbody>
@@ -44,7 +46,8 @@
 			{/each}
 		</tr>
 	{/if}
-	{#each playersShort as player (player.PLAYER_ID)}
+
+	{#each visiblePlayers as player (player.PLAYER_ID)}
 		<tr>
 			<td>
 				<a href={`/nba/players/${player.PLAYER_ID}`}>{player.PLAYER_NAME}</a>
@@ -56,6 +59,16 @@
 			{/each}
 		</tr>
 	{/each}
+
+	{#if playersShort.length > 6}
+		<tr class="show-more-row">
+			<td colspan={4}>
+				<button class="show-more-btn" aria-expanded={showAll} onclick={() => (showAll = !showAll)}>
+					{showAll ? 'Show Less' : `Show All ${playersShort.length} Players`}
+				</button>
+			</td>
+		</tr>
+	{/if}
 </tbody>
 
 <style>
@@ -72,5 +85,30 @@
 
 	.leader {
 		color: var(--secondary-300);
+	}
+
+	.show-more-row {
+		border: none;
+	}
+
+	.show-more-row td {
+		text-align: center;
+		padding: 0.75rem;
+	}
+
+	.show-more-btn {
+		padding: 0.5rem 1.25rem;
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 0.5rem;
+		color: var(--text-primary, white);
+		cursor: pointer;
+		font-size: 0.875rem;
+		transition: all 150ms ease;
+	}
+
+	.show-more-btn:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.2);
 	}
 </style>
