@@ -60,10 +60,10 @@
 		</tr>
 	{/each}
 
-	{#if playersShort.length > 5}
+	{#if playersShort.length > 6}
 		<tr class="show-more-row">
-			<td colspan={columns.length + 1}>
-				<button class="show-more-btn" onclick={() => (showAll = !showAll)}>
+			<td colspan={4}>
+				<button class="show-more-btn" aria-expanded={showAll} onclick={() => (showAll = !showAll)}>
 					{showAll ? 'Show Less' : `Show All ${playersShort.length} Players`}
 				</button>
 			</td>

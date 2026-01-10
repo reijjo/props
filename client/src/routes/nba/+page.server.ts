@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { env } from '$env/dynamic/private';
 import { error } from '@sveltejs/kit';
-import type { NbaGame, NbaInjury, PointsLeader } from '$lib/types/nba';
+import type { NbaGame, PointsLeader } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const baseUrl = env.API_URL;
