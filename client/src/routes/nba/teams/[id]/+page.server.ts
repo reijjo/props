@@ -1,25 +1,35 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { env } from '$env/dynamic/private';
-import type { NbaTeamsPage } from '$lib/types/nba';
+import type { NbaInjury, NbaTeamsPage } from '$lib/types/nba';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
 	const baseUrl = env.API_URL;
-	const res = await fetch(`${baseUrl}/api/nba/teams/${params.id}`);
+	const [teamRes, injuryRes] = await Promise.all([
+		fetch(`${baseUrl}/api/nba/teams/${params.id}`),
+		fetch(`${baseUrl}/api/nba/injuries`)
+	]);
 
-	if (!res.ok) {
-		throw error(res.status, 'Failed to fetch NBA team');
+	if (!teamRes.ok) {
+		throw error(teamRes.status, 'Failed to fetch NBA team');
 	}
 
-	const data: NbaTeamsPage = await res.json();
+	if (!injuryRes.ok) {
+		throw error(injuryRes.status, 'Failed to fetch NBA injuries');
+	}
 
-	const sortedPlayers = [...data.players].sort((a, b) => b.MIN - a.MIN);
-	const sortedPlayersShort = [...data.players_short].sort((a, b) => b.MIN - a.MIN);
+	const teamData: NbaTeamsPage = await teamRes.json();
+	const injData: Record<string, NbaInjury[]> = await injuryRes.json();
+
+	const sortedPlayers = [...teamData.players].sort((a, b) => b.MIN - a.MIN);
+	const sortedPlayersShort = [...teamData.players_short].sort((a, b) => b.MIN - a.MIN);
+	const teamInjuries = injData[teamData.team_stats.TEAM_NAME] ?? [];
 
 	return {
 		players: sortedPlayers,
-		team: data.team_stats,
+		team: teamData.team_stats,
 		playersShort: sortedPlayersShort,
-		teamShort: data.team_stats_short
+		teamShort: teamData.team_stats_short,
+		injuries: teamInjuries
 	};
 };

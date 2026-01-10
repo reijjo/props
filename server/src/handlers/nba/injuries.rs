@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use axum::{
     Json,
     extract::State,
@@ -47,9 +49,23 @@ pub async fn get_injuries(State(state): State<AppState>) -> Response {
         }
     };
 
-    let dto: Vec<NbaInjuryDto> = data.into_iter().map(Into::into).collect();
+    let mut grouped: HashMap<String, Vec<NbaInjuryDto>> = HashMap::new();
+    for injury in data {
+        // Filter: skip null status or G League entries
+        if injury.current_status.is_none()
+            || injury
+                .reason
+                .as_ref()
+                .map_or(false, |r| r.contains("G League"))
+        {
+            continue;
+        }
 
-    let response_json = json!(dto);
+        let dto: NbaInjuryDto = injury.into();
+        grouped.entry(dto.team.clone()).or_default().push(dto);
+    }
+
+    let response_json = json!(grouped);
     state.json_cache.set(cache_key, response_json.clone()).await;
 
     (StatusCode::OK, Json(response_json)).into_response()

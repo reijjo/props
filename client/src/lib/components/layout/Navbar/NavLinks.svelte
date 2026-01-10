@@ -18,6 +18,10 @@
 				{
 					label: 'Leaderboards',
 					href: '/nba/leaderboards'
+				},
+				{
+					label: 'Injuries',
+					href: '/nba/injuries'
 				}
 			]
 		}
