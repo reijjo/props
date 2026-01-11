@@ -37,7 +37,9 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/usr/lib/jvm/default-java
-ENV PATH=$JAVA_HOME/bin:$PATH
+# Add venv to PATH so Python finds packages automatically
+ENV PATH="/app/python/.venv/bin:$JAVA_HOME/bin:$PATH"
+# Set PROJECT_ROOT for Rust to find Python scripts
 ENV PROJECT_ROOT=/app
 
 WORKDIR /app
