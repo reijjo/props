@@ -13,7 +13,7 @@
 </script>
 
 <div class="injuries-container">
-	{#if data.injuries.length > 0}
+	{#if entries.length > 0}
 		{#each entries as [team, injuries] (team)}
 			<div class="team-injuries">
 				<h3 class="team">{team}</h3>
