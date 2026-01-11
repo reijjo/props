@@ -1,4 +1,4 @@
-FROM rust:latest as builder
+FROM rust:bookworm as builder
 
 # Install system dependencies (Java, Python)
 RUN apt-get update && apt-get install -y \
@@ -26,7 +26,7 @@ RUN cd python && \
 # Build Rust
 RUN cargo build --release
 
-# Runtime stage
+# Runtime stage (same Debian version as builder)
 FROM debian:bookworm-slim
 
 # Install runtime dependencies
