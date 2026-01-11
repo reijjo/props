@@ -14,10 +14,10 @@ ENV PATH=$JAVA_HOME/bin:$PATH
 
 WORKDIR /app
 
-# Copy only server directory
-COPY server/ .
+# Copy current directory (which is already server/)
+COPY . .
 
-# Install Python dependencies (python is inside server/)
+# Install Python dependencies
 RUN cd python && \
     python3 -m venv .venv && \
     . .venv/bin/activate && \
@@ -26,7 +26,7 @@ RUN cd python && \
 # Build Rust
 RUN cargo build --release
 
-# Runtime stage (smaller image)
+# Runtime stage
 FROM debian:bookworm-slim
 
 # Install runtime dependencies
