@@ -47,6 +47,9 @@ WORKDIR /app
 # Copy Python venv and scripts
 COPY --from=builder /app/python /app/python
 
+# Create symlink so Rust can find python in venv
+RUN ln -sf /app/python/.venv/bin/python /usr/local/bin/python3
+
 # Copy Rust binary
 COPY --from=builder /app/target/release/server /usr/local/bin/server
 
