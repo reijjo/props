@@ -4,7 +4,44 @@
 
 Real-time NBA player statistics, injury reports, and team data for making informed betting decisions.
 
+Landing page
+<img width="1399" height="737" alt="Screenshot 2026-01-11 at 17 07 29" src="https://github.com/user-attachments/assets/e738b176-fdaa-4f18-b347-ffff3795c836" />
+
+Team page
+<img width="1399" height="737" alt="Screenshot 2026-01-11 at 17 08 24" src="https://github.com/user-attachments/assets/feb6de1d-b948-436d-a5a8-6a73f52e9ef9" />
+
+
+
+<details>
+  <summary>More images</summary>
+  
+  <p></p>
+  <p>NBA Home</p>
+  <img width="1399" height="737" alt="Screenshot 2026-01-11 at 17 07 59" src="https://github.com/user-attachments/assets/14e36ea1-7d8e-4186-8178-7b804a991f39" />
+  
+  <p></p>
+  <p>Player page</p>
+  <img width="1399" height="737" alt="Screenshot 2026-01-11 at 17 09 10" src="https://github.com/user-attachments/assets/788972c7-b904-4f0d-827f-7dbbd14f39ff" />
+  
+  <p></p>
+  <p>Mobile landing page</p>
+  <img width="299" height="650" alt="Screenshot 2026-01-11 at 17 10 13" src="https://github.com/user-attachments/assets/4d564c6c-1c87-417d-9d4b-4251071b782c" />
+  
+  <p></p>
+  <p>Mobile NBA Home</p>
+  <img width="299" height="650" alt="Screenshot 2026-01-11 at 17 10 30" src="https://github.com/user-attachments/assets/e0d10009-bfab-4bbf-a653-36b7436401ad" />
+
+  <p></p>
+  <p>Mobile team page</p>
+  <img width="299" height="650" alt="Screenshot 2026-01-11 at 17 12 18" src="https://github.com/user-attachments/assets/1ce59ac4-23ed-43eb-b01c-6fc39031545d" />
+
+  <p></p>
+  <p>Mobile player page</p>
+  <img width="299" height="650" alt="Screenshot 2026-01-11 at 17 12 46" src="https://github.com/user-attachments/assets/10a44461-28bb-4505-a29a-c08116331f00" />
+</details>
+
 ## 🚀 Live Demo
+
 
 **Frontend:** [https://ropsit.netlify.app/](https://ropsit.netlify.app/)
 **Backend API:** Deployed on Render
