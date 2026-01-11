@@ -1,72 +1,141 @@
 # Props
 
-Player Props for Sports Betting / Fantasy Sports
+**Player Props for Sports Betting / Fantasy Sports**
 
-# How to use
+Real-time NBA player statistics, injury reports, and team data for making informed betting decisions.
 
-## Live
+## 🚀 Live Demo
 
-Deploying this a bit later
+**Frontend:** [https://ropsit.netlify.app/](https://ropsit.netlify.app/)
+**Backend API:** Deployed on Render
 
-## Locally
+## ✨ Features
 
-**System Requirements:**
+- 📊 Real-time NBA player statistics and league leaders
+- 🏥 Daily injury reports with game status
+- 🏀 Team information and rosters
+- ⚡ Fast API with intelligent caching
+- 🎨 Modern, responsive UI built with SvelteKit
 
-- Java Runtime Environment (JRE) 8 or higher (required for PDF parsing via tabula-py)
+## 🛠️ Tech Stack
 
-### Install `Bun` (adding link later) and `Rust` (adding link later) so everything works fine
+**Frontend:**
 
-### Frontend
+- SvelteKit + TypeScript
+- Bun runtime
+- Deployed on Netlify
 
-#### Do this stuff in the **./client** folder:
+**Backend:**
 
-- First `bun install`
-- Start the frontend `bun dev`
+- Rust (Axum web framework)
+- Python (NBA data fetching)
+- Java (PDF parsing for injury reports)
+- Deployed on Render with Docker
 
-### Backend
+## 📋 Prerequisites
 
-#### Do this stuff in the **./server** folder:
+- **Bun** (latest) - [Install Bun](https://bun.sh)
+- **Rust** (1.85+) - [Install Rust](https://rustup.rs)
+- **Python** 3.10+
+- **Java Runtime Environment** (JRE) 8+ (required for PDF parsing)
 
-- Run the server with 'hot reload' -> `cargo watch -x fmt -x run`
-- `fmt` is a code formatter that cleans your code on every load
+## 🚦 Getting Started
 
-### Python
+### Frontend Setup
 
-More instructions coming soon...
+```bash
+cd client
+bun install
+bun dev
+```
 
-```sh
+The frontend will be available at http://localhost:5173
+
+### Backend Setup
+
+```bash
+cd server
+cargo watch -x fmt -x run
+```
+
+The API will be available at http://localhost:3001
+
+### Python Environment
+
+```bash
 cd server/python
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-- Uses <https://github.com/swar/nba_api/> for the NBA data
-- <https://github.com/mxufc29/nbainjuries> for the injury report
+## 📁 Project Structure
 
-## Testing
+```text
+props/
+├── client/          # SvelteKit frontend
+│   ├── src/
+│   └── tests/
+├── server/          # Rust backend
+│   ├── src/
+│   ├── python/      # Python scripts for NBA data
+│   └── tests/
+└── Dockerfile       # Production deployment
+```
 
-### Frontend
+## 🧪 Testing
 
-Make sure that you are in the **./client** folder
+### Frontend Tests
 
-`bun run test` runs all the tests
+```bash
+cd client
 
-**Unit tests**
+# Run all tests
+bun run test
 
-- `bun run test:unit` runs unit tests
-- `bun run test:unit:cover` shows the coverage of the unit tests
+# Unit tests
+bun run test:unit
+bun run test:unit:cover
 
-**e2e tests**
+# E2E tests (Playwright)
+bun run test:e2e
+bun run test:e2e:ui
+bun run test:e2e:report
+```
 
-- `bun run test:e2e` runs the e2e tests
-- `bun run test:e2e:report` runs the e2e tests and shows Playwright report
-- `bun run test:e2e:ui` runs the e2e tests with ui
+### Backend Tests
 
-### Backend
+```bash
+cd server
 
-Make sure that you are in the **./server** folder
+# Run all tests
+cargo test
 
-- `cargo test` runs all the tests
-- `cargo llvm-cov --html --open` shows the full test coverage report
-- `cargo llvm-cov` text summary
+# Coverage report (HTML)
+cargo llvm-cov --html --open
+
+# Coverage summary (terminal)
+cargo llvm-cov
+```
+
+## 📚 Data Sources
+
+- [nba_api](https://github.com/swar/nba_api) - Official NBA statistics
+- [nbainjuries](https://www.nbainjuries.com/) - Daily injury reports
+
+## 🐳 Docker Deployment
+
+The project uses a multi-stage Docker build for production:
+
+```bash
+docker build -t props-backend .
+docker run -p 8080:8080 props-backend
+```
+
+## 📝 License
+
+MIT
+
+## 🤝 Contributing
+
+Contributions welcome! Please open an issue or submit a pull request.
