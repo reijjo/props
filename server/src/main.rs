@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let config = Config::from_env();
 
-    let addr = format!("localhost:{}", config.port);
+    let addr = format!("{}:{}", config.host, config.port);
 
     tracing::info!("Environment: '{}'", config.app_env);
     tracing::info!("🚀 Server starting on http://{}", addr);

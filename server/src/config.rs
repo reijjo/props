@@ -5,6 +5,7 @@ use std::env;
 pub struct Config {
     pub app_env: String,
     pub port: u16,
+    pub host: String,
     pub nba_leaders_base: String,
     pub project_root: String,
 }
@@ -19,6 +20,12 @@ impl Config {
             .unwrap_or_else(|_| "3001".to_string())
             .parse::<u16>()
             .expect("Port must be a number");
+
+        let host = if app_env == "production" {
+            "0.0.0.0".to_string()
+        } else {
+            "localhost".to_string()
+        };
 
         let nba_leaders_base =
             env::var("NBA_LEADERS_API").expect("NBA_LEADERS_API missing in .env");
@@ -48,6 +55,7 @@ impl Config {
         Self {
             app_env,
             port,
+            host,
             nba_leaders_base,
             project_root,
         }
