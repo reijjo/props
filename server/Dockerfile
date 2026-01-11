@@ -37,22 +37,19 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/usr/lib/jvm/default-java
-# Add venv to PATH so Python finds packages automatically
-ENV PATH="/app/python/.venv/bin:$JAVA_HOME/bin:$PATH"
-# Set PROJECT_ROOT for Rust to find Python scripts
-ENV PROJECT_ROOT=/app
+ENV PATH="/app/bin:$JAVA_HOME/bin:$PATH"
 
 WORKDIR /app
 
 # Copy Python venv and scripts
 COPY --from=builder /app/python /app/python
 
-# Create symlink so Rust can find python in venv
-RUN ln -sf /app/python/.venv/bin/python /usr/local/bin/python3
-
-# Copy Rust binary
-COPY --from=builder /app/target/release/server /usr/local/bin/server
+# Create structure that matches your code's expectation
+# Your code does: current_exe().parent().parent().parent() = /app
+# So binary needs to be at: /app/target/release/server
+RUN mkdir -p /app/target/release
+COPY --from=builder /app/target/release/server /app/target/release/server
 
 EXPOSE 8080
 
-CMD ["server"]
+CMD ["/app/target/release/server"]
