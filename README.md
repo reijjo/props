@@ -158,7 +158,7 @@ cargo llvm-cov
 ## 📚 Data Sources
 
 - [nba_api](https://github.com/swar/nba_api) - Official NBA statistics
-- [nbainjuries](https://www.nbainjuries.com/) - Daily injury reports
+- [nbainjuries](https://github.com/mxufc29/nbainjuries) - Daily injury reports
 
 ## 🐳 Docker Deployment
 
