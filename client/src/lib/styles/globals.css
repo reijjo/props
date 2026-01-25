@@ -76,7 +76,7 @@ h3 {
 /* END Headers */
 
 :root {
-	--nav-height: 8svh;
+	--nav-height: min(8svh, 50px);
 
 	--container-border: 1px solid rgb(from var(--secondary) r g b / 0.25);
 	--container-shadow: 0 0.5rem 1rem rgb(from var(--secondary) r g b / 0.075);

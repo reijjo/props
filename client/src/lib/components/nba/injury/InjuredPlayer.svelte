@@ -30,7 +30,7 @@
 		gap: 0.5rem;
 		display: flex;
 		flex-direction: column;
-		padding: 0.75rem;
+		padding: 0.5rem;
 	}
 
 	.injured-player-name {

@@ -23,7 +23,7 @@
 	.nav-buttons {
 		display: flex;
 		gap: 1rem;
-		height: 2.5rem;
+		height: 2rem;
 
 		@media (max-width: 580px) {
 			display: none;
