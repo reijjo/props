@@ -36,6 +36,7 @@
 		gap: 1rem;
 		font-size: 0.925rem;
 		width: 100%;
+		/* align-items: start;  */
 	}
 
 	.team-injuries {

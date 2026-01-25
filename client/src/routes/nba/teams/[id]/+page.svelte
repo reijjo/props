@@ -15,6 +15,8 @@
 
 	let view: StatboxView = 'SHORT';
 	let columns = STATBOX_COLUMNS[view];
+
+	console.log('SHORTT', playersShort);
 </script>
 
 <svelte:head>

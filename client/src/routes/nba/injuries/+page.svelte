@@ -1,5 +1,5 @@
 <script lang="ts">
-	import NbaInjuries from '../../../lib/components/nba/injury/NbaInjuries.svelte';
+	import NbaInjuries from '$lib/components/nba/injury/NbaInjuries.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
