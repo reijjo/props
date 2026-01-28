@@ -1,7 +1,7 @@
 import json
 import sys
-from nba_api.stats.endpoints import playergamelog
 import time
+from nba_api.stats.endpoints import playergamelog
 
 def main():
     if len(sys.argv) < 2:

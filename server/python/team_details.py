@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import json
 import sys
-from nba_api.stats.endpoints import teamplayerdashboard
 import time
+from nba_api.stats.endpoints import teamplayerdashboard
 
 def main():
     if len(sys.argv) < 2:

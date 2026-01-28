@@ -22,6 +22,7 @@
 	} = $props();
 
 	let latestGames = $derived(latest?.player_latest_short);
+	let last5avg = $derived(last5?.last_5_avg);
 </script>
 
 <section class="statbox">
@@ -32,11 +33,11 @@
 				<PlayerStatHeaders columns={avgColumns} />
 				<PlayerStatRow avg={avg.season_avg} columns={avgColumns} />
 			</table>
-			{#if last5}
+			{#if last5avg}
 				<h3>Last 5 games average</h3>
 				<table aria-label={`${playerName} last 5 games average for 2025-2026 season`}>
 					<PlayerStatHeaders columns={avgColumns} />
-					<PlayerStatRow avg={last5.last_5_avg} columns={avgColumns} />
+					<PlayerStatRow avg={last5avg} columns={avgColumns} />
 				</table>
 			{/if}
 		{/if}

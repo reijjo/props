@@ -29,7 +29,7 @@ pub fn nba_player_avg_key(id: i64) -> String {
     format!("nba_player_avg_{}", id)
 }
 
-pub fn nba_player_avg5(id: i64) -> String {
+pub fn nba_player_avg5_key(id: i64) -> String {
     format!("nba_player_avg5_{}", id)
 }
 

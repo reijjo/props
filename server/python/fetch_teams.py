@@ -1,6 +1,6 @@
 import json
-from nba_api.stats.static import teams
 import time
+from nba_api.stats.static import teams
 
 def main():
     all_teams = teams.get_teams()

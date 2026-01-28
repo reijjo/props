@@ -35,10 +35,5 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	const infoData: NbaPlayerInfo = await playerInfo.json();
 	const last5Data: NbaPlayerLast5 = await playerLast5.json();
 
-	console.log('Latest Data:', latestData);
-	console.log('Avg Data:', avgData);
-	console.log('Info Data:', infoData);
-	console.log('Last 5 Data:', last5Data);
-
 	return { latest: latestData, avg: avgData, info: infoData, last5: last5Data };
 };

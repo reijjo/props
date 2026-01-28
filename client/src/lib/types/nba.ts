@@ -199,7 +199,7 @@ export type NbaPlayerAvg = {
 };
 
 export type NbaPlayerLast5 = {
-	last_5_avg: NbaPlayerAvgStats;
+	last_5_avg: NbaPlayerAvgStats | null;
 };
 
 export type NbaPlayerLatest = {

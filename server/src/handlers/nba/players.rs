@@ -10,7 +10,7 @@ use crate::{
     app::AppState,
     cache::keys::{
         PLAYER_AVG_TTL, PLAYER_AVG5_TTL, PLAYER_DETAILS_TTL, PLAYER_INFO_TTL, nba_player_avg_key,
-        nba_player_avg5, nba_player_details_key, nba_player_info_key,
+        nba_player_avg5_key, nba_player_details_key, nba_player_info_key,
     },
     models::nba_api::{NbaPlayerAvg, NbaPlayerInfo, NbaPlayerLast5, NbaPlayerLatestGames},
     utils::python::run_python_script,
@@ -163,7 +163,7 @@ pub async fn get_player_info(Path(id): Path<i64>, State(state): State<AppState>)
 pub async fn get_player_avg5(Path(id): Path<i64>, State(state): State<AppState>) -> Response {
     tracing::info!("Fetching player stats by ID: {}", id);
 
-    let cache_key = nba_player_avg5(id);
+    let cache_key = nba_player_avg5_key(id);
 
     if let Some(cached) = state.json_cache.get(&cache_key, PLAYER_AVG5_TTL).await {
         tracing::info!("Cache HIT: {}", cache_key);
