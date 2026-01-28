@@ -1,6 +1,7 @@
 import json
 import sys
 from nba_api.stats.endpoints import playergamelog
+import time
 
 def main():
     if len(sys.argv) < 2:
@@ -22,6 +23,8 @@ def main():
       )
 
       data = gamelog.get_dict()
+      time.sleep(1.0)
+
 
       result_sets = data["resultSets"]
 

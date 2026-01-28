@@ -1,6 +1,7 @@
 import json
 import sys
 from nba_api.stats.endpoints import commonplayerinfo
+import time
 
 def main():
     if len(sys.argv) < 2:
@@ -16,6 +17,9 @@ def main():
     try:
         info_endpoint = commonplayerinfo.CommonPlayerInfo(player_id=player_id)
         data = info_endpoint.get_dict()
+
+        time.sleep(1.0)
+
 
         # The actual player header info is in resultSets[0]
         result_sets = data["resultSets"]
@@ -33,6 +37,8 @@ def main():
         info = dict(zip(headers, row, strict=True))
 
         print(json.dumps(info))
+
+
 
     except Exception as e:
         print(json.dumps({"error": str(e)}))

@@ -2,6 +2,7 @@
 import json
 import sys
 from nba_api.stats.endpoints import teamplayerdashboard
+import time
 
 def main():
     if len(sys.argv) < 2:
@@ -21,6 +22,8 @@ def main():
             season=season,
             per_mode_detailed="PerGame"
         ).get_dict()
+
+        time.sleep(1.0)
 
         result_sets = dashboard["resultSets"]
 

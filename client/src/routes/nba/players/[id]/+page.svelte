@@ -13,6 +13,7 @@
 	let info = $derived(data.info);
 	let avg = $derived(data.avg);
 	let latest = $derived(data.latest);
+	let last5 = $derived(data.last5);
 
 	let playerName = $derived(`${info.FIRST_NAME} ${info.LAST_NAME}`);
 
@@ -29,7 +30,7 @@
 <main>
 	<div class="nba-playerpage wrapper">
 		<Header {info} />
-		<PlayerStatbox {avg} {avgColumns} {playerName} />
+		<PlayerStatbox {avg} {last5} {avgColumns} {playerName} />
 		<PlayerStatbox {latest} {latestColumns} {playerName} />
 	</div>
 </main>
