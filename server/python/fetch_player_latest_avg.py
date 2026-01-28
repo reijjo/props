@@ -15,6 +15,7 @@ def calculate_season_avg(games, headers):
     idx_map = {header: i for i, header in enumerate(headers)}
 
     stats = {}
+    totals = {}
     stat_fields = ['PTS', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'FGM', 'FGA',
                    'FG3M', 'FG3A', 'FTM', 'FTA', 'OREB', 'DREB', 'PF', 'PLUS_MINUS', 'MIN']
 
@@ -22,21 +23,22 @@ def calculate_season_avg(games, headers):
         if field in idx_map:
             idx = idx_map[field]
             total = sum(game[idx] or 0 for game in games)
+            totals[field] = total
             stats[field] = round(total / num_games, 1)
 
     # Calculate percentages
-    if stats.get('FGA', 0) > 0:
-        stats['FG_PCT'] = round(stats['FGM'] / stats['FGA'], 3)
+    if totals.get('FGA', 0) > 0:
+       stats['FG_PCT'] = round(totals['FGM'] / totals['FGA'], 3)
     else:
         stats['FG_PCT'] = 0.0
 
-    if stats.get('FG3A', 0) > 0:
-        stats['FG3_PCT'] = round(stats['FG3M'] / stats['FG3A'], 3)
+    if totals.get('FG3A', 0) > 0:
+        stats['FG3_PCT'] = round(totals['FG3M'] / totals['FG3A'], 3)
     else:
         stats['FG3_PCT'] = 0.0
 
-    if stats.get('FTA', 0) > 0:
-        stats['FT_PCT'] = round(stats['FTM'] / stats['FTA'], 3)
+    if totals.get('FTA', 0) > 0:
+        stats['FT_PCT'] = round(totals['FTM'] / totals['FTA'], 3)
     else:
         stats['FT_PCT'] = 0.0
 
