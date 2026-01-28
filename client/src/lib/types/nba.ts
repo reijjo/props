@@ -194,8 +194,12 @@ export type NbaPlayerAvgStats = {
 
 export type NbaPlayerAvg = {
 	season_avg: NbaPlayerAvgStats;
-	last_10_avg: NbaPlayerAvgStats;
-	last_5_avg: NbaPlayerAvgStats;
+	// last_10_avg: NbaPlayerAvgStats;
+	// last_5_avg: NbaPlayerAvgStats;
+};
+
+export type NbaPlayerLast5 = {
+	last_5_avg: NbaPlayerAvgStats | null;
 };
 
 export type NbaPlayerLatest = {

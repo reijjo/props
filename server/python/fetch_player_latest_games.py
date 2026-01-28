@@ -1,5 +1,6 @@
 import json
 import sys
+import time
 from nba_api.stats.endpoints import playergamelog
 
 def main():
@@ -22,6 +23,8 @@ def main():
       )
 
       data = gamelog.get_dict()
+      time.sleep(1.0)
+
 
       result_sets = data["resultSets"]
 

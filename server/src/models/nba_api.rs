@@ -300,8 +300,13 @@ pub struct NbaPlayerInfo {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NbaPlayerAvg {
     pub season_avg: NbaPlayerAvgStats,
-    pub last_10_avg: NbaPlayerAvgStats,
-    pub last_5_avg: NbaPlayerAvgStats,
+    // pub last_10_avg: NbaPlayerAvgStats,
+    // pub last_5_avg: NbaPlayerAvgStats,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct NbaPlayerLast5 {
+    pub last_5_avg: Option<NbaPlayerAvgStats>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

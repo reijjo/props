@@ -1,7 +1,60 @@
+#!/usr/bin/env python3
 import json
 import sys
-import time
-from nba_api.stats.endpoints import playerdashboardbygamesplits
+from nba_api.stats.endpoints import playergamelog
+
+
+def calculate_season_avg(games, headers):
+    """Calculate season averages from all game logs"""
+    if not games:
+        return None
+
+    num_games = len(games)
+
+    # Map header names to indices
+    idx_map = {header: i for i, header in enumerate(headers)}
+
+    stats = {}
+    totals = {}
+    stat_fields = ['PTS', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'FGM', 'FGA',
+                   'FG3M', 'FG3A', 'FTM', 'FTA', 'OREB', 'DREB', 'PF', 'PLUS_MINUS', 'MIN']
+
+    for field in stat_fields:
+        if field in idx_map:
+            idx = idx_map[field]
+            total = sum(game[idx] or 0 for game in games)
+            totals[field] = total
+            stats[field] = round(total / num_games, 1)
+
+    # Calculate percentages
+    if totals.get('FGA', 0) > 0:
+       stats['FG_PCT'] = round(totals['FGM'] / totals['FGA'], 3)
+    else:
+        stats['FG_PCT'] = 0.0
+
+    if totals.get('FG3A', 0) > 0:
+        stats['FG3_PCT'] = round(totals['FG3M'] / totals['FG3A'], 3)
+    else:
+        stats['FG3_PCT'] = 0.0
+
+    if totals.get('FTA', 0) > 0:
+        stats['FT_PCT'] = round(totals['FTM'] / totals['FTA'], 3)
+    else:
+        stats['FT_PCT'] = 0.0
+
+    stats['GP'] = num_games
+
+    # Count wins/losses from WL column
+    if 'WL' in idx_map:
+        wl_idx = idx_map['WL']
+        wins = sum(1 for game in games if game[wl_idx] == 'W')
+        losses = sum(1 for game in games if game[wl_idx] == 'L')
+        stats['W'] = wins
+        stats['L'] = losses
+        stats['W_PCT'] = round(wins / num_games, 3) if num_games > 0 else 0.0
+
+    return stats
+
 
 def main():
     if len(sys.argv) < 2:
@@ -17,61 +70,37 @@ def main():
     season = "2025-26"
 
     try:
-        # Helper function to extract OverallPlayerDashboard
-        def get_overall_stats(dashboard_data) -> dict:
-            result_sets = dashboard_data["resultSets"]
-            for rs in result_sets:
-                if rs["name"] == "OverallPlayerDashboard" and rs["rowSet"]:
-                    headers = rs["headers"]
-                    row = rs["rowSet"][0]
-                    return dict(zip(headers, row, strict=True))
-            return {}
-
         print(f"DEBUG: Requesting player {player_id}, season {season}", file=sys.stderr)
 
-        # 1. Full season average
-        season_dashboard = playerdashboardbygamesplits.PlayerDashboardByGameSplits(
+        # Use game log - much more reliable
+        game_log = playergamelog.PlayerGameLog(
             player_id=player_id,
             season=season,
-            per_mode_detailed="PerGame",
-            season_type_playoffs="Regular Season"
-            # No last_n_games = full season
+            season_type_all_star="Regular Season"
         )
-        season_avg = get_overall_stats(season_dashboard.get_dict())
-        time.sleep(0.6)
 
-        # 2. Last 10 games average
-        last_10_dashboard = playerdashboardbygamesplits.PlayerDashboardByGameSplits(
-            player_id=player_id,
-            season=season,
-            per_mode_detailed="PerGame",
-            season_type_playoffs="Regular Season",
-            last_n_games=10
-        )
-        last_10_avg = get_overall_stats(last_10_dashboard.get_dict())
-        time.sleep(0.6)
+        data = game_log.get_dict()
+        result_sets = data["resultSets"][0]
+        headers = result_sets["headers"]
+        games = result_sets["rowSet"]
 
-
-        # 3. Last 5 games average
-        last_5_dashboard = playerdashboardbygamesplits.PlayerDashboardByGameSplits(
-            player_id=player_id,
-            season=season,
-            per_mode_detailed="PerGame",
-            season_type_playoffs="Regular Season",
-            last_n_games=5
-        )
-        last_5_avg = get_overall_stats(last_5_dashboard.get_dict())
-
-        result = {
-            "season_avg": season_avg,
-            "last_10_avg": last_10_avg,
-            "last_5_avg": last_5_avg
-        }
+        if not games:
+            print(f"DEBUG: No games found for player", file=sys.stderr)
+            result = {"season_avg": None}
+        else:
+            print(f"DEBUG: Found {len(games)} games", file=sys.stderr)
+            season_avg = calculate_season_avg(games, headers)
+            print(f"DEBUG: Season avg calculated successfully", file=sys.stderr)
+            result = {"season_avg": season_avg}
 
         print(json.dumps(result))
 
     except Exception as e:
+        print(f"DEBUG: Exception: {type(e).__name__}: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc(file=sys.stderr)
         print(json.dumps({"error": str(e)}))
+
 
 if __name__ == "__main__":
     main()

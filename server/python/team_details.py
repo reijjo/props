@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import sys
+import time
 from nba_api.stats.endpoints import teamplayerdashboard
 
 def main():
@@ -21,6 +22,8 @@ def main():
             season=season,
             per_mode_detailed="PerGame"
         ).get_dict()
+
+        time.sleep(1.0)
 
         result_sets = dashboard["resultSets"]
 
