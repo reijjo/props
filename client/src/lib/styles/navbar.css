@@ -7,6 +7,7 @@ nav {
 	width: 95%;
 	max-width: 1366px;
 	height: var(--nav-height);
+	padding-block: 0.5rem;
 
 	background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.125), rgba(0, 0, 0, 0.125));
 	-webkit-backdrop-filter: blur(1rem);
@@ -34,15 +35,18 @@ nav {
 	& li {
 		list-style: none;
 
-		& a {
+		& a,
+		& button {
 			height: 100%;
 		}
 
-		& a.active {
+		& a.active,
+		& button.active {
 			font-weight: 600;
 		}
 
-		& a:hover:not(.active) {
+		& a:hover:not(.active),
+		& button:hover:not(.active) {
 			color: var(--accent-200);
 		}
 	}
@@ -54,12 +58,23 @@ nav {
 	align-items: center;
 	height: 100%;
 
-	& > a {
+	& > a,
+	& > button {
 		display: flex;
 		align-items: center;
 		height: 100%;
 		padding-inline: 0.5rem;
 	}
+}
+
+/* Style button like anchor */
+.nav-toggle {
+	background: none;
+	border: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	padding: 0;
 }
 
 .nav-sub-menu {
@@ -69,7 +84,7 @@ nav {
 	border: 1px solid rgba(255, 255, 255, 0.125);
 	border-radius: 0.5rem;
 	position: absolute;
-	top: 3.625rem;
+	top: 3rem;
 	left: 0;
 	width: max-content;
 	display: flex;
@@ -106,8 +121,8 @@ nav {
 	}
 }
 
-.nav-links:hover li.has-submenu:hover .nav-sub-menu,
-.nav-links li.has-submenu:focus-within .nav-sub-menu {
+/* Open state - changed from hover to class-based */
+.nav-item.open .nav-sub-menu {
 	opacity: 1;
 	max-height: 600px;
 	visibility: visible;
