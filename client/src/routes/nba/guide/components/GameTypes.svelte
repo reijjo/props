@@ -6,7 +6,7 @@
 		<li>Big spread &ge; 8pts</li>
 	</ul>
 	<ul>
-		<li>High total &ge; 230pts</li>
+		<li>High total &gt; 230pts</li>
 		<li>Low/normal total &le; 230pts</li>
 	</ul>
 </article>

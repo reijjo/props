@@ -8,8 +8,7 @@
 	<div class="guide wrapper">
 		<h1>Nba betting guide</h1>
 		<p>
-			This isn't like the bible for betting the player props but it gives you a some kind of
-			direction what to bet.
+			This isn't a bible for player‑prop betting, but it gives you some direction on what to bet.
 		</p>
 		<section class="guide-grid">
 			<GameTypes />
